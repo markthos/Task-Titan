@@ -1,8 +1,22 @@
-const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const projectRoutes = require('./projectRoutes');
+const User = require('./User');
+const Project = require('./Project');
+const Ticket = require('./Ticket')
 
-router.use('/users', userRoutes);
-router.use('/projects', projectRoutes);
+User.hasMany(Project, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
 
-module.exports = router;
+Project.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Ticket.belongsTo(Project, {
+    foreignKey: 'project_id'
+});
+
+Ticket.belongsTo(User, {
+    foreignKey: 'creator_id'
+});
+
+module.exports = { User, Project, Ticket };
