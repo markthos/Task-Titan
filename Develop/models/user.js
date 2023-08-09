@@ -32,7 +32,7 @@ User.init(
             },
         },
         email: {
-            type: DataTypes.STIMG,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
