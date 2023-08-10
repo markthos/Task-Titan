@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="stylesheet" src="../../public/css/style.css"/>
-    <title>TASK TITAN 🦹🏻‍♂️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="stylesheet" src="../../public/css/style.css"/>
+  <title>TASK TITAN 🦹🏻‍♂️</title>
 </head>
 <body>
-    {{{ body }}}
+  <header>
+    <a class="nav_button logo-box" href="/">
+      <h1>TASK TITAN 🦹🏻‍♂️</h1>
+    </a>
+
+    <!-- IF 
+    <nav>
+        **** HOME ROUTE HERE ****
+        {{#if logged_in }}
+            <a class="nav_button" href="/boards">MY BOARDS</a>
+            <a class="nav_button login_button" id="join_button" href="/">
+                LOGOUT
+            </a>
+        {{else}}
+            **** LOGIN CODE BELOW HERE *****
+        {{/if}}
+    </nav>
+    -->
+    <nav>
+        <a class="nav_button" href="/">HOME</a>
+        <a class="nav_button login_button" id="join_button" href="/login">
+            LOGIN
+        </a>
+    </nav>
+    
+  </header>
+  {{{ body }}}
 </body>
 </html>
