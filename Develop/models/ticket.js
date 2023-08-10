@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const { options } = require('./user');
+
 
 class Ticket extends Model {}
 
@@ -45,11 +45,11 @@ Ticket.init({
 },
 {
     hooks:{
-       beforeCreate: (users, options) => {
-        const onWeekConversion = 7 * 24 * 60 * 60 * 1000; // 7 days
-        const dueDate = new Date(user.date_created.getTime() + oneWeekConversion)
+       beforeCreate: (ticket, options) => {
+        const oneWeekConversion = 7 * 24 * 60 * 60 * 1000; // 7 days
+        const dueDate = new Date(ticket.date_created.getTime() + oneWeekConversion)
 
-        user.due_date = dueDate
+        ticket.due_date = dueDate
        },
     },
     sequelize,
