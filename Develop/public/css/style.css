@@ -1,6 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+}
+
 body {
-    background: rgb(96,68,206);
-    background: linear-gradient(180deg, rgba(96,68,206,0.7722836538461538) 35%, rgba(243,34,34,0.28920673076923076) 100%);
+  background: rgb(96,68,206);
+  background: linear-gradient(180deg, rgba(96,68,206,0.7722836538461538) 35%, rgba(243,34,34,0.28920673076923076) 100%);
 }
 
 .action_button {
@@ -12,10 +18,11 @@ body {
   transition: .2s;
 }
 .action_button:hover{
-      translate: -2px -2px;
-      box-shadow: 7px 7px 5px rgb(0,0,0, .2)
+  translate: -2px -2px;
+  box-shadow: 7px 7px 5px rgb(0,0,0, .2)
 }
 .action_button:active{
   translate: -1px -1px;
   box-shadow: 6px 6px 4px rgb(0,0,0, .25)
 }
+
