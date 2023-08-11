@@ -1,26 +1,22 @@
 <!-- Nav bar for the main view -->
 
 <!-- NEW CLIENT Modal toggle -->
-<button data-modal-target="add_client_modal" data-modal-toggle="add_client_modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Add Client
-</button>
+<button class="action_button" data-modal-target="add_client_modal" data-modal-toggle="add_client_modal" type="button">Add Client</button>
 <!-- NEW PROJECT BOARD Modal toggle -->
-<button data-modal-target="new_project_modal" data-modal-toggle="new_project_modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  New Project
-</button>
-
+<button class="action_button" data-modal-target="new_project_modal" data-modal-toggle="new_project_modal" type="button">New Project</button>
 
 <section id="nav_bar_left" style="display:flex; flex-direction: column;">
     <a>My Boards</a>
     <!-- NEW CLIENT Modal toggle -->
-    <button data-modal-target="add_client_modal" data-modal-toggle="add_client_modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    Add Client
-    </button>
+    <button class="action_button" data-modal-target="add_client_modal" data-modal-toggle="add_client_modal" type="button">Add Client</button>
     <!-- NEW PROJECT BOARD Modal toggle -->
-    <button data-modal-target="new_project_modal" data-modal-toggle="new_project_modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    New Project
-    </button>
-    <button>Add task </button>
-    <button>write comment </button>
-    <button>project progress </button>
+    <button class="action_button" data-modal-target="new_project_modal" data-modal-toggle="new_project_modal" type="button">New Project</button>
+    <button class="action_button">Add task </button>
+    <button class="action_button">write comment </button>
+    <button class="action_button">project progress </button>
+    <!-- Trigger/Open The Modal -->
+  <button id="myBtn" class="action_button">Select Project</button>
+  <button id="myBtn2" class="action_button">New Project ACTUAL</button>
+
 </section>
+<script src="/js/side_bar.js"></script>

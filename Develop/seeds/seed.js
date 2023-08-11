@@ -8,11 +8,11 @@ const ticketData = require('./ticketData.json')
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
   
-    const users = await User.bulkCreate(userData, {
-      individualHooks: true,
-      returning: true,
-    });
-  
+    const users = [];
+    for (const userDataItem of userData) {
+      const user = await User.create(userDataItem);
+      users.push(user);
+    }
     const projects = await Project.bulkCreate(projectData, {
       returning: true,
     });
@@ -20,13 +20,13 @@ const seedDatabase = async () => {
     for (let i = 0; i < projects.length; i++) {
       const project = projects[i];
       const userIndex = i % users.length;
-  
+    
       await project.setUser(users[userIndex]);
-  
+    
       const ticketsForProject = ticketData.filter(
         (ticket) => ticket.project_id === project.id
       );
-  
+    
       for (const ticket of ticketsForProject) {
         await Ticket.create({
           ...ticket,
@@ -35,7 +35,6 @@ const seedDatabase = async () => {
         });
       }
     }
-  
     process.exit(0);
   };
 

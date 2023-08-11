@@ -11,6 +11,10 @@ Project.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+Project.hasMany(Ticket, {
+  foreignKey: 'project_id'
+});
+
 Ticket.belongsTo(Project, {
     foreignKey: 'project_id'
 });
@@ -20,3 +24,4 @@ Ticket.belongsTo(User, {
 });
 
 module.exports = { User, Project, Ticket };
+

@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link type="stylesheet" src="../../public/css/style.css"/>
-  <title>TASK TITAN 🦹🏻‍♂️</title>
-</head>
-<body>
-  <header>
-    <a class="nav_button logo-box" href="/">
-      <h1>TASK TITAN 🦹🏻‍♂️</h1>
-    </a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/style.css">
+    <title>🦹🏻‍♂️ Crush your tasks with ease | TASK TITAN </title>
+    </head>
+    <body>
 
-    <!-- IF 
-    <nav>
-        **** HOME ROUTE HERE ****
-        {{#if logged_in }}
-            <a class="nav_button" href="/boards">MY BOARDS</a>
-            <a class="nav_button login_button" id="join_button" href="/">
-                LOGOUT
-            </a>
-        {{else}}
-            **** LOGIN CODE BELOW HERE *****
-        {{/if}}
-    </nav>
-    -->
-    <nav>
-        <a class="nav_button" href="/">HOME</a>
-        <a class="nav_button login_button" id="join_button" href="/login">
-            LOGIN
-        </a>
-    </nav>
+        <header>
+            <a class="logo" href="/"><h1>🦹🏻‍♂️ TASK TITAN</h1></a>
+            <!-- TODO: The navigation will have to change based on if the user is logged in or not -->
+            <!-- IF 
+            <nav>
+                **** HOME ROUTE HERE ****
+                {{#if logged_in }}
+                    <a class="nav_button" href="/boards">MY BOARDS</a>
+                    <a class="nav_button login_button" id="join_button" href="/">
+                        LOGOUT
+                    </a>
+                {{else}}
+                    **** LOGIN CODE BELOW HERE *****
+                {{/if}}
+            </nav>
+            -->
+            <nav>
+                <a href="/about">About</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+            </nav>
+        </header>
+
+        <main>
+            {{{ body }}}
+        </main>
+
+        <footer>
+            <section>
+                <h3>Team Titan</h3>
+                <ul>
+                    <li>Arun Ayyasamy - <a href="https://github.com/arundvp" target="_blank">arundvp</a></li>
+                    <li>Avery Myers - <a href="https://github.com/AveryJMyers" target="_blank">AveryJMyers</a></li>
+                    <li>Edward Von Schondorf - <a href="https://github.com/Torvec" target="_blank">Torvec</a></li>
+                    <li>Jake Krauskopf - <a href="https://github.com/JaKrau" target="_blank">JaKrau</a></li>
+                    <li>Mark Thostesen - <a href="https://github.com/markthos" target="_blank">markthos</a></li>
+                    <li>Will Cobb - <a href="https://github.com/1willcobb" target="_blank">1willcobb</a></li>
+                </ul>
+            </section>
+            <section>
+                <h3>About</h3>
+                <p>Project 02: Task Titans</p>
+                <p>A UC Berkley Full Stack Web Development Bootcamp Project</p>
+                <p>Created June 2023</p>
+            </section>
+        </footer>
     
-  </header>
-
-  {{{ body }}}
-
-  <footer>
-    <h1>TASK TITAN 🦹🏻‍♂️</h1>
-  </footer>
-</body>
+    </body>
 </html>

@@ -1,40 +1,38 @@
- 
-
 [
-    {
-        "first_name": "Robbert",
-        "last_name": "(instructor)",
-        "email": "test@testemail.com",
-        "password": "changeme"
+  {
+      "first_name": "Robbert",
+      "last_name": "(instructor)",
+      "email": "test@testemail.com",
+      "password": "changeme"
+  },
+  {
+      "first_name": "Alice",
+      "last_name": "Johnson",
+      "email": "alice@example.com",
+      "password": "mysecretpass"
     },
     {
-        "first_name": "Alice",
-        "last_name": "Johnson",
-        "email": "alice@example.com",
-        "password": "mysecretpass"
-      },
-      {
-        "first_name": "Bob",
-        "last_name": "Smith",
-        "email": "bob@example.com",
-        "password": "password123"
-      },
-      {
-        "first_name": "Eve",
-        "last_name": "Williams",
-        "email": "eve@example.com",
-        "password": "secure123"
-      },
-      {
-        "first_name": "Clark",
-        "last_name": "Kent",
-        "email": "clarkkent@dailplanet.com",
-        "password": "NotSuperman"
-      },
-      {
-        "first_name": "Tony",
-        "last_name": "Stark",
-        "email": "tony@stark.com",
-        "password": "IAMIRONMAN"
-      }
+      "first_name": "Bob",
+      "last_name": "Smith",
+      "email": "bob@example.com",
+      "password": "password123"
+    },
+    {
+      "first_name": "Eve",
+      "last_name": "Williams",
+      "email": "eve@example.com",
+      "password": "secure123"
+    },
+    {
+      "first_name": "Clark",
+      "last_name": "Kent",
+      "email": "clarkkent@dailplanet.com",
+      "password": "NotSuperman"
+    },
+    {
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "email": "tony@stark.com",
+      "password": "IAMIRONMAN"
+    }
 ]
