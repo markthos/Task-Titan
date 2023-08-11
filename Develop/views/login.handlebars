@@ -1,9 +1,9 @@
 <!-- login form -->
 
 
-<section style="display: flex;">
+<section style="display: flex;gap: 4em;">
     <!-- Login -->
-    <form style="display: flex; flex-direction: column;width: 50%;">
+    <form style="display: flex; flex-direction: column;width: 50%;border: 1px solid #FFF;border-radius: 10px;padding: 1em;">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" placeholder="Email" required>
         <label for="password">Password:</label>
@@ -14,28 +14,17 @@
     </form>
 
     <!-- New User -->
-    <form>
-        <div>
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" id="first_name" placeholder="Jim" required>
-        </div>
-        <div>
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" id="last_name" placeholder="Bob" required>
-        </div>
-        <div>
-            <label for="email">Your email</label>
-            <input type="email" name="email" id="email" placeholder="name@company.com" required>
-        </div>
-        <div>
-            <label for="password">Your password</label>
-            <input type="password" name="password" id="password" placeholder="••••••••" required>
-        </div>
+    <form style="display: flex; flex-direction: column;width: 50%;border: 1px solid #FFF;border-radius: 10px;padding: 1em;">
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" id="first_name" placeholder="Dick" required>
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" id="last_name" placeholder="Grayson" required>
+        <label for="email">Your email</label>
+        <input type="email" name="email" id="email" placeholder="robin@teentitans.io" required>
+        <label for="password">Your password</label>
+        <input type="password" name="password" id="password" placeholder="••••••••" required>
         <button type="submit" class="action_button">CRUSH IT</button>
-        <div>
-            <p>Already User?</p>
-            <button>Login</button>
-        </div>
-        
+        <label for="current_user">Already a User?</label>
+        <button type="submit" class="action_button">Login</button>
     </form>
 </section>
