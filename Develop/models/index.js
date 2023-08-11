@@ -20,3 +20,4 @@ Ticket.belongsTo(User, {
 });
 
 module.exports = { User, Project, Ticket };
+

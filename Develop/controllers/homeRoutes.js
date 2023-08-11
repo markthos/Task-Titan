@@ -3,6 +3,42 @@ const { Project, User, Ticket } = require('../models');
 
 
 router.get('/', async (req, res) => {
+    try {
+        res.render('homepage');
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Fly you fools. Server Error")
+    }
+});
+
+router.get('/login', async (req, res) => {
+    try {
+        res.render('login');
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Fly you fools. Server Error")
+    }
+});
+
+router.get('/boards', async (req, res) => {
+    try {
+        res.render('boards');
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Fly you fools. Server Error")
+    }
+});
+
+router.get('/client', async (req, res) => {
+    try {
+        res.render('homepage');
+    } catch (error) {
+        console.log(error)
+        res.status(500).send("Fly you fools. Server Error")
+    }
+});
+
+
     //try {
     // Get all projects and JOIN with user data
     //const projectData = await Project.findAll({
@@ -18,7 +54,9 @@ router.get('/', async (req, res) => {
     // const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage')
-});
+    
+
+
+
 
 module.exports = router;
