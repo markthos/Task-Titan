@@ -4,7 +4,11 @@ const { Project, User, Ticket } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        res.render('homepage');
+
+
+        res.render('homepage', {
+            logged_in: req.session.logged_in,
+        });
     } catch (error) {
         console.log(error)
         res.status(500).send("Fly you fools. Server Error")
@@ -13,16 +17,27 @@ router.get('/', async (req, res) => {
 
 router.get('/login', async (req, res) => {
     try {
-        res.render('login');
+        res.render('login', {
+            logged_in: req.session.logged_in,
+        });
     } catch (error) {
         console.log(error)
         res.status(500).send("Fly you fools. Server Error")
     }
 });
 
-router.get('/boards', async (req, res) => {
+router.get('/boards/:id', async (req, res) => {
     try {
-        res.render('boards');
+
+        const userData = await User.findByPk(req.params.id);
+
+        const user = userData.get({ plain: true });
+        console.log(user);
+
+        res.render('boards', {
+            user,
+            logged_in: req.session.logged_in,
+        });
     } catch (error) {
         console.log(error)
         res.status(500).send("Fly you fools. Server Error")
@@ -31,7 +46,9 @@ router.get('/boards', async (req, res) => {
 
 router.get('/client', async (req, res) => {
     try {
-        res.render('homepage');
+        res.render('homepage', {
+            logged_in: req.session.logged_in,
+        });
     } catch (error) {
         console.log(error)
         res.status(500).send("Fly you fools. Server Error")

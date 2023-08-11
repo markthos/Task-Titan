@@ -1,38 +1,38 @@
 [
-    {
-        "title": "Learn new move",
-        "date_created": "2023-08-01",
-        "project_id": 1,
-        "creator_id": 1
+  {
+      "title": "Learn new move",
+      "date_created": "2023-08-01",
+      "project_id": 1,
+      "creator_id": 1
+  },
+  {
+      "title": "Design Landing Page",
+      "date_created": "2023-08-05",
+      "project_id": 2,
+      "creator_id": 2
+  },
+  {
+      "title": "Test Seeding",
+      "date_created": "2023-08-05",
+      "project_id": 2,
+      "creator_id": 2
+  },
+  {
+      "title": "Update User Profile",
+      "date_created": "2023-08-10",
+      "project_id": 1,
+      "creator_id": 3
     },
     {
-        "title": "Design Landing Page",
-        "date_created": "2023-08-05",
-        "project_id": 2,
-        "creator_id": 2
+      "title": "Fix Login Bug",
+      "date_created": "2023-08-12",
+      "project_id": 1,
+      "creator_id": 4
     },
     {
-        "title": "Test Seeding",
-        "date_created": "2023-08-05",
-        "project_id": 2,
-        "creator_id": 2
-    },
-    {
-        "title": "Update User Profile",
-        "date_created": "2023-08-10",
-        "project_id": 1,
-        "creator_id": 3
-      },
-      {
-        "title": "Fix Login Bug",
-        "date_created": "2023-08-12",
-        "project_id": 1,
-        "creator_id": 4
-      },
-      {
-        "title": "Create API Documentation",
-        "date_created": "2023-08-15",
-        "project_id": 3,
-        "creator_id": 1
-      }
+      "title": "Create API Documentation",
+      "date_created": "2023-08-15",
+      "project_id": 3,
+      "creator_id": 1
+    }
 ]
