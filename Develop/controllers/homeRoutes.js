@@ -29,19 +29,15 @@ router.get("/boards/:id", async (req, res) => {
     const userData = await User.findByPk(req.params.id, {
       include: {
         model: Project,
-        where: {
-          user_id: req.params.id,
-        },
         include: {
           model: Ticket,
-          where: {
-            project_id:  Sequelize.col('Project.id')
-          }
         },
       },
     });
 
     const user = userData.get({ plain: true });
+
+    
     console.log(user);
 
     res.render("boards", {
