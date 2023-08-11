@@ -26,19 +26,20 @@ router.get("/login", async (req, res) => {
 
 router.get("/boards/:id", async (req, res) => {
   try {
-    const userData = await User.findByPk(req.params.id, {
-      include: {
-        model: Project,
-        include: {
-          model: Ticket,
+ 
+    // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
+    const projectData = await Project.findAll({
+        where: {
+            user_id: req.params.id,
         },
-      },
+        include: {
+            model: Ticket,
+        },
     });
 
-    const user = userData.get({ plain: true });
-
-    
-    console.log(user);
+    const projects = projectData.map((project) => project.get({ plain: true }));
+    console.log(projects);
+    console.log(projects[0].tickets);
 
     res.render("boards", {
       user,
