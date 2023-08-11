@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Sequelize = require("sequelize");
 const { Project, User, Ticket } = require("../models");
 
+// Takes you to the homepage
 router.get("/", async (req, res) => {
   try {
     res.render("homepage", {
@@ -13,9 +14,34 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Takes you to the about page
+router.get("/about", async (req, res) => {
+  try {
+    res.render("about", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Fly you fools. Server Error");
+  }
+});
+
+// Takes you to the login page
 router.get("/login", async (req, res) => {
   try {
     res.render("login", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Fly you fools. Server Error");
+  }
+});
+
+// Takes you to the signup page
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup", {
       logged_in: req.session.logged_in,
     });
   } catch (error) {
