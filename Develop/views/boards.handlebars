@@ -13,4 +13,14 @@
         {{> comment_bar }}
     </section>
 </div>
+
+
+
+{{#if projects}}
 {{> project_select_modal}}
+
+
+{{else}}
+{{> new_project_modal}}
+{{/if}}
+
