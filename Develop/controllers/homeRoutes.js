@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Sequelize = require('sequelize')
+const Sequelize = require("sequelize");
 const { Project, User, Ticket } = require("../models");
 
 router.get("/", async (req, res) => {
@@ -24,6 +24,32 @@ router.get("/login", async (req, res) => {
   }
 });
 
+router.get("/boards", async (req, res) => {
+  try {
+    // We know the user id at this time.
+    // generate the tickets from a fetch on the JS attached to the boards page
+    //req.params in this sence is Project ID. That ID will tell what tickets to fetch
+
+    // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
+    const projectData = await Project.findAll({
+      where: {
+        user_id: req.session.id,
+      },
+    });
+
+    const projects = projectData.map((project) => project.get({ plain: true }));
+    console.log(projects);
+
+    res.render("boards", {
+      projects,
+      logged_in: req.session.logged_in,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Fly you fools. Server Error");
+  }
+});
+
 router.get("/boards/:id", async (req, res) => {
   try {
     // We know the user id at this time.
@@ -32,15 +58,16 @@ router.get("/boards/:id", async (req, res) => {
 
     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
-        where: {
-            user_id: req.session.id,
-        },
+      where: {
+        user_id: req.session.id,
+      },
     });
 
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
 
     res.render("boards", {
+      projects,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
