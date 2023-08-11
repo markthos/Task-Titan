@@ -20,19 +20,25 @@
     {
         "title": "Update User Profile",
         "date_created": "2023-08-10",
-        "project_id": 1,
+        "project_id": 3,
         "creator_id": 3
       },
       {
         "title": "Fix Login Bug",
         "date_created": "2023-08-12",
-        "project_id": 1,
+        "project_id": 4,
         "creator_id": 4
       },
       {
         "title": "Create API Documentation",
         "date_created": "2023-08-15",
-        "project_id": 3,
-        "creator_id": 1
+        "project_id": 5,
+        "creator_id": 5
+      },
+      {
+        "title": "review bug fixes",
+        "date_created": "2023-08-15",
+        "project_id": 6,
+        "creator_id": 6
       }
 ]

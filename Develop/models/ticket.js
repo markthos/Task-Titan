@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const dayjs = require('dayjs')
 
 
 class Ticket extends Model {}
@@ -44,13 +45,11 @@ Ticket.init({
     },
 },
 {
-    hooks:{
-       beforeCreate: (ticket, options) => {
-        const oneWeekConversion = 7 * 24 * 60 * 60 * 1000; // 7 days
-        const dueDate = new Date(ticket.date_created.getTime() + oneWeekConversion)
-
-        ticket.due_date = dueDate
-       },
+    hooks: {
+        beforeCreate: (ticket, options) => {
+            const oneWeekFromNow = dayjs().add(1, 'week').startOf('day').toDate();
+            ticket.due_date = oneWeekFromNow;
+        },
     },
     sequelize,
     timestamps: false,
