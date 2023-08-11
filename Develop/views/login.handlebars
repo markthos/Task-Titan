@@ -1,30 +1,15 @@
-<!-- login form -->
+<!-- Login Page -->
 
 
-<section style="display: flex;gap: 4em;">
-    <!-- Login -->
-    <form style="display: flex; flex-direction: column;width: 50%;border: 1px solid #FFF;border-radius: 10px;padding: 1em;">
+<section>
+    <form style="display: flex; flex-direction: column;gap:0.5em;border: 1px solid #FFF;border-radius: 10px;padding: 1em;">
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" placeholder="Email" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="Password" required>
         <button type="submit" class="action_button">Crush It</button>
+        <!-- TODO: takes you to signup page when clicked -->
         <label for="new_user">New User?</label>
         <button type="submit" class="action_button">Sign Up</button>
-    </form>
-
-    <!-- New User -->
-    <form style="display: flex; flex-direction: column;width: 50%;border: 1px solid #FFF;border-radius: 10px;padding: 1em;">
-        <label for="first_name">First Name</label>
-        <input type="text" name="first_name" id="first_name" placeholder="Dick" required>
-        <label for="last_name">Last Name</label>
-        <input type="text" name="last_name" id="last_name" placeholder="Grayson" required>
-        <label for="email">Your email</label>
-        <input type="email" name="email" id="email" placeholder="robin@teentitans.io" required>
-        <label for="password">Your password</label>
-        <input type="password" name="password" id="password" placeholder="••••••••" required>
-        <button type="submit" class="action_button">CRUSH IT</button>
-        <label for="current_user">Already a User?</label>
-        <button type="submit" class="action_button">Login</button>
-    </form>
+    </form>    
 </section>
