@@ -26,23 +26,21 @@ router.get("/login", async (req, res) => {
 
 router.get("/boards/:id", async (req, res) => {
   try {
- 
+    // We know the user id at this time.
+    // generate the tickets from a fetch on the JS attached to the boards page
+    //req.params in this sence is Project ID. That ID will tell what tickets to fetch
+
     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
         where: {
-            user_id: req.params.id,
-        },
-        include: {
-            model: Ticket,
+            user_id: req.session.id,
         },
     });
 
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
-    console.log(projects[0].tickets);
 
     res.render("boards", {
-      user,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
