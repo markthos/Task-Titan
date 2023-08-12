@@ -1,0 +1,32 @@
+[
+    {
+        "body": "I like the work so far!",
+        "creator_id": "1",
+        "project_id": "1"
+    },
+    {
+        "body":"The comment model is not seeding properly",
+        "creator_id": "2",
+        "project_id": "2"
+    },
+    {
+        "body":"The photos are having pathing issues",
+        "creator_id": "3",
+        "project_id": "3"
+    },
+    {
+        "body":"Our client list doesn't look correct",
+        "creator_id": "4",
+        "project_id": "4"
+    },
+    {
+        "body":"Good work!!",
+        "creator_id": "5",
+        "project_id": "5"
+    },
+    {
+        "body":"Looks good so far!",
+        "creator_id": "6",
+        "project_id": "6"
+    }
+]
