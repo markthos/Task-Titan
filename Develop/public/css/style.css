@@ -1,5 +1,5 @@
 :root {
-
+ --formFont: black;
 }
 
 * {
@@ -51,6 +51,22 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#email {
+  color: var(--formFont);
+}
+
+#password {
+  color: var(--formFont);
+}
+
+#first_name {
+  color: var(--formFont);
+}
+
+#last_name {
+  color: var(--formFont);
 }
 
 /* #homepage {
