@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Sequelize = require("sequelize");
 const { Project, User, Ticket } = require("../models");
+const withAuth = require("../utils/auth");
 
 // Takes you to the homepage
 router.get("/", async (req, res) => {
