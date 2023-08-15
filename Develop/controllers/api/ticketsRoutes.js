@@ -52,7 +52,7 @@ router.get('/', async (req, res) => {
 // Get a single ticket by ID
 // router.get("/tickets/:id", withAuth, async (req, res) => {
 
-router.get("/tickets/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 
   try {
     if (req.session.logged_in) {
