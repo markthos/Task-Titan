@@ -8,7 +8,14 @@
     </section>
     <section style="width: 70%; text-align: center;">
         {{> kanban }}
-        {{> ticket}}
+        {{#each projects as |project|}}
+            <p style="color: black;">{{project.name}}</p>
+        {{/each}}
+        <h2>{{projects.name}}</h2>
+        <ul style="list-style-type: none;">
+            <li>{{> ticket_card}}</li>
+        </ul>
+        
     </section>
     <section style="width: 15%;">
         {{> comment_bar }}
