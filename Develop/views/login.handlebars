@@ -1,14 +1,26 @@
 <!-- Login Page -->
 
 
-<section>
-    <form style="display: flex; flex-direction: column;gap:0.5em;border: 1px solid #FFF;border-radius: 10px;padding: 1em;" action="/login" method="post">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" placeholder="Email" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Password" required>
-        <button type="submit" class="action_button">Crush It</button>
-        <label for="new_user">New User?</label>
-        <a href="/signup" class="action_button">Sign Up</a>
-    </form>    
+<section class="section container">
+    <h2 class="center-align">Login</h2>
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <form action="/login" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <div class="center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Crush It!</button>
+                </div>
+                <div class="center-align">
+                    <label for="new_user">New User?</label><br>
+                    <a href="/signup">
+                    <button type="button" class="waves-effect waves-light btn-large deep-purple" id="new_user">Sign Up Now!</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 </section>
