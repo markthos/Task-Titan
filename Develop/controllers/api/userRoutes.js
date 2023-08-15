@@ -58,6 +58,30 @@ router.post("/logout", (req, res) => {
   }
 });
 
+
+//to signup
+
+router.post('/signup', async (req, res) => {
+  try {
+    const userData = await User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    // Automatically log in the newly signed up user
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json({ user: userData, message: 'Signup successful' });
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 //to get user profile
 
 router.get("/profile", async (req, res) => {
