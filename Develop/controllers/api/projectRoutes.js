@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { Project } = require('../../models');
+const router = require("express").Router();
+const { Project } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newProject = await Project.create({
       ...req.body,
@@ -15,10 +15,9 @@ router.post('/', async (req, res) => {
   }
 });
 
+//! to get all projects NEED A SUPER ADMIN APPROVAL HELPER ** IF WE ADD SUPERADMIN
 
-// to get all projects
-
-router.get("/", async (req, res) => {
+router.get("/admin", async (req, res) => {
   try {
     const projects = await Project.findAll();
 
@@ -27,24 +26,6 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// to get one project
-
-router.get("/:id", async (req, res) => {
-  try {
-    const project = await Project.findByPk(req.params.id);
-
-    if (!project) {
-      res.status(404).json({ message: "Project not found" });
-      return;
-    }
-
-    res.status(200).json(project);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 
 // to update a project
 
@@ -69,7 +50,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // to delete a project
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const projectData = await Project.destroy({
       where: {
@@ -79,7 +60,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
+      res.status(404).json({ message: "No project found with this id!" });
       return;
     }
 
@@ -88,7 +69,6 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 // to get all projects for a user
 
@@ -104,8 +84,7 @@ router.get("/", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-);
+});
 
 // to get one project for a user
 
@@ -127,12 +106,6 @@ router.get("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
-);
-
-
-
-
+});
 
 module.exports = router;
