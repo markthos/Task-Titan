@@ -1,4 +1,6 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+
 // Adjust the path to your User model
 const User = require('../models').User;
 
@@ -14,16 +16,19 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ where: { email: email } });
     console.log(user);
 
-    if (user && user.password === password) {
+    if (user && bcrypt.compareSync(password, user.password)) {
       req.session.userId = user.id; // Store user ID in session
+      console.log('User ID stored in session:', user.id);
       res.redirect(`/boards/${user.id}`); // Redirect to associated page
       console.log('User logged in:', user.email);
     } else {
       res.render('login', { error: 'Invalid credentials' }); // Display error message
+      console.log('Invalid login');
     }
   } catch (error) {
     console.error('Error during login:', error);
     res.render('login', { error: 'An error occurred' }); // Display error message
+    console.log('Error during login:', error);
   }
 });
 
