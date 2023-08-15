@@ -26,6 +26,11 @@ Collaborator.init(
                 key: 'id',
             },
         },
+        access_level: {
+            type: DataTypes.ENUM('client', 'worker', 'admin'),
+            allowNull: false,
+            defaultValue: 'client',
+        },
     },
     {
         sequelize,
@@ -33,7 +38,8 @@ Collaborator.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'collaborator',
-    }
+    },
+    
 );
 
 module.exports = Collaborator;
