@@ -18,27 +18,147 @@
         "creator_id": 2
     },
     {
-        "title": "Update User Profile",
-        "date_created": "2023-08-10",
+      "title": "Update User Profile",
+      "date_created": "2023-08-10",
+      "project_id": 3,
+      "creator_id": 3
+    },
+    {
+      "title": "Fix Login Bug",
+      "date_created": "2023-08-12",
+      "project_id": 4,
+      "creator_id": 4
+    },
+    {
+      "title": "Create API Documentation",
+      "date_created": "2023-08-15",
+      "project_id": 5,
+      "creator_id": 5
+    },
+    {
+      "title": "review bug fixes",
+      "date_created": "2023-08-15",
+      "project_id": 6,
+      "creator_id": 6
+    },
+    {
+      "title": "Write User Manual",
+      "date_created": "2023-08-02",
+      "project_id": 1,
+      "creator_id": 1
+    },
+    {
+        "title": "Optimize Database Queries",
+        "date_created": "2023-08-06",
+        "project_id": 2,
+        "creator_id": 2
+    },
+    {
+        "title": "Implement Payment Gateway",
+        "date_created": "2023-08-08",
         "project_id": 3,
         "creator_id": 3
-      },
-      {
-        "title": "Fix Login Bug",
-        "date_created": "2023-08-12",
+    },
+    {
+        "title": "Create Mobile App Wireframes",
+        "date_created": "2023-08-11",
         "project_id": 4,
         "creator_id": 4
-      },
-      {
-        "title": "Create API Documentation",
-        "date_created": "2023-08-15",
+    },
+    {
+        "title": "Conduct Usability Testing",
+        "date_created": "2023-08-13",
         "project_id": 5,
         "creator_id": 5
-      },
-      {
-        "title": "review bug fixes",
-        "date_created": "2023-08-15",
+    },
+    {
+        "title": "Plan Marketing Campaign",
+        "date_created": "2023-08-16",
         "project_id": 6,
         "creator_id": 6
-      }
+    },
+    {
+        "title": "Research Competitive Landscape",
+        "date_created": "2023-08-18",
+        "project_id": 1,
+        "creator_id": 1
+    },
+    {
+        "title": "Enhance Data Security",
+        "date_created": "2023-08-20",
+        "project_id": 2,
+        "creator_id": 2
+    },
+    {
+        "title": "Develop New Feature",
+        "date_created": "2023-08-22",
+        "project_id": 3,
+        "creator_id": 3
+    },
+    {
+        "title": "Design Logo Concepts",
+        "date_created": "2023-08-25",
+        "project_id": 4,
+        "creator_id": 4
+    },
+    {
+        "title": "Generate Monthly Report",
+        "date_created": "2023-08-27",
+        "project_id": 5,
+        "creator_id": 5
+    },
+    {
+        "title": "Solve Cross-Browser Compatibility",
+        "date_created": "2023-08-29",
+        "project_id": 6,
+        "creator_id": 6
+    },
+    {
+        "title": "Review Code Quality",
+        "date_created": "2023-09-01",
+        "project_id": 1,
+        "creator_id": 1
+    },
+    {
+        "title": "Optimize Server Performance",
+        "date_created": "2023-09-03",
+        "project_id": 2,
+        "creator_id": 2
+    },
+    {
+        "title": "Create Video Tutorials",
+        "date_created": "2023-09-06",
+        "project_id": 3,
+        "creator_id": 3
+    },
+    {
+        "title": "Plan Team Building Event",
+        "date_created": "2023-09-08",
+        "project_id": 4,
+        "creator_id": 4
+    },
+    {
+        "title": "Translate Application UI",
+        "date_created": "2023-09-11",
+        "project_id": 5,
+        "creator_id": 5
+    },
+    {
+        "title": "Perform Security Audit",
+        "date_created": "2023-09-13",
+        "project_id": 6,
+        "creator_id": 6
+    },
+    {
+        "title": "Design Product Mockups",
+        "date_created": "2023-09-15",
+        "project_id": 1,
+        "creator_id": 1
+    },
+    {
+        "title": "Write API Documentation",
+        "date_created": "2023-09-18",
+        "project_id": 2,
+        "creator_id": 2
+    }
 ]

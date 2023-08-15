@@ -29,6 +29,14 @@ Ticket.init({
         allowNull: false,
         defaultValue: DataTypes.NOW,
     },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'todo',
+        validate: {
+            isIn: [['todo', 'doing', 'review', 'done']]
+        }
+    },
     creator_id: {
         type: DataTypes.INTEGER,
             references: {
