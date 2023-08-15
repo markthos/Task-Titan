@@ -62,5 +62,19 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+// to logout
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    // Remove the session variables
+    req.session.destroy(() => {
+      // confirm that user by name has been logged out in console
+      console.log('User logged out:', req.session.user_id);
+      res.redirect('/'); // Redirect to homepage
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 
 module.exports = router;
