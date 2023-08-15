@@ -88,12 +88,23 @@ router.get("/boards/:id", async (req, res) => {
       where: {
         owner_id: req.params.id,
       },
+      include: {
+        model: Ticket,
+        include: {
+          model: User,
+          attributes: ['first_name', 'last_name'],
+          where: {
+            id: req.params.id
+          }
+        }
+      },
     });
 
-    console.log(req.session.user_id)
-    
+    console.log(req.session.user_id);
+
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
+    console.log(projects[0].tickets)
 
     res.render("boards", {
       projects,
@@ -115,7 +126,6 @@ router.get("/client", async (req, res) => {
     res.status(500).send("Fly you fools. Server Error");
   }
 });
-
 
 // Serialize data so the template can read it
 // const projects = projectData.map((project) => project.get({ plain: true }));

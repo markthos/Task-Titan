@@ -19,6 +19,10 @@ Ticket.init({
             len: [0,250],
         },
     },
+    text: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     date_created: {
         type: DataTypes.DATE,
         allowNull: false,

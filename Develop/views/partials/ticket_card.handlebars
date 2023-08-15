@@ -1,17 +1,17 @@
 <section class="ticket" style="background-color: rgb(66, 153, 153); box-shadow: 5px 5px rgb(31, 31, 31);" data-id="{{id}}">
     {{#unless is_editing}}
         <div class="card_header">
-            <h4>{{title}} TICKET EXAMPLE</h4>
-            <h6>posted by __{{user.username}} on __{{format_date createdAt}}</h6>
+            <h4>{{title}}</h4>
+            <h6>posted by {{user.first_name}} on {{format_date createdAt}}</h6>
         </div>
         <div class="card_body">
-            {{ text }} TEXT HERE
+            {{ text }}
     {{else}}
         <div class="card_header">
             <input type="text" id="new_ticket_title" value={{text}} />
         </div>
         <div>
-            <textarea rows="10" type="textarea" id="new_ticket_content">{{ text }} TEST</textarea>
+            <textarea rows="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
         </div>
     {{/unless}}
     </div>
