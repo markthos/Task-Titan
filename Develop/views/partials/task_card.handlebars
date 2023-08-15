@@ -1,13 +1,48 @@
-<section>
-    <h2>Task</h2>
-    <p>Details on what I am supposed to do</p>
-    <a>Potential reference Link</a>
-    <ul>
-        <li>tag1</li>
-        <li>tag2</li>
-    </ul>
-    <div style="border-radius: 50%;">
-        <img src="../../public/images/Headshot.jpg" style="width: 100px;">
+<section class="card glassy" data-id="{{id}}">
+    {{#unless is_editing}}
+        <div class="card_header">
+            <h4>{{title}}</h4>
+            <h6>posted by {{user.username}} on {{format_date createdAt}}</h6>
+        </div>
+        <div class="card_body">
+            {{ text }}
+    {{else}}
+        <div class="card_header">
+            <input style="color: rgb(255, 247, 238)" class="form-input" type="text" id="new_blog_title" value={{text}} />
+        </div>
+        <div>
+            <textarea class="glassy_textblock" rows="10" type="textarea" id="new_blog_content">{{ text }}</textarea>
+        </div>
+    {{/unless}}
     </div>
-    
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <button class="comment-button join_button nav_button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+        </div>
+
+        {{#if isOwner}}
+        <div style="display: flex; gap:5px;">
+            {{#unless is_editing}}
+                <button class="edit_button join_button nav_button" data-action="edit" data-id="{{id}}">Edit</button>
+                <button class="delete_button join_button nav_button" data-action="delete" data-id="{{id}}">Delete</button>
+            {{else}}
+                <button class="save_button join_button nav_button" data-action="save" data-id="{{id}}">Save</button>
+                <button class="cancel_button join_button nav_button" data-action="cancel" data-id="{{id}}">Cancel</button>
+            {{/unless}}
+        </div>
+        {{/if}}
+    </div>
+    <div id="comments_section" class="glassy" style="display: none; flex-direction: column">
+        <ul id="comment_list" style="list-style-type: none; width: 100%">
+        </ul>
+        <div>
+            <button id="add_comment" class="join_button nav_button">Add Comment +</button>
+        </div>
+        <div id="add_comment_display" style="display: none;">
+            <textarea class="glassy_textblock"  rows="10" type="textarea" id="new_comment"></textarea>
+            <button id="submit_new_comment" class="join_button nav_button">Submit</button>
+        </div>
+        
+
+    </div>
 </section>
