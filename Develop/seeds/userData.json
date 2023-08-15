@@ -34,5 +34,11 @@
       "last_name": "Stark",
       "email": "tony@stark.com",
       "password": "IAMIRONMAN"
+    },
+    {
+      "first_name": "Beast",
+      "last_name": "Boy",
+      "email": "beasty@tt.com",
+      "password": "IAMBATMAN"
     }
 ]
