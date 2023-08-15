@@ -4,14 +4,21 @@ const Ticket = require('./ticket')
 const Comment = require('./comment');
 const Collaborator = require('./collaborator');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+User.belongsToMany(Project, {
+  through:{
+      model: Collaborator,
+      foreignKey: 'user_id',
+    },
+  onDelete: 'CASCADE',
 });
 
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
+Project.belongsToMany(User, {
+  through:{
+    model: Collaborator,
+    foreignKey: 'project_id'
+  }
 });
+
 
 Project.hasMany(Ticket, {
   foreignKey: 'project_id'

@@ -23,7 +23,6 @@ const seedDatabase = async () => {
     console.log('\n----- TICKETS SEEDED -----\n');
     await Comment.bulkCreate(commentData);
     console.log('\n----- COMMENTS SEEDED -----\n');
-    console.log(Collaborator)
     await Collaborator.bulkCreate(collaboratorData);
     console.log('\n----- COLLABORATORS SEEDED -----\n');
     console.log('\n----- DB SEEDED! -----\n');

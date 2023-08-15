@@ -2,8 +2,6 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Collaborator extends Model {}
-// Array for access levels
-const accessOptions = ['client', 'admin'];
 
 
 Collaborator.init(
@@ -14,11 +12,6 @@ Collaborator.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        access_levels: {
-            type: DataTypes.ENUM('client', 'admin'),
-            allowNull: false,
-            defaultValue: 'client', // Set a default value
-          },
         user_id: {
             type: DataTypes.INTEGER,
             references: {

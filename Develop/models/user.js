@@ -46,6 +46,11 @@ User.init(
                 len: [5],
             },
         },
+        access_levels: {
+            type: DataTypes.ENUM('client', 'admin'),
+            allowNull: false,
+            defaultValue: 'admin', 
+          },
     },
     {
         hooks: {
