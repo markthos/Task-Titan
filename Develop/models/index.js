@@ -10,7 +10,7 @@ User.hasMany(Project, {
 });
 
 Project.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'owner_id' // Will changed this, is it right? it was user_id
 });
 
 Project.hasMany(Ticket, {

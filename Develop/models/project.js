@@ -33,7 +33,7 @@ Project.init(
         owner_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'user', 
                 key: 'id',
             },
         },
