@@ -22,8 +22,26 @@ User.hasMany(TicketComment, {
   foreignKey: "creator_id",
 });
 
+User.belongsToMany(Project, {
+  through: {
+    model: Collaborator,
+    foreignKey: "user_id",
+  },
+  onDelete: "CASCADE",
+  as: "collaborations",
+});
+
+Project.belongsToMany(User, {
+  through: {
+    model: Collaborator,
+    foreignKey: "project_id",
+  },
+  onDelete: "CASCADE",
+  as: "collaborators",
+});
+
 Project.belongsTo(User, {
-  foreignKey: "owner_id", // Will changed this, is it right? it was user_id
+  foreignKey: "owner_id", 
 });
 
 Project.hasMany(Ticket, {
@@ -50,8 +68,8 @@ BoardComment.belongsTo(Project, {
   foreignKey: "project_id",
 });
 
-Collaborator.hasMany(Collaborator, {
-  foreignKey: "project_id",
+Collaborator.belongsTo(User, {
+  foreignKey: "user_id",
 });
 
 Collaborator.belongsTo(Project, {
@@ -62,4 +80,11 @@ TicketComment.belongsTo(Ticket, {
   foreignKey: "ticket_id",
 });
 
-module.exports = { User, Project, Ticket, BoardComment, TicketComment, Collaborator };
+module.exports = {
+  User,
+  Project,
+  Ticket,
+  BoardComment,
+  TicketComment,
+  Collaborator,
+};

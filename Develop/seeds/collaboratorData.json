@@ -1,12 +1,27 @@
 [
     {
-        "accessLevels": "client",
         "user_id": "7",
-        "project_id": "1"
+        "project_id": "1",
+        "access_level": "client"
     },
     {
-        "accessLevels": "admin",
         "user_id": "7",
-        "project_id": "3"
+        "project_id": "3",
+        "access_level": "client"
+    },
+    {
+        "user_id": "2",
+        "project_id": "1",
+        "access_level": "admin"
+    },
+    {
+        "user_id": "1",
+        "project_id": "5",
+        "access_level": "admin"
+    },
+    {
+        "user_id": "4",
+        "project_id": "3",
+        "access_level": "admin"
     }
 ]
