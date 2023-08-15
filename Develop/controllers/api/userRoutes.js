@@ -58,6 +58,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
+
 //to get user profile
 
 router.get("/profile", async (req, res) => {

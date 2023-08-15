@@ -15,17 +15,29 @@
                         <a href="/" class="brand-logo">Task Titan</a>
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/login">Log In</a></li>
-                            <li><a href="/signup">Sign Up</a></li>
+                            {{#if logged_in}}
+                                <li>Welcome, *Meat Bag* </li><!-- Need the user's name here -->
+                                <li><a href="/boards">My Boards</a></li>
+                                <li><a href="/logout">Log Out</a></li>
+                            {{else}}
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/login">Log In</a></li>
+                                <li><a href="/signup">Sign Up</a></li>
+                            {{/if}}
                         </ul>
                     </div>
                 </nav>
             </div>
-            <ul class="sidenav" id="mobile-demo"> <!--NEEDS THIS ID TO FUNCTION-->
-                <li><a href="/about">About</a></li>
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
+            <ul class="sidenav" id="mobile-demo">
+                {{#if logged_in}}
+                    <li>Welcome, *Meat Bag* </li><!-- Need the user's name here -->
+                    <li><a href="/boards">My Boards</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                {{else}}
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
+                {{/if}}
             </ul>
         </header>
 
@@ -61,10 +73,10 @@
                     </ul>
                 </section>
                 <section class="col s12 m4 l4">
-                    <h5 class="white-text">About</h5>
+                    <h5 class="white-text">The Project</h5>
                     <p class="grey-text text-lighten-4">A UC Berkley Full Stack Web Development Bootcamp Project</p>
                     <p class="grey-text text-lighten-4">Project 02: Task Titans</p>
-                    <p class="grey-text text-lighten-4">Created June 2023</p>
+                    <p class="grey-text text-lighten-4">Created August 2023</p>
                 </section>
                 </div>
             </div>
@@ -76,6 +88,6 @@
             </section>
       </footer>
         <script src="/js/ticket.js"></script>
-        <script type="text/javascript" src="/js/materialize.min.js"></script>
+        <script src="/js/materialize.min.js"></script>
     </body>
 </html>

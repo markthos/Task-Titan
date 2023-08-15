@@ -12,11 +12,8 @@ User.belongsToMany(Project, {
   onDelete: 'CASCADE',
 });
 
-Project.belongsToMany(User, {
-  through:{
-    model: Collaborator,
-    foreignKey: 'project_id'
-  }
+Project.belongsTo(User, {
+  foreignKey: 'owner_id' // Will changed this, is it right? it was user_id
 });
 
 

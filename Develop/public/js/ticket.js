@@ -130,9 +130,7 @@ const main = document.querySelector('#main');
 
 document.addEventListener("click", async (event) => {
   const target = event.target;
-  console.log(target)
   const ticket = target.closest(".ticket"); // Find the closest parent with the .ticket class
-  console.log("hey")
   if (!ticket) {
     return; // Click didn't happen within a ticket, exit
   }

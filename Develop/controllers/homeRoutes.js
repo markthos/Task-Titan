@@ -60,7 +60,7 @@ router.get("/boards", async (req, res) => {
     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
       where: {
-        user_id: req.session.id,
+        owner_id: req.session.user_id,
       },
     });
 
@@ -86,10 +86,12 @@ router.get("/boards/:id", async (req, res) => {
     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
       where: {
-        user_id: req.session.id,
+        owner_id: req.params.id,
       },
     });
 
+    console.log(req.session.user_id)
+    
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
 
@@ -114,16 +116,6 @@ router.get("/client", async (req, res) => {
   }
 });
 
-//try {
-// Get all projects and JOIN with user data
-//const projectData = await Project.findAll({
-//include: [
-//{
-//model: User,
-// attributes: ['name'],
-//},
-//],
-//});
 
 // Serialize data so the template can read it
 // const projects = projectData.map((project) => project.get({ plain: true }));
