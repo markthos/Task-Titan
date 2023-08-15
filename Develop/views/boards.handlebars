@@ -9,12 +9,17 @@
     <section style="width: 70%; text-align: center;">
         {{> kanban }}
         {{#each projects as |project|}}
-            <p style="color: black;">{{project.name}}</p>
+            <p style="color: black;">project name: {{project.name}}</p>
+            <ul>
+                {{#each project.tickets as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                {{/each}}
+            </ul>
         {{/each}}
-        <h2>{{projects.name}}</h2>
-        <ul style="list-style-type: none;">
-            <li>{{> ticket_card}}</li>
-        </ul>
+        
+        
         
     </section>
     <section style="width: 15%;">

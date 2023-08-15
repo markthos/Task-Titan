@@ -19,6 +19,10 @@ Ticket.init({
             len: [0,250],
         },
     },
+    text: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     date_created: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -28,6 +32,14 @@ Ticket.init({
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+    },
+    status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'todo',
+        validate: {
+            isIn: [['todo', 'doing', 'review', 'done']]
+        }
     },
     creator_id: {
         type: DataTypes.INTEGER,

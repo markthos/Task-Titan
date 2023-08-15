@@ -1,13 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Comment extends Model {
+class BoardComment extends Model {
     getFormattedDate() {
         return this.date_posted.toLocaleString();
     }
 }
 
-Comment.init(
+BoardComment.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        body: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -52,8 +52,8 @@ Comment.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',
+        modelName: 'board_comment',
     }
 );
 
-module.exports = Comment;
+module.exports = BoardComment;
