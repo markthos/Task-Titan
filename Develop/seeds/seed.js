@@ -1,10 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Project, Ticket, Comment } = require('../models');
+const { User, Project, Ticket, Comment, Collaborator } = require('../models');
 const userData = require('./userData.json');
 const projectData = require('./projectData.json');
 const ticketData = require('./ticketData.json')
 const commentData = require('./commentData.json')
-
+const collaboratorData = require('./collaboratorData.json')
 
 
 
@@ -16,19 +16,21 @@ const seedDatabase = async () => {
       const user = await User.create(userDataItem);
       users.push(user);
     }
-    const projects = [];
-        for (const projectDataItem of projectData) {
-            const project = await Project.create(projectDataItem);
-            projects.push(project);
-        }
+    console.log('\n----- SEEDED -----\n');
+    await Project.bulkCreate(projectData);
+    console.log('\n----- PROJECTS SEEDED -----\n');
     await Ticket.bulkCreate(ticketData);
-    await Comment.bulkCreate(commentData)
-
-    console.log('DB seeded successfully!')
+    console.log('\n----- TICKETS SEEDED -----\n');
+    await Comment.bulkCreate(commentData);
+    console.log('\n----- COMMENTS SEEDED -----\n');
+    console.log(Collaborator)
+    await Collaborator.bulkCreate(collaboratorData);
+    console.log('\n----- COLLABORATORS SEEDED -----\n');
+    console.log('\n----- DB SEEDED! -----\n');
   } catch (error){
-    console.error('Error seeding db', error)
+    console.error('Error seeding db', error);
   } finally {
-    await sequelize.close()
+    await sequelize.close();
   }
 }
 

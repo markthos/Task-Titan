@@ -1,0 +1,12 @@
+[
+    {
+        "accessLevels": "client",
+        "user_id": "7",
+        "project_id": "1"
+    },
+    {
+        "accessLevels": "admin",
+        "user_id": "7",
+        "project_id": "3"
+    }
+]
