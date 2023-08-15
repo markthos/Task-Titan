@@ -3,61 +3,79 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="/css/materialize.min.css">
     <title>🦹🏻‍♂️ Crush your tasks with ease | TASK TITAN </title>
     </head>
     <body>
-
         <header>
-            <a class="logo" href="/"><h1>🦹🏻‍♂️ TASK TITAN</h1></a>
-            <!-- TODO: The navigation will have to change based on if the user is logged in or not -->
-            <!-- IF 
-            <nav>
-                **** HOME ROUTE HERE ****
-                {{#if logged_in }}
-                    <a class="nav_button" href="/boards">MY BOARDS</a>
-                    <a class="nav_button login_button" id="join_button" href="/">
-                        LOGOUT
-                    </a>
-                {{else}}
-                    **** LOGIN CODE BELOW HERE *****
-                {{/if}}
-            </nav>
-            -->
-            <nav>
-                <a href="/about">About</a>
-                <a href="/login">Login</a>
-                <a href="/signup">Sign Up</a>
-            </nav>
+            <div class="navbar-fixed">
+                <nav class="deep-purple lighten-1">
+                    <div class="nav-wrapper container">
+                        <a href="/" class="brand-logo">Task Titan</a>
+                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/signup">Sign Up</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav" id="mobile-demo"> <!--NEEDS THIS ID TO FUNCTION-->
+                <li><a href="/about">About</a></li>
+                <li><a href="/login">Log In</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+            </ul>
         </header>
 
         <main>
             {{{ body }}}
         </main>
 
-        <footer>
-            <section>
-                <h3>Team Titan</h3>
-                <ul>
-                    <li>Arun Ayyasamy - <a href="https://github.com/arundvp" target="_blank">arundvp</a></li>
-                    <li>Avery Myers - <a href="https://github.com/AveryJMyers" target="_blank">AveryJMyers</a></li>
-                    <li>Edward Von Schondorf - <a href="https://github.com/Torvec" target="_blank">Torvec</a></li>
-                    <li>Jake Krauskopf - <a href="https://github.com/JaKrau" target="_blank">JaKrau</a></li>
-                    <li>Mark Thostesen - <a href="https://github.com/markthos" target="_blank">markthos</a></li>
-                    <li>Will Cobb - <a href="https://github.com/1willcobb" target="_blank">1willcobb</a></li>
-                </ul>
+        <footer class="page-footer pink lighten-2">
+            <div class="container">
+                <div class="row">
+                <section class="col s12 m4 l4">
+                    <h5 class="white-text">Team Titan</h5>
+                    <p class="grey-text text-lighten-4">The team that made this all possible:</p>
+                    <ul>
+                        <li>Arun Ayyasamy :: <a class="purple-text text-lighten-4" href="https://github.com/arundvp" target="_blank">arundvp</a></li>
+                        <li>Avery Myers :: <a class="purple-text text-lighten-4" href="https://github.com/AveryJMyers" target="_blank">AveryJMyers</a></li>
+                        <li>Edward Von Schondorf :: <a class="purple-text text-lighten-4" href="https://github.com/Torvec" target="_blank">Torvec</a></li>
+                        <li>Jake Krauskopf :: <a class="purple-text text-lighten-4" href="https://github.com/JaKrau" target="_blank">JaKrau</a></li>
+                        <li>Mark Thostesen :: <a class="purple-text text-lighten-4" href="https://github.com/markthos" target="_blank">markthos</a></li>
+                        <li>Will Cobb :: <a class="purple-text text-lighten-4" href="https://github.com/1willcobb" target="_blank">1willcobb</a></li>
+                    </ul>
+                </section>
+                <section class="col s12 m4 l4">
+                    <h5 class="white-text">The Tech Stack</h5>
+                    <p class="grey-text text-lighten-4">The tools we used to build this app:</p>
+                    <ul>
+                        <li>Materialize CSS</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>MySQL</li>
+                        <li>Sequelize</li>
+                        <li>Handlebars</li>
+                    </ul>
+                </section>
+                <section class="col s12 m4 l4">
+                    <h5 class="white-text">About</h5>
+                    <p class="grey-text text-lighten-4">A UC Berkley Full Stack Web Development Bootcamp Project</p>
+                    <p class="grey-text text-lighten-4">Project 02: Task Titans</p>
+                    <p class="grey-text text-lighten-4">Created June 2023</p>
+                </section>
+                </div>
+            </div>
+            <section class="footer-copyright">
+                <div class="container">
+                © 2023 Task Titan
+                <a class="purple-text text-lighten-4 right" href="#" target="_top">Top</a>
+                </div>
             </section>
-            <section>
-                <h3>About</h3>
-                <p>Project 02: Task Titans</p>
-                <p>A UC Berkley Full Stack Web Development Bootcamp Project</p>
-                <p>Created June 2023</p>
-            </section>
-        </footer>
-    
+      </footer>
+
+        <script type="text/javascript" src="/js/materialize.min.js"></script>
     </body>
 </html>
