@@ -7,6 +7,7 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
   try {
     res.render("homepage", {
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
@@ -19,6 +20,7 @@ router.get("/", async (req, res) => {
 router.get("/about", async (req, res) => {
   try {
     res.render("about", {
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
@@ -31,6 +33,7 @@ router.get("/about", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     res.render("login", {
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
@@ -43,6 +46,7 @@ router.get("/login", async (req, res) => {
 router.get("/signup", async (req, res) => {
   try {
     res.render("signup", {
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
@@ -78,6 +82,7 @@ router.get("/boards", async (req, res) => {
 
     res.render("boards", {
       projects,
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
@@ -149,6 +154,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
 router.get("/client", async (req, res) => {
   try {
     res.render("homepage", {
+      user_name: req.session.user_name,
       logged_in: req.session.logged_in,
     });
   } catch (error) {
