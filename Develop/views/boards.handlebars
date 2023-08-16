@@ -1,7 +1,5 @@
 <!-- Boards Page -->
-
-
-<div style="width:100vw;height: 100vh; display: flex;">
+<div style="width: 100vw; height: 100vh; display: flex;">
     
     <section style="width: 15%;">
         {{> nav_bar_left }}
@@ -12,13 +10,13 @@
             <p style="color: black;">project name: {{project.name}}</p>
             <section>
                 <div>
-                    {{#each project.tickets as |ticket|}}
                     <ul style="list-style-type: none;">
-                        {{#if compare project.tickets.status, '=', todo}}
-                            <li>{{> ticket_card}}</li>
-                        {{/if}}
+                        {{#each project.tickets}}
+                            {{#if (eq status 'todo')}}
+                                <li>{{> ticket_card}}</li>
+                            {{/if}}
+                        {{/each}}
                     </ul>
-                    {{/each}}
                 </div>
                 <div>
                     
@@ -32,22 +30,14 @@
                 
             </section>
         {{/each}}
-        
-        
-        
     </section>
     <section style="width: 15%;">
         {{> comment_bar }}
     </section>
 </div>
 
-
-
 {{#if projects}}
 {{> project_select_modal}}
-
-
 {{else}}
 {{> new_project_modal}}
 {{/if}}
-
