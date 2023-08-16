@@ -87,49 +87,11 @@ router.get("/boards", async (req, res) => {
   }
 });
 
-// router.get("/boards/:id", async (req, res) => {
-//   try {
-//     // We know the user id at this time.
-//     // generate the tickets from a fetch on the JS attached to the boards page
-//     //req.params in this sence is Project ID. That ID will tell what tickets to fetch
-
-//     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
-//     const projectData = await Project.findAll({
-//       where: {
-//         owner_id: req.params.id,
-//       },
-//       include: {
-//         model: Ticket,
-//         include: {
-//           model: User,
-//           attributes: ['first_name', 'last_name'],
-//           where: {
-//             id: req.params.id
-//           }
-//         }
-//       },
-//     });
-
-//     console.log(req.session.user_id);
-
-//     const projects = projectData.map((project) => project.get({ plain: true }));
-//     console.log(projects);
-//     console.log(projects[0].tickets);
-
-//     res.render("boards", {
-//       projects,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send("Fly you fools. Server Error");
-//   }
-// });
 
 
 router.get("/boards/:id", async (req, res) => {
   try {
-    const projects = await Project.findAll({
+    const projectData = await Project.findAll({
       where: {
         owner_id: req.params.id,
       },
@@ -143,6 +105,34 @@ router.get("/boards/:id", async (req, res) => {
     });
 
     console.log(req.session.user_id);
+
+    const projects = projectData.map((project) => project.get({ plain: true }));
+    console.log(projects);
+    
+    
+    for (let i = 0; i < projects.length; i++) {
+      projects[i].todo = []
+      projects[i].doing = []
+      projects[i].review = []
+      projects[i].done = []
+      let ticketsArray = projects[i].tickets.length ? projects[i].tickets.length : 0;
+      for (let j = 0; j < ticketsArray; j++) {
+        if (projects[i].tickets[j].status === 'todo') {
+          projects[i].todo.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'doing') {
+          projects[i].doing.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'review') {
+          projects[i].review.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'done') {
+          projects[i].done.push(projects[i].tickets[j])
+        }
+      }
+    }
+    
+    console.log("ticket data below")
+    console.log(projects[0].todo)
+
+
 
     res.render("boards", {
       projects,
@@ -166,9 +156,5 @@ router.get("/client", async (req, res) => {
   }
 });
 
-// Serialize data so the template can read it
-// const projects = projectData.map((project) => project.get({ plain: true }));
-
-// Pass serialized data and session flag into template
 
 module.exports = router;
