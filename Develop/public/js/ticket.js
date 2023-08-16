@@ -166,9 +166,6 @@ document.addEventListener("click", async (event) => {
   } else if (target.matches("#submit_new_comment")) {
     // Handle submit new comment button click
     handleNewCommentSubmit(ticketId, ticket);
-  } else if (target.matches(".edit_button")) {
-    event.preventDefault()
-    openEditor(ticketId);
   } else if (target.matches(".delete_button")) {
     deleteTicket(ticketId, target);
   } else if (target.matches(".edit_button")) {
