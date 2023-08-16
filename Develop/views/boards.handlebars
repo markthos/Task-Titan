@@ -4,30 +4,44 @@
     <section style="width: 15%;">
         {{> nav_bar_left }}
     </section>
+    
     <section id="" style="width: 70%; text-align: center;">
         
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}}</p>
-            <section>
-                <div>
+            <section style="display: flex; width: 100%; justify-content: space-evenly;">
+                <div style="padding: 20px;">
+                    <h3>TODO</h3>
+                    {{#each project.todo as |ticket|}}
                     <ul style="list-style-type: none;">
-                        {{#each project.tickets}}
-                            {{#if (eq status 'todo')}}
-                                <li>{{> ticket_card}}</li>
-                            {{/if}}
-                        {{/each}}
+                        <li>{{> ticket_card}}</li>
                     </ul>
+                    {{/each}}
                 </div>
-                <div>
-                    
+                <div style="padding: 20px;">
+                    <h3>DOING</h3>
+                    {{#each project.doing as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
-                <div>
-                    
+                <div style="padding: 20px;">
+                    <h3>REVIEW</h3>
+                    {{#each project.review as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
-                <div>
-                    
+                <div style="padding: 20px;">
+                    <h3>DONE</h3>
+                    {{#each project.done as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
-                
             </section>
         {{/each}}
     </section>
