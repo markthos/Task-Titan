@@ -87,13 +87,10 @@ router.get("/boards", async (req, res) => {
   }
 });
 
+
+
 router.get("/boards/:id", async (req, res) => {
   try {
-    // We know the user id at this time.
-    // generate the tickets from a fetch on the JS attached to the boards page
-    //req.params in this sence is Project ID. That ID will tell what tickets to fetch
-
-    // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
       where: {
         owner_id: req.params.id,
@@ -101,12 +98,9 @@ router.get("/boards/:id", async (req, res) => {
       include: {
         model: Ticket,
         include: {
-          model: User,
+          model: User, // Include the User model for creator_id
           attributes: ['first_name', 'last_name'],
-          where: {
-            id: req.params.id
-          }
-        }
+        },
       },
     });
 
@@ -150,6 +144,7 @@ router.get("/boards/:id", async (req, res) => {
   }
 });
 
+
 router.get("/client", async (req, res) => {
   try {
     res.render("homepage", {
@@ -161,9 +156,5 @@ router.get("/client", async (req, res) => {
   }
 });
 
-// Serialize data so the template can read it
-// const projects = projectData.map((project) => project.get({ plain: true }));
-
-// Pass serialized data and session flag into template
 
 module.exports = router;

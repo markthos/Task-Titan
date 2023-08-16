@@ -1,11 +1,10 @@
 <!-- Boards Page -->
-
-
-<div style="width:100vw;height: 100vh; display: flex;">
+<div style="width: 100vw; height: 100vh; display: flex;">
     
     <section style="width: 15%;">
         {{> nav_bar_left }}
     </section>
+    
     <section id="" style="width: 70%; text-align: center;">
         
         {{#each projects as |project|}}
@@ -43,25 +42,16 @@
                     </ul>
                     {{/each}}
                 </div>
-                
             </section>
         {{/each}}
-        
-        
-        
     </section>
     <section style="width: 15%;">
         {{> comment_bar }}
     </section>
 </div>
 
-
-
 {{#if projects}}
 {{> project_select_modal}}
-
-
 {{else}}
 {{> new_project_modal}}
 {{/if}}
-

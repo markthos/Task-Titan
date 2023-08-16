@@ -62,6 +62,7 @@ router.post('/logout', (req, res) => {
     // Remove the session variables
     req.session.destroy(() => {
       // confirm that user by name has been logged out in console
+      req.session.logged_in = false; // Set logged_in to false
       console.log('User logged out:', req.session.user_id);
       res.redirect('/'); // Redirect to homepage
     });
