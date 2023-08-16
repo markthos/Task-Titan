@@ -17,7 +17,10 @@
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
-                    <button>add task +</button>
+                    <div class="new_task" style="display: none" data-status="todo">
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="todo">add task +</button>
                 </div>
                 <div style="padding: 20px;">
                     <h3>DOING</h3>
@@ -26,7 +29,10 @@
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
-                    <button>add task +</button>
+                    <div class="new_task" style="display: none" data-status="doing">
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">add task +</button>
                 </div>
                 <div style="padding: 20px;">
                     <h3>REVIEW</h3>
@@ -35,7 +41,10 @@
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
-                    <button>add task +</button>
+                    <div class="new_task" style="display: none" data-status="review">
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_review_task" data-status="review">add task +</button>
                 </div>
                 <div style="padding: 20px;">
                     <h3>DONE</h3>
@@ -44,7 +53,10 @@
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
-                    <button>add task +</button>
+                    <div class="new_task" style="display: none" data-status="done">
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="done">add task +</button>
                 </div>
             </section>
         {{/each}}
@@ -53,3 +65,7 @@
         {{> comment_bar }}
     </section>
 </div>
+
+<script src="/js/ticket.js"></script>
+<script src="/js/boards.js"></script>
+
