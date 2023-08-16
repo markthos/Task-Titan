@@ -1,39 +1,71 @@
 <!-- Boards Page -->
-
-
-<div style="width:100vw;height: 100vh; display: flex;">
+<div style="width: 100vw; height: 100vh; display: flex;" >
     
     <section style="width: 15%;">
         {{> nav_bar_left }}
     </section>
-    <section style="width: 70%; text-align: center;">
-        {{> kanban }}
+    
+    <section id="" style="width: 70%; text-align: center;">
+        
         {{#each projects as |project|}}
-            <p style="color: black;">project name: {{project.name}}</p>
-            <ul>
-                {{#each project.tickets as |ticket|}}
+            <p style="color: black;">project name: {{project.name}} </p>
+            <section style="display: flex; width: 100%; justify-content: space-evenly;">
+                <div style="padding: 20px;">
+                    <h3>TODO</h3>
+                    {{#each project.todo as |ticket|}}
                     <ul style="list-style-type: none;">
                         <li>{{> ticket_card}}</li>
                     </ul>
-                {{/each}}
-            </ul>
+                    {{/each}}
+                    <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="todo">add task +</button>
+                </div>
+                <div style="padding: 20px;">
+                    <h3>DOING</h3>
+                    {{#each project.doing as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
+                    <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">add task +</button>
+                </div>
+                <div style="padding: 20px;">
+                    <h3>REVIEW</h3>
+                    {{#each project.review as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
+                    <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_review_task" data-status="review">add task +</button>
+                </div>
+                <div style="padding: 20px;">
+                    <h3>DONE</h3>
+                    {{#each project.done as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
+                    <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
+                        {{> new_ticket}}
+                    </div>
+                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="done">add task +</button>
+                </div>
+            </section>
         {{/each}}
-        
-        
-        
     </section>
     <section style="width: 15%;">
         {{> comment_bar }}
     </section>
 </div>
 
-
-
-{{#if projects}}
-{{> project_select_modal}}
-
-
-{{else}}
-{{> new_project_modal}}
-{{/if}}
+<script src="/js/ticket.js"></script>
+<script src="/js/boards.js"></script>
 

@@ -1,7 +1,7 @@
 const deleteTicket = async (id, ticket) => {
   console.log("deleting ticket...");
 
-  const response = await fetch(`/api/ticket/${id}`, {
+  const response = await fetch(`/api/tickets/${id}`, {
     method: "DELETE",
     body: JSON.stringify({ id }),
     headers: {
@@ -19,9 +19,9 @@ const deleteTicket = async (id, ticket) => {
 };
 
 const openEditor = async (id) => {
-  console.log("editing ticket...");
+  console.log("editing ticket " + id);
 
-  await fetch(`/api/ticket/${id}`, {
+  await fetch(`/api/tickets/${id}`, {
     method: "PUT",
     body: JSON.stringify({ is_editing: true }),
     headers: {
@@ -36,7 +36,7 @@ const handleUpdateSubmit = async (id, title, text) => {
   console.log("saving ticket...");
 
   if (title && text) {
-    const response = await fetch(`/api/ticket/${id}`, {
+    const response = await fetch(`/api/tickets/${id}`, {
       method: "PUT",
       body: JSON.stringify({ title, text, is_editing: false }),
       headers: {
@@ -55,7 +55,7 @@ const handleUpdateSubmit = async (id, title, text) => {
 const handleCancel = async (id) => {
   console.log("Canceling update ticket...");
 
-  await fetch(`/api/ticket/${id}`, {
+  await fetch(`/api/tickets/${id}`, {
     method: "PUT",
     body: JSON.stringify({ is_editing: false }),
     headers: {
@@ -71,7 +71,7 @@ const openComments = async (id, ticket) => {
   console.log("opening comments for ticket id: ", id);
   commentList.innerHTML = "";
 
-  const response = await fetch(`/api/ticket/${id}/comments`, {
+  const response = await fetch(`/api/tickets/${id}/ticketcomments`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -86,6 +86,7 @@ const openComments = async (id, ticket) => {
     commentList.innerHTML = "No Comments Yet";
   }
 
+
   for (let i = 0; i < commentsData.comments.length; i++) {
     commentList.innerHTML += `
       <li style="width: 100%; display: flex; justify-content: space-between; margin: 10px 0px;">
@@ -93,25 +94,24 @@ const openComments = async (id, ticket) => {
           ${commentsData.comments[i].text}
         </div>
         <div>
-          ${commentsData.comments[i].user.username} on ${dayjs(
-            commentsData.comments[i].createdAt
-          ).format("MM/DD/YYYY")}
-        </div
+          - ${commentsData.comments[i].user.first_name}
+        </div>
       </li>`;
   }
 };
 
-const handleNewCommentSubmit = async (ticket_id, ticket) => {
+const handleNewCommentSubmit = async (id, ticket) => {
   console.log("submitting new comment...");
 
   const textField = ticket.querySelector("#new_comment");
 
   const text = textField.value;
+  const ticket_id = id;
 
   console.log(text);
   console.log(ticket_id);
 
-  const response = await fetch("/api/comment", {
+  const response = await fetch(`/api/tickets/${id}/ticketcomments`, {
     method: "POST",
     body: JSON.stringify({ text, ticket_id }),
     headers: {
@@ -121,7 +121,7 @@ const handleNewCommentSubmit = async (ticket_id, ticket) => {
 
   openComments(ticket_id, ticket);
 
-  if (!response.ok) {
+  if (response.ok) {
     console.log("something went wrong");
   }
 };
@@ -166,10 +166,8 @@ document.addEventListener("click", async (event) => {
   } else if (target.matches("#submit_new_comment")) {
     // Handle submit new comment button click
     handleNewCommentSubmit(ticketId, ticket);
-  } else if (target.matches(".edit_button")) {
-    openEditor(ticketId);
   } else if (target.matches(".delete_button")) {
-    deleteBlog(ticketId, target);
+    deleteTicket(ticketId, target);
   } else if (target.matches(".edit_button")) {
     openEditor(ticketId);
   } else if (target.matches(".save_button")) {

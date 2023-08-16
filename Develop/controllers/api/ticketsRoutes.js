@@ -1,11 +1,10 @@
 // ticketRoutes.js
 const router = require("express").Router();
-const { Ticket } = require("../../models");
+const { Ticket, TicketComment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-
 // Get all tickets
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const tickets = await Ticket.findAll();
     res.status(200).json(tickets);
@@ -15,77 +14,61 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new ticket
-// router.post('/', withAuth, async (req, res) => {
-  router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newTicket = await Ticket.create({
       ...req.body,
       creator_id: req.session.user_id,
     });
-
-    res.status(200).json(newTicket);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-
-// Get tickets created by the currently logged-in user
-// router.get("/tickets", withAuth, async (req, res) => {
-
-  router.get("/tickets", async (req, res) => {
-  try {
-    if (req.session.logged_in) {
-      const tickets = await Ticket.findAll({
-        where: { creator_id: req.session.user_id },
-      });
-      res.status(200).json(tickets);
-    } else {
-      res.status(401).json({ message: "Not authorized" });
+    if (!newTicket) {
+      res.status(404).json({ message: "Ticket not found" });
+      return;
     }
+    res.status(200).json(newTicket);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Get tickets created by the currently logged-in user
+router.get("/", async (req, res) => {
+  try {
+    const tickets = await Ticket.findAll({
+      where: { creator_id: req.session.user_id },
+    });
+    res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Get a single ticket by ID
-// router.get("/tickets/:id", withAuth, async (req, res) => {
-
 router.get("/:id", async (req, res) => {
-
   try {
-    if (req.session.logged_in) {
-      const ticket = await Ticket.findOne({
-        where: {
-          id: req.params.id,
-          creator_id: req.session.user_id,
-        },
-      });
+    const ticket = await Ticket.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
 
-      if (!ticket) {
-        res.status(404).json({ message: "Ticket not found" });
-        return;
-      }
-
-      res.status(200).json(ticket);
-    } else {
-      res.status(401).json({ message: "Not authorized" });
+    if (!ticket) {
+      res.status(404).json({ message: "Ticket not found" });
+      return;
     }
+
+    res.status(200).json({ message: "ticket found", ticket });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // Update a ticket by ID
-// router.put("/tickets/:id", withAuth, async (req, res) => {
-
-router.put("/tickets/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
+    console.log("here");
     const updatedTicket = await Ticket.update(req.body, {
       where: {
         id: req.params.id,
-        creator_id: req.session.user_id,
       },
     });
 
@@ -101,15 +84,11 @@ router.put("/tickets/:id", async (req, res) => {
 });
 
 // Delete a ticket by ID
-// router.delete("/tickets/:id", withAuth, async (req, res) => {
-
-router.delete("/tickets/:id", async (req, res) => {
-
+router.delete("/:id", async (req, res) => {
   try {
     const deletedTicket = await Ticket.destroy({
       where: {
         id: req.params.id,
-        creator_id: req.session.user_id,
       },
     });
 
@@ -121,6 +100,55 @@ router.delete("/tickets/:id", async (req, res) => {
     res.status(200).json(deletedTicket);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.get("/:id/ticketcomments", async (req, res) => {
+  try {
+    const request = await TicketComment.findAll({
+      where: {
+        ticket_id: req.params.id,
+      },
+      include: {
+        model: User,
+        attributes: ['first_name']
+      },
+    });
+
+    if (!request) {
+      return res.status(400).json({ message: "No comments found." });
+    }
+
+    const comments = request.map((comment) => {
+      return comment.get({ plain: true });
+    });
+
+    res.status(200).json({ message: "success", comments });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "server Error" });
+  }
+});
+
+router.post("/:id/ticketcomments", async (req, res) => {
+  try {
+    const comment = await TicketComment.create({
+      ...req.body,
+      creator_id: req.session.user_id,
+    });
+
+    if (!comment) {
+      return res.status(404).json({ message: "comment not found" });
+    }
+
+    const ticketcomments = request.map((comment) => {
+      return comment.get({ plain: true });
+    });
+
+    res.status(200).json({ message: "success", ticketcomments });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "server Error" });
   }
 });
 

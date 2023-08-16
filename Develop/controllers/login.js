@@ -21,8 +21,12 @@ router.post("/login", async (req, res) => {
       req.session.save(() => {
         req.session.user_id = id;
         req.session.logged_in = true;
+        req.session.user_name = user.first_name;
+        console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
+        res.redirect(`/boards/${user.id}`); // Redirect to associated page
       });// Store user ID in session
-      res.redirect(`/boards/${user.id}`); // Redirect to associated page
+      console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
+      
 
     } else {
       res.render("login", { error: "Invalid credentials" }); // Display error message
@@ -57,10 +61,12 @@ router.post('/signup', async (req, res) => {
 
 // to logout
 router.post('/logout', (req, res) => {
+  console.log("is this happening")
   if (req.session.logged_in) {
     // Remove the session variables
     req.session.destroy(() => {
       // confirm that user by name has been logged out in console
+      req.session.logged_in = false; // Set logged_in to false
       console.log('User logged out:', req.session.user_id);
       res.redirect('/'); // Redirect to homepage
     });
