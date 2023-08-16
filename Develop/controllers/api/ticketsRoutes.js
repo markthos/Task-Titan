@@ -77,8 +77,6 @@ router.put("/:id", async (req, res) => {
       return;
     }
 
-    console.log("hitting here");
-
     res.status(200).json(updatedTicket);
   } catch (err) {
     res.status(500).json(err);
@@ -124,8 +122,6 @@ router.get("/:id/ticketcomments", async (req, res) => {
       return comment.get({ plain: true });
     });
 
-    console.log(comments);
-
     res.status(200).json({ message: "success", comments });
   } catch (error) {
     console.log(error);
@@ -137,10 +133,8 @@ router.post("/:id/ticketcomments", async (req, res) => {
   try {
     const comment = await TicketComment.create({
       ...req.body,
-      author_id: req.session.user_id,
+      creator_id: req.session.user_id,
     });
-
-    console.log(comment);
 
     if (!comment) {
       return res.status(404).json({ message: "comment not found" });
@@ -150,13 +144,12 @@ router.post("/:id/ticketcomments", async (req, res) => {
       return comment.get({ plain: true });
     });
 
-    console.log(ticketcomments);
-
     res.status(200).json({ message: "success", ticketcomments });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "server Error" });
   }
 });
+
 
 module.exports = router;
