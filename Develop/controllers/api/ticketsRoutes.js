@@ -21,33 +21,34 @@ router.post('/', withAuth, async (req, res) => {
       ...req.body,
       creator_id: req.session.user_id,
     });
-
-    res.status(200).json(newTicket);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-
-// Get tickets created by the currently logged-in user
-router.get("/tickets", withAuth, async (req, res) => {
-  try {
-    if (req.session.logged_in) {
-      const tickets = await Ticket.findAll({
-        where: { creator_id: req.session.user_id },
-      });
-      res.status(200).json(tickets);
-    } else {
-      res.status(401).json({ message: "Not authorized" });
+    if (!newTicket) {
+      res.status(404).json({ message: "Ticket not found" });
+      return;
     }
+    res.status(200).json(newTicket);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 
+// Get tickets created by the currently logged-in user
+router.get("/", async (req, res) => {
+  try {
+        const tickets = await Ticket.findAll({
+        where: { creator_id: req.session.user_id },
+      });
+      res.status(200).json(tickets);
+  
+    }
+  catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 // Get a single ticket by ID
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
  try {
     if (req.session.logged_in) {
       const ticket = await Ticket.findOne({
