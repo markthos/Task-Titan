@@ -23,6 +23,10 @@ Ticket.init({
         type: DataTypes.TEXT,
         allowNull: true
     },
+    is_editing: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    },
     date_created: {
         type: DataTypes.DATE,
         allowNull: false,

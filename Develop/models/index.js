@@ -80,6 +80,10 @@ TicketComment.belongsTo(Ticket, {
   foreignKey: "ticket_id",
 });
 
+TicketComment.belongsTo(User, {
+  foreignKey: "creator_id",
+});
+
 module.exports = {
   User,
   Project,

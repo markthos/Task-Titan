@@ -113,10 +113,12 @@ router.get("/boards/:id", async (req, res) => {
       projects[i].doing = [];
       projects[i].review = [];
       projects[i].done = [];
+      
       let ticketsArray = projects[i].tickets.length
         ? projects[i].tickets.length
         : 0;
       for (let j = 0; j < ticketsArray; j++) {
+        projects[i].tickets[j].isOwner = true;
         if (projects[i].tickets[j].status === "todo") {
           projects[i].todo.push(projects[i].tickets[j]);
         } else if (projects[i].tickets[j].status === "doing") {
@@ -129,8 +131,8 @@ router.get("/boards/:id", async (req, res) => {
       }
     }
 
-    console.log("ticket data below");
-    console.log(projects[0].todo);
+
+
 
     res.render("boards", {
       projects,
