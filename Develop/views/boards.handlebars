@@ -6,7 +6,8 @@
     </section>
     
     <section id="" style="width: 70%; text-align: center;">
-        
+        <!-- The Modal -->
+        {{> new_project_modal}}
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}} </p>
             <section style="display: flex; width: 100%; justify-content: space-evenly;">
@@ -60,6 +61,7 @@
                 </div>
             </section>
         {{/each}}
+
     </section>
     <section style="width: 15%;">
         {{> comment_bar }}
