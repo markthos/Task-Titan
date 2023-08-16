@@ -13,7 +13,7 @@ Project.init(
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [0,20],
             },

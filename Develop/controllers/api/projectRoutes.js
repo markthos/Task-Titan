@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Project } = require("../../models");
 const withAuth = require("../../utils/auth");
-
+/*
 router.post("/", async (req, res) => {
   try {
     const newProject = await Project.create({
@@ -14,6 +14,36 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
+*/
+// ARUN, THIS IS OUR (MARK AND AVERY) POST ROUTE FOR MAKING PROJECTS
+router.post("/", async (req, res) => {
+  try {
+    const { name, date_started, type } = req.body;
+    let newProject;
+
+    if (req.session.user_id) {
+      // If user is logged in, create a project with user_id
+      newProject = await Project.create({
+        name,
+        date_started,
+        type,
+        user_id: req.session.user_id,
+      });
+    } else {
+      // FUNCTIONS WITHOUT A USER ID PURELY FOR TESTING PURPOSES
+      newProject = await Project.create({
+        name,
+        date_started,
+        type,
+      });
+    }
+
+    res.status(200).json(newProject);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 //! to get all projects NEED A SUPER ADMIN APPROVAL HELPER ** IF WE ADD SUPERADMIN
 
