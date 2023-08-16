@@ -94,7 +94,7 @@ const openComments = async (id, ticket) => {
           ${commentsData.comments[i].text}
         </div>
         <div>
-          ${commentsData.comments[i].first_name} on ${commentsData.comments[i].date_posted} //!need dayjs?
+          - ${commentsData.comments[i].user.first_name}
         </div>
       </li>`;
   }
