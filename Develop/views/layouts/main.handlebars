@@ -17,7 +17,7 @@
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             {{#if logged_in}}
-                                <li>Welcome, {{user_name}} </li><!-- Need the user's name here -->
+                                <li>Welcome, {{user_name}} </li>
                                 <li><a href="/boards">My Boards</a></li>
                                 <li><a href="/logout">Log Out</a></li>
                                 <li><a href="/about">About</a></li>
@@ -32,7 +32,7 @@
             </div>
             <ul class="sidenav" id="mobile-demo">
                 {{#if logged_in}}
-                    <li>Welcome, *Meat Bag* </li><!-- Need the user's name here -->
+                    <li>Welcome, {{user_name}} </li>
                     <li><a href="/boards">My Boards</a></li>
                     <li><a href="/logout">Log Out</a></li>
                     <li><a href="/about">About</a></li>
