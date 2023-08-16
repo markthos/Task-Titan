@@ -6,17 +6,31 @@
     <section style="width: 15%;">
         {{> nav_bar_left }}
     </section>
-    <section style="width: 70%; text-align: center;">
-        {{> kanban }}
+    <section id="" style="width: 70%; text-align: center;">
+        
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}}</p>
-            <ul>
-                {{#each project.tickets as |ticket|}}
+            <section>
+                <div>
+                    {{#each project.tickets as |ticket|}}
                     <ul style="list-style-type: none;">
-                        <li>{{> ticket_card}}</li>
+                        {{#if compare project.tickets.status, '=', todo}}
+                            <li>{{> ticket_card}}</li>
+                        {{/if}}
                     </ul>
-                {{/each}}
-            </ul>
+                    {{/each}}
+                </div>
+                <div>
+                    
+                </div>
+                <div>
+                    
+                </div>
+                <div>
+                    
+                </div>
+                
+            </section>
         {{/each}}
         
         
