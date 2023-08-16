@@ -114,7 +114,30 @@ router.get("/boards/:id", async (req, res) => {
 
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
-    console.log(projects[0].tickets)
+    
+    
+    for (let i = 0; i < projects.length; i++) {
+      projects[i].todo = []
+      projects[i].doing = []
+      projects[i].review = []
+      projects[i].done = []
+      let ticketsArray = projects[i].tickets.length ? projects[i].tickets.length : 0;
+      for (let j = 0; j < ticketsArray; j++) {
+        if (projects[i].tickets[j].status === 'todo') {
+          projects[i].todo.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'doing') {
+          projects[i].doing.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'review') {
+          projects[i].review.push(projects[i].tickets[j])
+        } else if (projects[i].tickets[j].status === 'done') {
+          projects[i].done.push(projects[i].tickets[j])
+        }
+      }
+    }
+    
+    console.log("ticket data below")
+    console.log(projects[0].todo)
+
 
     res.render("boards", {
       projects,

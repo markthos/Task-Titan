@@ -10,24 +10,38 @@
         
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}}</p>
-            <section>
+            <section style="display: flex; width: 100%; justify-content: space-evenly;">
                 <div>
-                    {{#each project.tickets as |ticket|}}
+                    <h3>TODO</h3>
+                    {{#each project.todo as |ticket|}}
                     <ul style="list-style-type: none;">
-                        {{#if compare project.tickets.status, '=', todo}}
-                            <li>{{> ticket_card}}</li>
-                        {{/if}}
+                        <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
                 </div>
                 <div>
-                    
+                    <h3>DOING</h3>
+                    {{#each project.doing as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
                 <div>
-                    
+                    <h3>REVIEW</h3>
+                    {{#each project.review as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
                 <div>
-                    
+                    <h3>DONE</h3>
+                    {{#each project.done as |ticket|}}
+                    <ul style="list-style-type: none;">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
                 
             </section>
