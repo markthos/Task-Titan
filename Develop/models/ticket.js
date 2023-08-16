@@ -72,4 +72,4 @@ Ticket.init({
 
 );
 
-module.exports = Ticket
+module.exports = Ticket;

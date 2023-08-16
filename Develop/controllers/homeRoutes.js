@@ -114,7 +114,7 @@ router.get("/boards/:id", async (req, res) => {
 
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
-    console.log(projects[0].tickets)
+    console.log(projects[0].tickets);
 
     res.render("boards", {
       projects,

@@ -15,8 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create a new ticket
-// router.post('/', withAuth, async (req, res) => {
-  router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newTicket = await Ticket.create({
       ...req.body,
@@ -31,9 +30,7 @@ router.get('/', async (req, res) => {
 
 
 // Get tickets created by the currently logged-in user
-// router.get("/tickets", withAuth, async (req, res) => {
-
-  router.get("/tickets", async (req, res) => {
+router.get("/tickets", withAuth, async (req, res) => {
   try {
     if (req.session.logged_in) {
       const tickets = await Ticket.findAll({
@@ -50,11 +47,8 @@ router.get('/', async (req, res) => {
 
 
 // Get a single ticket by ID
-// router.get("/tickets/:id", withAuth, async (req, res) => {
-
-router.get("/:id", async (req, res) => {
-
-  try {
+router.get("/:id", withAuth, async (req, res) => {
+ try {
     if (req.session.logged_in) {
       const ticket = await Ticket.findOne({
         where: {
@@ -78,9 +72,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Update a ticket by ID
-// router.put("/tickets/:id", withAuth, async (req, res) => {
-
-router.put("/tickets/:id", async (req, res) => {
+router.put("/tickets/:id", withAuth, async (req, res) => {
   try {
     const updatedTicket = await Ticket.update(req.body, {
       where: {
@@ -101,10 +93,7 @@ router.put("/tickets/:id", async (req, res) => {
 });
 
 // Delete a ticket by ID
-// router.delete("/tickets/:id", withAuth, async (req, res) => {
-
-router.delete("/tickets/:id", async (req, res) => {
-
+router.delete("/tickets/:id", withAuth, async (req, res) => {
   try {
     const deletedTicket = await Ticket.destroy({
       where: {
@@ -123,6 +112,5 @@ router.delete("/tickets/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
