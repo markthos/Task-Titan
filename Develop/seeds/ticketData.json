@@ -8,14 +8,6 @@
       "status": "doing"
   },
   {
-      "title": "Learn new move",
-      "text": "In this task, I will be focusing on learning a new move for our dance routine. This move will add a fresh and exciting element to our performance. I'll be practicing the steps and working on perfecting the timing and coordination.",
-      "date_created": "2023-08-01",
-      "project_id": 1,
-      "creator_id": 1,
-      "status": "doing"
-  },
-  {
       "title": "Design Landing Page",
       "text": "The goal of this task is to design an engaging and user-friendly landing page for our website. The landing page will serve as the first impression for visitors and potential customers. I'll be incorporating eye-catching visuals and clear call-to-action buttons.",
       "date_created": "2023-08-05",

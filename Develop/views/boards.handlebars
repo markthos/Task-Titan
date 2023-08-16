@@ -11,7 +11,7 @@
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}}</p>
             <section style="display: flex; width: 100%; justify-content: space-evenly;">
-                <div>
+                <div style="padding: 20px;">
                     <h3>TODO</h3>
                     {{#each project.todo as |ticket|}}
                     <ul style="list-style-type: none;">
@@ -19,7 +19,7 @@
                     </ul>
                     {{/each}}
                 </div>
-                <div>
+                <div style="padding: 20px;">
                     <h3>DOING</h3>
                     {{#each project.doing as |ticket|}}
                     <ul style="list-style-type: none;">
@@ -27,7 +27,7 @@
                     </ul>
                     {{/each}}
                 </div>
-                <div>
+                <div style="padding: 20px;">
                     <h3>REVIEW</h3>
                     {{#each project.review as |ticket|}}
                     <ul style="list-style-type: none;">
@@ -35,7 +35,7 @@
                     </ul>
                     {{/each}}
                 </div>
-                <div>
+                <div style="padding: 20px;">
                     <h3>DONE</h3>
                     {{#each project.done as |ticket|}}
                     <ul style="list-style-type: none;">

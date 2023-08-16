@@ -139,6 +139,7 @@ router.get("/boards/:id", async (req, res) => {
     console.log(projects[0].todo)
 
 
+
     res.render("boards", {
       projects,
       logged_in: req.session.logged_in,
