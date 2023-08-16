@@ -87,34 +87,62 @@ router.get("/boards", async (req, res) => {
   }
 });
 
+// router.get("/boards/:id", async (req, res) => {
+//   try {
+//     // We know the user id at this time.
+//     // generate the tickets from a fetch on the JS attached to the boards page
+//     //req.params in this sence is Project ID. That ID will tell what tickets to fetch
+
+//     // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
+//     const projectData = await Project.findAll({
+//       where: {
+//         owner_id: req.params.id,
+//       },
+//       include: {
+//         model: Ticket,
+//         include: {
+//           model: User,
+//           attributes: ['first_name', 'last_name'],
+//           where: {
+//             id: req.params.id
+//           }
+//         }
+//       },
+//     });
+
+//     console.log(req.session.user_id);
+
+//     const projects = projectData.map((project) => project.get({ plain: true }));
+//     console.log(projects);
+//     console.log(projects[0].tickets);
+
+//     res.render("boards", {
+//       projects,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send("Fly you fools. Server Error");
+//   }
+// });
+
+
 router.get("/boards/:id", async (req, res) => {
   try {
-    // We know the user id at this time.
-    // generate the tickets from a fetch on the JS attached to the boards page
-    //req.params in this sence is Project ID. That ID will tell what tickets to fetch
-
-    // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
-    const projectData = await Project.findAll({
+    const projects = await Project.findAll({
       where: {
         owner_id: req.params.id,
       },
       include: {
         model: Ticket,
         include: {
-          model: User,
+          model: User, // Include the User model for creator_id
           attributes: ['first_name', 'last_name'],
-          where: {
-            id: req.params.id
-          }
-        }
+        },
       },
     });
 
     console.log(req.session.user_id);
-
-    const projects = projectData.map((project) => project.get({ plain: true }));
-    console.log(projects);
-    console.log(projects[0].tickets)
 
     res.render("boards", {
       projects,
@@ -125,6 +153,7 @@ router.get("/boards/:id", async (req, res) => {
     res.status(500).send("Fly you fools. Server Error");
   }
 });
+
 
 router.get("/client", async (req, res) => {
   try {
