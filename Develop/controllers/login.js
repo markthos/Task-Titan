@@ -22,8 +22,11 @@ router.post("/login", async (req, res) => {
         req.session.user_id = id;
         req.session.logged_in = true;
         req.session.user_name = user.first_name;
+        console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
+        res.redirect(`/boards/${user.id}`); // Redirect to associated page
       });// Store user ID in session
-      res.redirect(`/boards/${user.id}`); // Redirect to associated page
+      console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
+      
 
     } else {
       res.render("login", { error: "Invalid credentials" }); // Display error message
