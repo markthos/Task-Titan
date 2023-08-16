@@ -86,7 +86,7 @@ router.get("/boards", async (req, res) => {
   }
 });
 
-router.get("/boards/:id", async (req, res) => {
+router.get("/boards/:id", withAuth, async (req, res) => {
   try {
     const projectData = await Project.findAll({
       where: {
@@ -133,10 +133,12 @@ router.get("/boards/:id", async (req, res) => {
 
 
 
+    console.log("Session user_name: " + req.session.user_name);
 
     res.render("boards", {
       projects,
       logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
   } catch (error) {
     console.log(error);
