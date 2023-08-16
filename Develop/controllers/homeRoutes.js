@@ -51,6 +51,16 @@ router.get("/signup", async (req, res) => {
   }
 });
 
+// takes you to the logout page after you logout
+router.get("/logout", async (req, res) => {
+  try {
+    res.render("logout",);
+  } catch (error) {
+    res.status(500).send("Fly you fools. Server Error");
+  }
+});
+
+
 router.get("/boards", async (req, res) => {
   try {
     // We know the user id at this time.
