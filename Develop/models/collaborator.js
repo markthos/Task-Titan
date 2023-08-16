@@ -43,3 +43,20 @@ Collaborator.init(
 );
 
 module.exports = Collaborator;
+
+/*
+READABLE SQL QUERY
+
+SELECT
+    c.id,
+    u.email AS user_email,
+    p.name AS project_name,
+    c.access_level
+FROM
+    collaborator c
+JOIN
+    user u ON c.user_id = u.id
+JOIN
+    project p ON c.project_id = p.id;
+
+*/
