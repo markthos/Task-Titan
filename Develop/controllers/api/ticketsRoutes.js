@@ -110,7 +110,8 @@ router.get("/:id/ticketcomments", async (req, res) => {
         ticket_id: req.params.id,
       },
       include: {
-        model: User, //! can not get the user name to pass through!
+        model: User,
+        attributes: ['first_name']
       },
     });
 
