@@ -1,10 +1,9 @@
-const saveNewTicket = async (ticket, status) => {
+const saveNewTicket = async (ticket, status, project_id) => {
   const titleData = ticket.querySelector(".new_ticket_title");
   const textData = ticket.querySelector(".new_ticket_content");
 
   const title = titleData.value.trim();
   const text = textData.value.trim();
-  const project_id = 1; // HARD CODED fix this
 
   const response = await fetch(`/api/tickets`, {
     method: "POST",
@@ -44,7 +43,6 @@ document.addEventListener("click", async (event) => {
   const target = event.target;
   const ticket = target.closest(".new_ticket");
   const new_ticket = target.closest(".new_task");
-  
 
   if (!ticket) {
     return; // Click didn't happen within a ticket, exit
@@ -55,7 +53,8 @@ document.addEventListener("click", async (event) => {
   if (target.matches(".save_button")) {
     console.log("save");
     const status = new_ticket.getAttribute("data-status");
-    saveNewTicket(ticket, status);
+    const project_id = new_ticket.getAttribute("data-id");
+    saveNewTicket(ticket, status, project_id);
   } else if (target.matches(".cancel_button")) {
     console.log("cancel");
     new_ticket.style.display = "none";
