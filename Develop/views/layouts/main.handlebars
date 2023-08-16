@@ -19,7 +19,7 @@
                             {{#if logged_in}}
                                 <li>Welcome, {{user_name}} </li>
                                 <li><a href="/boards">My Boards</a></li>
-                                <li><a href="/logout">Log Out</a></li>
+                                <li><a href="/logout" id="logout-link" >Log Out</a></li>
                                 <li><a href="/about">About</a></li>
                             {{else}}
                                 <li><a href="/login">Log In</a></li>
@@ -92,5 +92,6 @@
       </footer>
         <script src="/js/ticket.js"></script>
         <script src="/js/materialize.min.js"></script>
+        <script src="/js/logout.js"></script>
     </body>
 </html>

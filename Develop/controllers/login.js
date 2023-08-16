@@ -61,6 +61,7 @@ router.post('/signup', async (req, res) => {
 
 // to logout
 router.post('/logout', (req, res) => {
+  console.log("is this happening")
   if (req.session.logged_in) {
     // Remove the session variables
     req.session.destroy(() => {
