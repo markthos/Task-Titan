@@ -6,6 +6,12 @@
         "owner_id": 1
     },
     {
+      "name": "Testing Help",
+      "date_started": "2016-01-01",
+      "type": "Training",
+      "owner_id": 1
+    },
+    {
         "name": "Task Titan",
         "type": "Web Development",
         "owner_id": 2
