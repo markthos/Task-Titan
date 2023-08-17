@@ -2,9 +2,10 @@
 const router = require("express").Router();
 const { Ticket, TicketComment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
+const dayjs = require("dayjs");
 
 // Get all tickets
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const tickets = await Ticket.findAll();
     res.status(200).json(tickets);
@@ -37,6 +38,33 @@ router.get("/", async (req, res) => {
       where: { creator_id: req.session.user_id },
     });
     res.status(200).json(tickets);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Update a ticket by ID
+router.put("/", async (req, res) => {
+  try {
+    console.log("updating from drag");
+
+    const now = dayjs();
+
+    const updatedTicket = await Ticket.update(
+      { ...req.body, date_created: now },
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    );
+
+    if (!updatedTicket[0]) {
+      res.status(404).json({ message: "Ticket not found" });
+      return;
+    }
+
+    res.status(200).json(updatedTicket);
   } catch (err) {
     res.status(500).json(err);
   }

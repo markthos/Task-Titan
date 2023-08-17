@@ -12,10 +12,10 @@
         {{#each projects as |project|}}
             <p style="color: black;">project name: {{project.name}} </p>
             <section style="display: flex; width: 100%; justify-content: space-evenly;">
-                <div id="dragparentToDo" style="padding: 20px;">
+                <div id="todo" style="padding: 20px;">
                     <h3>TODO</h3>
                     {{#each project.todo as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
+                    <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
@@ -24,10 +24,10 @@
                     </div>
                     <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="todo">add task +</button>
                 </div>
-                <div id="dragparentDoing" style="padding: 20px;">
+                <div id="doing" style="padding: 20px;">
                     <h3>DOING</h3>
                     {{#each project.doing as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
+                    <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
@@ -36,10 +36,10 @@
                     </div>
                     <button class="add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">add task +</button>
                 </div>
-                <div id="dragparentReview" style="padding: 20px;">
+                <div id="review" style="padding: 20px;">
                     <h3>REVIEW</h3>
                     {{#each project.review as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
+                    <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
@@ -48,10 +48,10 @@
                     </div>
                     <button class="add_task" data-target="new_task" data-id="add_review_task" data-status="review">add task +</button>
                 </div>
-                <div id="dragparentDone" style="padding: 20px;">
+                <div id="done" style="padding: 20px;">
                     <h3>DONE</h3>
                     {{#each project.done as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
+                    <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                         <li>{{> ticket_card}}</li>
                     </ul>
                     {{/each}}
