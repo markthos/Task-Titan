@@ -3,11 +3,13 @@
 
 
 <div class="row ticket dragthing" data-id="{{id}}">
-    {{#if new_item}}
-        <p style="position:absolute; margin-right: 0;">🔴</p>
-    {{/if}}
     <div class="col s12 m12 l12">
         <div class="card grey lighten-4 hoverable">
+            <div style="position:absolute; top: 2px; right: 8px;">
+                {{#if new_item}}
+                🔴
+                {{/if}}
+            </div>
             {{#unless is_editing}}
             <div class="card-content">
                 <span class="card-title">{{title}}</span>
