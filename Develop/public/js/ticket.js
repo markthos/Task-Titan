@@ -180,3 +180,10 @@ document.addEventListener("click", async (event) => {
   }
 });
 
+function init() {
+  dragula([document.querySelector('#dragparentToDo'), document.querySelector('#dragparentDoing'), document.querySelector('#dragparentReview'), document.querySelector('#dragparentDone'), ],
+  {
+    revertOnSpill: true
+  });
+  console.log("init ran");
+}
