@@ -1,5 +1,54 @@
-<section class="ticket dragthing" style="background-color: rgb(66, 153, 153); box-shadow: 5px 5px rgb(31, 31, 31); padding: 10px;" data-id="{{id}}">
-    <button style="color:black; position:absolute; display:block; float:right;" class="delete_button" data-action="delete" data-id="{{id}}">X</button>
+{{!-- TICKETS! --}}
+
+
+<div class="row ticket dragthing" data-id="{{id}}">
+    <div class="col s12 m12 l12">
+        <div class="card grey lighten-4 hoverable">
+            {{#unless is_editing}}
+            <div class="card-content">
+                <span class="card-title">{{title}}</span>
+                <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
+                <p>{{ text }}</p>
+            </div>
+            {{else}}
+            <input type="text" size="100" id="new_ticket_title" value={{title}} />
+            <textarea style="height:auto;" rows="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
+            {{/unless}}
+            {{#if isOwner}}
+            <div class="card-action center-align">
+                {{#unless is_editing}}
+                <a class="waves-effect btn-small-flat blue-text edit_button" data-action="edit" data-id="{{id}}">
+                    <i class="material-icons left">edit</i>
+                    Edit
+                </a>
+                <a class="waves-effect btn-small-flat blue-text delete_button" data-id="{{id}}">
+                    <i class="material-icons left">delete</i>
+                    Delete
+                </a>
+                <a class="waves-effect btn-small-flat blue-text">
+                    <i class="material-icons left">reorder</i>
+                    Move
+                </a>
+                {{else}}
+                <a class="waves-effect btn-small-flat blue-text save_button" data-action="save" data-id="{{id}}">
+                    <i class="material-icons left">save</i
+                    >save
+                </a>
+                <a class="waves-effect btn-small-flat blue-text cancel_button" data-action="cancel" data-id="{{id}}">
+                    <i class="material-icons left">cancel</i>
+                    cancel
+                </a>
+                {{/unless}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{!-- OLD CODE, ONLY TOOK OUT THE STYLES TO MAKE IT EASIER TO READ WHAT WAS GOING ON --EDWARD 16 AUG 2023 --}}
+
+{{!-- <section class="ticket dragthing" data-id="{{id}}">
+    <button class="delete_button" data-action="delete" data-id="{{id}}">X</button>
     {{#unless is_editing}}
         <div class="card_header">
             <h4>{{title}}</h4>
@@ -8,38 +57,37 @@
         <div class="card_body">
             {{ text }}
     {{else}}
-        <div class="card_header" style="width:100%;">
+        <div class="card_header">
             <input type="text" size="100" id="new_ticket_title" value={{title}} />
         </div>
         <div>
             <textarea style="height:auto;" rows="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
         </div>
     {{/unless}}
-    <div style="display: flex; justify-content: space-between;">
+    <div>
         <div>
-            <button style="color:black;" class="comment-button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+            <button class="comment-button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
         </div>
-
         {{#if isOwner}}
-        <div style="display: flex; gap:5px;">
+        <div>
             {{#unless is_editing}}
-                <button style="color:black;" class="edit_button" data-action="edit" data-id="{{id}}">Edit</button>
+                <button class="edit_button" data-action="edit" data-id="{{id}}">Edit</button>
             {{else}}
-                <button style="color:black;" class="save_button" data-action="save" data-id="{{id}}">Save</button>
-                <button style="color:black;" class="cancel_button"data-action="cancel" data-id="{{id}}">Cancel</button>
+                <button class="save_button" data-action="save" data-id="{{id}}">Save</button>
+                <button class="cancel_button" data-action="cancel" data-id="{{id}}">Cancel</button>
             {{/unless}}
         </div>
         {{/if}}
     </div>
-    <div id="comments_section" style="display: none; flex-direction: column">
-        <ul id="comment_list" style="list-style-type: none;">
+    <div id="comments_section">
+        <ul id="comment_list">
         </ul>
         <div>
-            <button style="color:black;" id="add_comment">Add Comment +</button>
+            <button id="add_comment">Add Comment +</button>
         </div>
-        <div id="add_comment_display" style="display: none; flex-direction: column; align-items:center; ">
-            <textarea style="width:80%; color:black;" rows="10" type="textarea" id="new_comment"></textarea>
-            <button style="color:black;" id="submit_new_comment" >Submit</button>
+        <div id="add_comment_display">
+            <textarea rows="10" type="textarea" id="new_comment"></textarea>
+            <button id="submit_new_comment" >Submit</button>
         </div>
     </div>
-</section>
+</section> --}}
