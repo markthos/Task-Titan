@@ -10,6 +10,10 @@ const format_date = (date) => {
   return dayjs(date).format("MM/DD/YYYY");
 };
 
+const format_time = (date) => {
+  return dayjs(date).format("MM/DD/YYYY");
+};
+
 
 
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const dayjs = require("dayjs");
 
 // Adjust the path to your User model
 const User = require("../models").User;
@@ -16,12 +17,14 @@ router.post("/login", async (req, res) => {
     const id = user.dataValues.id;
 
     console.log("id " + id);
+    const now = dayjs();
 
     if (user && bcrypt.compareSync(password, user.password)) {
       req.session.save(() => {
         req.session.user_id = id;
         req.session.logged_in = true;
         req.session.user_name = user.first_name;
+        req.session.last_logged = now;
         console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
         res.redirect(`/boards/${user.id}`); // Redirect to associated page
       });// Store user ID in session
