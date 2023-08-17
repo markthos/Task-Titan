@@ -1,74 +1,166 @@
 <!-- Boards Page -->
-<div style="width: 100vw; height: 100vh; display: flex;" >
-    
-    <section style="width: 15%;">
-        {{> nav_bar_left }}
-    </section>
-    
-    <section id="" style="width: 70%; text-align: center;">
-        <!-- The Modal -->
-        {{> new_project_modal}}
 
-        {{#each projects as |project|}}
-            <p style="color: black;">project name: {{project.name}} </p>
-            <section style="display: flex; width: 100%; justify-content: space-evenly;">
-                <div id="dragparentToDo" style="padding: 20px;">
-                    <h3>TODO</h3>
-                    {{#each project.todo as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
-                    {{/each}}
-                    <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
-                        {{> new_ticket}}
-                    </div>
-                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="todo">add task +</button>
-                </div>
-                <div id="dragparentDoing" style="padding: 20px;">
-                    <h3>DOING</h3>
-                    {{#each project.doing as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
-                    {{/each}}
-                    <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
-                        {{> new_ticket}}
-                    </div>
-                    <button class="add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">add task +</button>
-                </div>
-                <div id="dragparentReview" style="padding: 20px;">
-                    <h3>REVIEW</h3>
-                    {{#each project.review as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
-                    {{/each}}
-                    <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
-                        {{> new_ticket}}
-                    </div>
-                    <button class="add_task" data-target="new_task" data-id="add_review_task" data-status="review">add task +</button>
-                </div>
-                <div id="dragparentDone" style="padding: 20px;">
-                    <h3>DONE</h3>
-                    {{#each project.done as |ticket|}}
-                    <ul class="dragthing" style="list-style-type: none;">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
-                    {{/each}}
-                    <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
-                        {{> new_ticket}}
-                    </div>
-                    <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="done">add task +</button>
-                </div>
-            </section>
+
+{{!-- SECONDARY NAV BAR FOR WORKING ON PROJECT BOARDS --}}
+<nav>
+    <div class="nav-wrapper container">
+        <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+            <li><a href="#!">Add Client</a></li>
+            <li><a href="#!">Add Worker</a></li>
+            <li><a href="#!">Select Project</a></li>
+            <li><a href="#!">Delete Project</a></li>
+        </ul>
+    </div>
+</nav>
+{{!-- THIS IS FOR SMALL DISPLAYS, SHOWS AS A SLIDE OUT SIDE BAR MENU --}}
+<ul class="sidenav" id="my-board-nav">
+    <li><a href="#!">Add Client</a></li>
+    <li><a href="#!">Add Worker</a></li>
+    <li><a href="#!">Select Project</a></li>
+    <li><a href="#!">Delete Project</a></li>
+</ul>
+
+    {{!-- <!-- The Modal -->
+    {{> new_project_modal}} --}}
+    {{!-- No Idea what new_project_modal does so i commented it out -- EDWARD 16 Aug 2023 --}}
+
+{{#each projects as |project|}}
+
+<h3 class="center-align">{{project.name}}</h3>
+
+<div class="row">
+
+    {{!-- START TO DO COLUMN --}}
+    <div class="col s12 m6 l3">
+        <h4 class="center-align">To Do</h4>
+        {{#each project.todo as |ticket|}}
+            {{> ticket_card}}
         {{/each}}
+        {{!-- DID NOT HAVE TIME TO INTEGRATE YET --EDWARD 16 AUG 2023 --}}
+        {{!-- <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
+            {{> new_ticket}}
+        </div> --}}
+        <section class="section center-align">
+            <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
+                <i class="material-icons left">add</i>
+                Add Task
+            </a>
+        </section>
+    </div>
+    
+    {{!-- START DOING COLUMN --}}
+    <div class="col s12 m6 l3">
+        <h4 class="center-align">In Progress</h4>
+        {{#each project.doing as |ticket|}}
+            {{> ticket_card}}
+        {{/each}}
+        {{!-- DID NOT HAVE TIME TO INTEGRATE YET --EDWARD 16 AUG 2023 --}}
+        {{!-- <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
+            {{> new_ticket}}
+        </div> --}}
+        <section class="section center-align">
+            <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
+                <i class="material-icons left">add</i>
+                Add Task
+            </a>
+        </section>
+    </div>
+    
+    {{!-- START REVIEW COLUMN --}}
+    <div class="col s12 m6 l3">
+        <h4 class="center-align">In Review</h4>
+        {{#each project.review as |ticket|}}
+            {{> ticket_card}}
+        {{/each}}
+        {{!-- DID NOT HAVE TIME TO INTEGRATE YET --EDWARD 16 AUG 2023 --}}
+        {{!-- <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
+            {{> new_ticket}}
+        </div> --}}
+        <section class="section center-align">
+            <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
+                <i class="material-icons left">add</i>
+                Add Task
+            </a>
+        </section>
+    </div>
+    
+    {{!-- START DONE COLUMN --}}
+    <div class="col s12 m6 l3">
+        <h4 class="center-align">Completed</h4>
+        {{#each project.done as |ticket|}}
+            {{> ticket_card}}
+        {{/each}}
+        {{!-- DID NOT HAVE TIME TO INTEGRATE YET --EDWARD 16 AUG 2023 --}}
+        {{!-- <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
+            {{> new_ticket}}
+        </div> --}}
+        <section class="section center-align">
+            <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_todo_task" data-status="done">
+                <i class="material-icons left">add</i>
+                Add Task
+            </a>
+        </section>
+    </div>
 
-    </section>
-    <section style="width: 15%;">
-        {{> comment_bar }}
-    </section>
 </div>
 
-<script src="/js/ticket.js"></script>
-<script src="/js/boards.js"></script>
+{{/each}}
 
+{{!-- OLD CODE, WILL BE REMOVED ONCE NEW CODE IS VALIDATED THAT IT WORKS --EDWARD 16 AUG 2023 --}}
+
+    {{!-- <section style="display: flex; width: 100%; justify-content: space-evenly;">
+        <div id="dragparentToDo" style="padding: 20px;">
+            <h3>TODO</h3>
+            {{#each project.todo as |ticket|}}
+            <ul class="dragthing" style="list-style-type: none;">
+                <li>{{> ticket_card}}</li>
+            </ul>
+            {{/each}}
+            <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
+                {{> new_ticket}}
+            </div>
+            <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="todo">add task +</button>
+        </div>
+
+        <div id="dragparentDoing" style="padding: 20px;">
+            <h3>DOING</h3>
+            {{#each project.doing as |ticket|}}
+            <ul class="dragthing" style="list-style-type: none;">
+                <li>{{> ticket_card}}</li>
+            </ul>
+            {{/each}}
+            <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
+                {{> new_ticket}}
+            </div>
+            <button class="add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">add task +</button>
+        </div>
+
+        <div id="dragparentReview" style="padding: 20px;">
+            <h3>REVIEW</h3>
+            {{#each project.review as |ticket|}}
+            <ul class="dragthing" style="list-style-type: none;">
+                <li>{{> ticket_card}}</li>
+            </ul>
+            {{/each}}
+            <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
+                {{> new_ticket}}
+            </div>
+            <button class="add_task" data-target="new_task" data-id="add_review_task" data-status="review">add task +</button>
+        </div>
+
+        <div id="dragparentDone" style="padding: 20px;">
+            <h3>DONE</h3>
+            {{#each project.done as |ticket|}}
+            <ul class="dragthing" style="list-style-type: none;">
+                <li>{{> ticket_card}}</li>
+            </ul>
+            {{/each}}
+            <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
+                {{> new_ticket}}
+            </div>
+            <button class="add_task" data-target="new_task" data-id="add_todo_task" data-status="done">add task +</button>
+        </div>
+
+    </section>
+{{/each}} --}}
