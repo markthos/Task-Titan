@@ -111,7 +111,7 @@ router.get("/:id/ticketcomments", async (req, res) => {
       },
       include: {
         model: User,
-        attributes: ['first_name']
+        attributes: ["first_name"],
       },
     });
 
@@ -151,6 +151,5 @@ router.post("/:id/ticketcomments", async (req, res) => {
     res.status(500).json({ message: "server Error" });
   }
 });
-
 
 module.exports = router;

@@ -135,6 +135,9 @@ document.addEventListener("click", async (event) => {
     return; // Click didn't happen within a ticket, exit
   }
 
+  //!can not select exit button at this time
+
+
   const ticketId = ticket.getAttribute("data-id");
   
 

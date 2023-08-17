@@ -2,13 +2,17 @@ const router = require("express").Router();
 const Sequelize = require("sequelize");
 const { Project, User, Ticket, Collaborator } = require("../models");
 const withAuth = require("../utils/auth");
+const dayjs = require("dayjs")
 
 // Takes you to the homepage
 router.get("/", async (req, res) => {
   try {
+    console.log("last logged: " + dayjs(req.session.last_logged, 'MM/DD/YYYY'))
+
     res.render("homepage", {
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,
+      last_logged: req.session.last_logged,
     });
   } catch (error) {
     console.log(error);
@@ -84,6 +88,7 @@ router.get("/boards", async (req, res) => {
       projects,
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,
+      last_logged: req.session.last_logged,
     });
   } catch (error) {
     console.log(error);
@@ -108,10 +113,11 @@ router.get("/boards/:id", withAuth, async (req, res) => {
       ],
     });
 
-    console.log(req.session.user_id);
+    const last_logged = dayjs(req.session.last_logged).unix();
 
     const projects = projectData.map((project) => project.get({ plain: true }));
-    console.log(projects);
+
+
 
     for (let i = 0; i < projects.length; i++) {
       projects[i].todo = [];
@@ -124,6 +130,12 @@ router.get("/boards/:id", withAuth, async (req, res) => {
         : 0;
       for (let j = 0; j < ticketsArray; j++) {
         projects[i].tickets[j].isOwner = true;
+        const date_created = dayjs(projects[i].tickets[j].date_created).unix()
+        if (date_created > last_logged) {
+          projects[i].tickets[j].new_item = true;
+        } else {
+          projects[i].tickets[j].new_item = false;
+        }
         if (projects[i].tickets[j].status === "todo") {
           projects[i].todo.push(projects[i].tickets[j]);
         } else if (projects[i].tickets[j].status === "doing") {
@@ -136,14 +148,19 @@ router.get("/boards/:id", withAuth, async (req, res) => {
       }
     }
 
+    const now = dayjs();
 
+    req.session.save(() => {
+      req.session.last_logged = now;
+    })
 
     console.log("Session user_name: " + req.session.user_name);
 
     res.render("boards", {
       projects,
-      logged_in: req.session.logged_in,
       user_name: req.session.user_name,
+      logged_in: req.session.logged_in,
+      last_logged: req.session.last_logged,
     });
   } catch (error) {
     console.log(error);
@@ -156,6 +173,7 @@ router.get("/client", async (req, res) => {
     res.render("homepage", {
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,
+      last_logged: req.session.last_logged,
     });
   } catch (error) {
     console.log(error);
