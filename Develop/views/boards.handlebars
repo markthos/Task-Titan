@@ -91,7 +91,7 @@
             <h4 class="center-align">Done</h4>
             {{#each project.done as |ticket|}}
                 <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
-                        <li>{{> ticket_card}}</li>
+                    <li>{{> ticket_card}}</li>
                 </ul>
             {{/each}}
             <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
