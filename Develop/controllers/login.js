@@ -50,13 +50,15 @@ router.post('/signup', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-
-    // Automatically log in the newly signed up user
+    console.log(userData);
+    // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json({ user: userData, message: 'Signup successful' });
+      req.session.user_name = userData.first_name;
+      res.redirect(`/boards/${userData.id}`); // Redirect to associated page
     });
+
   } catch (err) {
     res.status(400).json(err);
   }
