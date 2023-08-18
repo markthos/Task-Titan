@@ -12,20 +12,18 @@
             <div class="card-content">
                 <div class="row">
                     {{#if new_item}}
-                    <span class="notification">🦹🏻</span>
+                    <span class="notification col">🦹🏻‍♂️</span>
                     {{/if}}
-                    <span class="card-title col">{{title}}</span>
+                    <h2 style="font-weight: bold;" class="card-title col">{{title}}</h2>
                 </div>
                 <div class="hide_all_contents" style="display:none;"> <!-- hiding all content for simple viewing-->
                     <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
+                    <p style="font-weight: bold;" >Task Notes:</p>
                     <p>{{ text }}</p>
                     {{else}}
                         <input type="text" size="100%" id="new_ticket_title" value={{title}} />
                         <textarea style="height:200px; width: 100%" rows="10" cols="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
                     {{/unless}}
-                        <div>
-                            <button class="comment-button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
-                        </div>
                     {{#if isOwner}}
                         <div class="card-action center-align">
                             {{#unless is_editing}}
@@ -53,15 +51,20 @@
                             {{/unless}}
                         </div>
                     {{/if}}
+                    <div class="center-align">
+                        <button class="comment-button btn-small  " data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+                    </div>
                     <div id="comments_section" style="display: none; flex-direction: column">
                         <ul id="comment_list" style="list-style-type: none;">
                         </ul>
-                        <div>
-                            <button style="color:black;" id="add_comment">Add Comment +</button>
+                        <div class="center-align">
+                            <button class="btn-small" id="add_comment">Add Comment +</button>
                         </div>
                         <div id="add_comment_display" style="display: none; flex-direction: column; align-items:center; ">
-                            <textarea style="width:80%; color:black;" rows="10" type="textarea" id="new_comment"></textarea>
-                            <button style="color:black;" id="submit_new_comment" >Submit</button>
+                            <textarea style="width:95%; height:50px; resize:none;" rows="20" type="textarea" id="new_comment"></textarea>
+                            <div class="center-align">
+                                <button class="btn-small" id="submit_new_comment" >Submit</button>
+                            </div>  
                         </div>
                     </div>
                 </div>

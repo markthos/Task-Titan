@@ -2,15 +2,21 @@
 
 
 {{!-- STILL NEEDS TO BE INTEGRATED WITH MATERIALIZE CSS --EDWARD 16 AUG 2023 --}}
-<section name="new_ticket" class="new_ticket" style="background-color: rgb(66, 153, 153); box-shadow: 5px 5px rgb(31, 31, 31); padding: 10px; margin-bottom: 10px;">
-    <div class="card_header" style="width:100%;">
-        <input type="text" size="100" class="new_ticket_title" placeholder="Task header" />
+<div class="row ticket dragthing" data-id="{{id}}">
+    <div class="col s12 m12 l12">
+        <div class="card grey lighten-4 hoverable">
+            <section name="new_ticket" class="new_ticket container">
+                <div class="card_header" style="width:100%;">
+                    <input type="text" size="100" class="new_ticket_title" required placeholder="Task header" />
+                </div>
+                <div>
+                    <textarea style="height:auto;" rows="10" type="textarea" required class="new_ticket_content" placeholder="New Task Details"></textarea>
+                </div>
+                <div style="display: flex; gap:5px; padding: 20px 0px;">
+                    <button class="save_button btn-small" type="submit" data-action="save">Save</button>
+                    <button class="cancel_button btn-small" data-action="cancel">Cancel</button>
+                </div>
+            <section>
+        </div>
     </div>
-    <div>
-        <textarea style="height:auto;" rows="10" type="textarea" class="new_ticket_content" placeholder="New Task Details"></textarea>
-    </div>
-    <div style="display: flex; gap:5px;">
-        <button style="color:black;" class="save_button" data-action="save">Save</button>
-        <button style="color:black;" class="cancel_button" data-action="cancel">Cancel</button>
-    </div>
-<section>
+</div>

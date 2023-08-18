@@ -62,3 +62,7 @@
    color: white;
    margin-bottom: 2rem;
  }
+
+ .modal {
+  z-index: 99;
+ }
