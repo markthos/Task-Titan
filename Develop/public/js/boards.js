@@ -1,3 +1,5 @@
+let access_level;
+
 const saveNewTicket = async (ticket, status, project_id) => {
   const titleData = ticket.querySelector(".new_ticket_title");
   const textData = ticket.querySelector(".new_ticket_content");
@@ -22,23 +24,24 @@ const saveNewTicket = async (ticket, status, project_id) => {
 };
 
 document.addEventListener("click", (event) => {
-    const target = event.target;
-    const addTaskButton = target.closest(".add_task");
-  
-    if (addTaskButton) {
-      const targetSelector = addTaskButton.getAttribute("data-target");
-      const targetStatus = addTaskButton.getAttribute("data-status"); // Get the status
-  
-      // Adjust the selector to target the .new_task element with the specific data-status
-      const targetElement = document.querySelector(`.new_task[data-status="${targetStatus}"]`);
-  
-      if (targetElement) {
-        targetElement.style.display = "block";
-      }
-    }
-  });
+  const target = event.target;
+  const addTaskButton = target.closest(".add_task");
 
-  
+  if (addTaskButton) {
+    const targetSelector = addTaskButton.getAttribute("data-target");
+    const targetStatus = addTaskButton.getAttribute("data-status"); // Get the status
+
+    // Adjust the selector to target the .new_task element with the specific data-status
+    const targetElement = document.querySelector(
+      `.new_task[data-status="${targetStatus}"]`
+    );
+
+    if (targetElement) {
+      targetElement.style.display = "block";
+    }
+  }
+});
+
 document.addEventListener("click", async (event) => {
   const target = event.target;
   const ticket = target.closest(".new_ticket");
@@ -61,16 +64,15 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-
-const access_level = async () => {
+const findAccessLevel = async (access_level) => {
   const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
-  const user_id_selector = document.querySelector("#user_id")
+  const user_id_selector = document.querySelector("#user_id");
   const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
   const user_id = user_id_selector.getAttribute("data-user-id");
 
-  console.log(project_id, "userID:" + user_id)
+  console.log(project_id, "userID:" + user_id);
 
-  const response = await fetch(`/api/collaborator`, {
+  const response = await fetch(`/api/collaborator/validate`, {
     method: "POST", // Change this to POST
     body: JSON.stringify({ project_id, user_id }),
     headers: {
@@ -79,24 +81,19 @@ const access_level = async () => {
   });
 
   if (!response) {
-    return console.log(response)
+    return console.log("nope");
   }
 
-  const data = await response.json(); 
-  
-  const access_level = data[0].access_level
+  access_level = await response.json();
+  console.log("Access Level: " + access_level);
 
   if (access_level === "admin") {
-    console.log("ello admin");
-    window.location.replace('/')
+    PUTTHESHITHERE.textContent = "admin view";
+  } else if (access_level === "worker") {
+    PUTTHESHITHERE.textContent = "admin view";
   } else if (access_level === "client") {
-    console.log("ello govna")
-  } else {
-    console.log("you suck")
+    PUTTHESHITHERE.textContent = "client view";
   }
-
-
-  
 };
 
-document.addEventListener("DOMContentLoaded", access_level);
+document.addEventListener("DOMContentLoaded", findAccessLevel);
