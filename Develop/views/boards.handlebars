@@ -50,13 +50,14 @@
         </div>
     </div>
 
-    <div class="row">
+    {{!-- ADMIN AND WORKER VIEW ONLY --}}
+    <div id="project_view" class="row" style="display: block;">
 
         {{!-- START TO DO COLUMN --}}
         <div id="todo" class="col s12 m6 l3">
             <h4 class="center-align">To Do</h4>
             {{#each project.todo as |ticket|}}
-                <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
+                <ul  class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                         <li>{{> ticket_card}}</li>
                 </ul>
             {{/each}}
@@ -75,7 +76,7 @@
         <div id="doing" class="col s12 m6 l3">
             <h4 class="center-align">In Progress</h4>
             {{#each project.doing as |ticket|}}
-                <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
+                <ul  class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                     <li>{{> ticket_card}}</li>
                 </ul>
             {{/each}}
@@ -94,7 +95,7 @@
         <div id="review" class="col s12 m6 l3">
             <h4 class="center-align">In Review</h4>
             {{#each project.review as |ticket|}}
-                <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
+                <ul  class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                     <li>{{> ticket_card}}</li>
                 </ul>
             {{/each}}
@@ -115,7 +116,6 @@
             {{#each project.done as |ticket|}}
                 <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                     <li>{{> ticket_card}}</li>
-                </ul>
             {{/each}}
             <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
                 {{> new_ticket}}
