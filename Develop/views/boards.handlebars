@@ -11,6 +11,7 @@
             <li><a href="#!" id="myBtn" class="action-button">Select Project</a></li>
             <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
             <li><a href="#!">Delete Project</a></li>
+            <li><a href="#!">Message Board</a></li>
         </ul>
     </div>
 </nav>
@@ -27,6 +28,14 @@
 {{>new_project_modal}}
 {{>project_select_modal}}
 
+
+{{!-- THIS IS COMMENT BAR THAT SLIDE IN --}}
+<a href="#" class="btn sidenav-trigger" data-target="comment_bar">Message Board</a>
+<ul id="comment_bar" class="sidenav">
+    <div class="center-align">
+        <h2>Message Board</h2>
+    </div>
+</ul>
 
 {{#each projects as |project|}}
 
