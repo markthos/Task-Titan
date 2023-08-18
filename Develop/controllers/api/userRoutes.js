@@ -2,9 +2,16 @@ const router = require("express").Router();
 const { User } = require("../../models");
 const bcrypt = require('bcrypt');
 
+
+
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
+
+    if (!userData) {
+      res.status(500).json({ message: "Failed to create user data" });
+      return;
+    }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -16,6 +23,7 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 router.post("/login", async (req, res) => {
   try {

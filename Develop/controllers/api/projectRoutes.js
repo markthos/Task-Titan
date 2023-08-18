@@ -52,11 +52,17 @@ router.get("/admin", async (req, res) => {
   try {
     const projects = await Project.findAll();
 
+    if (projects.length === 0) {
+      res.status(404).json({ message: "No projects found" });
+      return;
+    }
+
     res.status(200).json(projects);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 // to update a project
 
@@ -111,11 +117,17 @@ router.get("/", async (req, res) => {
       },
     });
 
+    if (projects.length === 0) {
+      res.status(404).json({ message: "No projects found for this user" });
+      return;
+    }
+
     res.status(200).json(projects);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 // to get one project for a user
 
