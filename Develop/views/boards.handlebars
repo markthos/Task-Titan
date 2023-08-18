@@ -8,7 +8,7 @@
         <ul class="left hide-on-med-and-down">
             <li><a href="#!">Add Client</a></li>
             <li><a href="#!">Add Worker</a></li>
-            <li><a href="#!">Select Project</a></li>
+            <li><a href="#!" id="myBtn" class="action-button">Select Project</a></li>
             <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
             <li><a href="#!">Delete Project</a></li>
         </ul>
@@ -18,13 +18,15 @@
 <ul class="sidenav" id="my-board-nav">
     <li><a href="#!">Add Client</a></li>
     <li><a href="#!">Add Worker</a></li>
-    <li><a href="#!">Select Project</a></li>
+    <li><a href="#!" id="myBtn" class="action-button">Select Project</a></li>
     <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
     <li><a href="#!">Delete Project</a></li>
 </ul>
 
-<!-- THIS IS THE MODAL FOR CREATING A NEW PROJECT -->
+<!-- THIS IS THE MODAL FOR CREATING A NEW PROJECT AND SELECTING A CURRENT PROJECT -->
 {{>new_project_modal}}
+{{>project_select_modal}}
+
 
 {{#each projects as |project|}}
 
