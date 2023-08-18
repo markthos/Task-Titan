@@ -64,5 +64,5 @@
  }
 
  .modal {
-  height: "max-height";
+  z-index: 99;
  }

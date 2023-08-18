@@ -228,7 +228,11 @@ function init() {
     } else if (target.matches(".save_button")) {
       const title = ticket.querySelector("#new_ticket_title").value.trim();
       const text = ticket.querySelector("#new_ticket_content").value.trim();
-      handleUpdateSubmit(ticketId, title, text);
+      if (text == "" || title == "") {
+        alert("no text")
+      } else {
+        handleUpdateSubmit(ticketId, title, text);
+      }
     } else if (target.matches(".cancel_button")) {
       console.log("here");
       handleCancel(ticketId, ticket);
