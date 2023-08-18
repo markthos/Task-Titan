@@ -13,11 +13,10 @@
                 <div>
                     <span class="card-title">{{title}}</span>
                     {{#if new_item}}
-                    <span class="notification">  </span>
+                    <span class="notification"></span>
                     {{/if}}
                 </div>
-                
-
+                <div class="hide_all_contents" style="display:block;"> <!-- hiding all content for simple viewing-->
                         <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
                         <p>{{ text }}</p>
                     
@@ -45,12 +44,12 @@
                         </a>
                         {{else}}
                         <a class="waves-effect btn-small-flat blue-text save_button" data-action="save" data-id="{{id}}">
-                            <i class="material-icons left">save</i
-                            >save
+                            <i class="material-icons left">save</i>
+                            Save
                         </a>
                         <a class="waves-effect btn-small-flat blue-text cancel_button" data-action="cancel" data-id="{{id}}">
                             <i class="material-icons left">cancel</i>
-                            cancel
+                            Cancel
                         </a>
                         {{/unless}}
                     </div>
@@ -66,7 +65,7 @@
                             <button style="color:black;" id="submit_new_comment" >Submit</button>
                         </div>
                     </div>
-
+                </div>
             </div>
         </div>
     </div>
