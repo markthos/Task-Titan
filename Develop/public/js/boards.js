@@ -97,3 +97,7 @@ const findAccessLevel = async (access_level) => {
 };
 
 document.addEventListener("DOMContentLoaded", findAccessLevel);
+
+
+const progress_stat = document.querySelector('#progress_stat')
+
