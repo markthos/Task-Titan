@@ -62,3 +62,7 @@
    color: white;
    margin-bottom: 2rem;
  }
+
+ .modal {
+  height: "max-height";
+ }
