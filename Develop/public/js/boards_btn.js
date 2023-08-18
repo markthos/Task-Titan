@@ -46,3 +46,9 @@ spanModal2.addEventListener("click", function(event) {
   modal2.style.display = "none";
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('#comment_bar');
+  var instances = M.Sidenav.init(elems, {edge:'right'});
+});
+
+
