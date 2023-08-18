@@ -15,3 +15,27 @@ window.onclick = function (event) {
     modal2.style.display = "none";
   }
 };
+
+// When user creates a new project redirect to the boards/:id route
+const newProjectHandler = async (event) => {
+  event.preventDefault();
+
+  const name = document.querySelector("#project-name").value.trim();
+  const description = document.querySelector("#project-description").value.trim();
+
+  if (name && description) {
+    const response = await fetch(`/api/projects`, {
+      method: "POST",
+      body: JSON.stringify({ name, description }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace(`/boards/${response.id}`);
+    } else {
+      alert("Failed to create project");
+    }
+  }
+}

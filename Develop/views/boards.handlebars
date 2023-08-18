@@ -9,6 +9,7 @@
             <li><a href="#!">Add Client</a></li>
             <li><a href="#!">Add Worker</a></li>
             <li><a href="#!">Select Project</a></li>
+            <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
             <li><a href="#!">Delete Project</a></li>
         </ul>
     </div>
@@ -18,10 +19,12 @@
     <li><a href="#!">Add Client</a></li>
     <li><a href="#!">Add Worker</a></li>
     <li><a href="#!">Select Project</a></li>
+    <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
     <li><a href="#!">Delete Project</a></li>
 </ul>
 
-
+<!-- THIS IS THE MODAL FOR CREATING A NEW PROJECT -->
+{{>new_project_modal}}
 
 {{#each projects as |project|}}
 
@@ -111,3 +114,5 @@
 
 <script src="/js/ticket.js"></script>
 <script src="/js/boards.js"></script>
+<script src="/js/new_project.js"></script>
+<script src="/js/side_bar.js"></script>
