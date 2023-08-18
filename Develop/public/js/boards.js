@@ -60,3 +60,43 @@ document.addEventListener("click", async (event) => {
     new_ticket.style.display = "none";
   }
 });
+
+
+const access_level = async () => {
+  const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
+  const user_id_selector = document.querySelector("#user_id")
+  const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
+  const user_id = user_id_selector.getAttribute("data-user-id");
+
+  console.log(project_id, "userID:" + user_id)
+
+  const response = await fetch(`/api/collaborator`, {
+    method: "POST", // Change this to POST
+    body: JSON.stringify({ project_id, user_id }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response) {
+    return console.log(response)
+  }
+
+  const data = await response.json(); 
+  
+  const access_level = data[0].access_level
+
+  if (access_level === "admin") {
+    console.log("ello admin");
+    window.location.replace('/')
+  } else if (access_level === "client") {
+    console.log("ello govna")
+  } else {
+    console.log("you suck")
+  }
+
+
+  
+};
+
+document.addEventListener("DOMContentLoaded", access_level);

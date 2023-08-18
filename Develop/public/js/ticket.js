@@ -15,8 +15,7 @@ function init() {
       const itemId = el.getAttribute("data-id"); // assuming you have a unique identifier for each item
       const status = target.id; // you might want to use a unique identifier for each container as well
 
-      console.log("This happened");
-      console.log(itemId, status);
+      console.log("item ID :" + itemId + " status: " + status);
 
       // Prepare the data for the update
       const updateData = {

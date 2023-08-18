@@ -1,5 +1,5 @@
 <!-- Boards Page -->
-
+<div id="user_id" data-user-id="{{user_id}}"></div>
 
 {{!-- SECONDARY NAV BAR FOR WORKING ON PROJECT BOARDS --}}
 <nav>
@@ -29,6 +29,7 @@
 {{#each projects as |project|}}
 
     <h3 class="center-align">{{project.name}}</h3>
+    <h3 id="PUTTHESHITHERE" style="color:black;" data-project-id="{{project.id}}" ></h3>
 
     <div class="row">
 
@@ -111,7 +112,3 @@
     </div>
 {{/each}}
 
-
-<script src="/js/ticket.js"></script>
-<script src="/js/boards.js"></script>
-<script src="/js/boards_btn.js"></script>
