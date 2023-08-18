@@ -27,8 +27,9 @@ router.post("/", async (req, res) => {
         name,
         date_started,
         type,
-        user_id: req.session.user_id,
+        owner_id: req.session.user_id,
       });
+      return res.redirect(`/boards/${newProject.id}`);
     } else {
       // FUNCTIONS WITHOUT A USER ID PURELY FOR TESTING PURPOSES
       newProject = await Project.create({
