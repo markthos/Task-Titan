@@ -69,6 +69,9 @@ const findAccessLevel = async (access_level) => {
   const user_id_selector = document.querySelector("#user_id");
   const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
   const user_id = user_id_selector.getAttribute("data-user-id");
+  const project_view = document.querySelector("#project_view")
+  const worker_hide = document.querySelectorAll(".worker_hide")
+
 
   console.log(project_id, "userID:" + user_id);
 
@@ -89,11 +92,21 @@ const findAccessLevel = async (access_level) => {
 
   if (access_level === "admin") {
     PUTTHESHITHERE.textContent = "admin view";
-  } else if (access_level === "worker") {
-    PUTTHESHITHERE.textContent = "admin view";
+    project_view.style.display = "block"
+    worker_hide.forEach(e => {
+      e.style.display = "block"
+    })
+  }  else if (access_level === "worker") {
+    PUTTHESHITHERE.textContent = "worker view";
+    project_view.style.display = "block"
+    worker_hide.forEach(e => {
+      e.style.display = "none"
+    })
   } else if (access_level === "client") {
     PUTTHESHITHERE.textContent = "client view";
+    project_view.style.display = "none"
   }
+
 };
 
 document.addEventListener("DOMContentLoaded", findAccessLevel);

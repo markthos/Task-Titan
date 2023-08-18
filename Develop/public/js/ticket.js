@@ -3,7 +3,7 @@ function init() {
     document.querySelector("#todo"),
     document.querySelector("#doing"),
     document.querySelector("#review"),
-    document.querySelector("#done"),
+    document.querySelector("#done")
   ];
 
   const drake = dragula(containers, {
@@ -235,3 +235,6 @@ function init() {
     }
   });
 }
+
+
+document.addEventListener("DOMContentLoaded", init);
