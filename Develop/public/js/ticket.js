@@ -178,8 +178,18 @@ function init() {
       return; // Click didn't happen within a ticket, exit
     }
 
-    const hide_all = ticket.querySelector(".hide_all_contents");
+    console.log("click");
 
+    const hide_all = ticket.querySelector(".hide_all_contents");
+    const card_title = ticket.querySelector(".card-title");
+
+    if (hide_all && card_title) {
+      if (hide_all.style.display === "none" || !hide_all.style.display) {
+        hide_all.style.display = "block";
+      } else if (card_title === target && hide_all.style.display === "block") {
+        hide_all.style.display = "none";
+      }
+    }
 
     const ticketId = ticket.getAttribute("data-id");
 
