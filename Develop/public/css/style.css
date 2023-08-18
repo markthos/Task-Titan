@@ -1,0 +1,11 @@
+.notification {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    color: white;
+    font-size: 15px;
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+}

@@ -179,11 +179,8 @@ function init() {
       return; // Click didn't happen within a ticket, exit
     }
 
-    const hide_all = ticket.querySelector(".hide_all_contents")
-    
-    if (hide_all.style.display === "none") {
-      hide_all.style.display = "block";
-    } 
+    const hide_all = ticket.querySelector(".hide_all_contents");
+
 
     const ticketId = ticket.getAttribute("data-id");
 
@@ -204,9 +201,7 @@ function init() {
       }
     } else if (target.matches("#add_comment")) {
       // Handle add comment button click
-      const addCommentDisplay = ticket.querySelector(
-        "#add_comment_display"
-      );
+      const addCommentDisplay = ticket.querySelector("#add_comment_display");
       if (addCommentDisplay.style.display === "none") {
         target.innerHTML = "Cancel";
         addCommentDisplay.style.display = "flex";
