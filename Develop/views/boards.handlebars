@@ -54,15 +54,18 @@
     <div id="project_view" class="row" style="display: block;">
 
         {{!-- START TO DO COLUMN --}}
-        <div id="todo" class="col s12 m6 l3">
+        <div class="col s12 m6 l3">
             <h4 class="center-align">To Do</h4>
-            {{#each project.todo as |ticket|}}
-                <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                        <li>{{> ticket_card}}</li>
-                </ul>
-            {{/each}}
-            <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
-                {{> new_ticket}}
+            <div id="todo" >
+                {{#each project.todo as |ticket|}}
+                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
+                            <li>{{> ticket_card}}</li>
+                    </ul>
+                {{/each}}
+                <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
+                    {{> new_ticket}}
+                </div>
+                <br/>
             </div>
             <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
@@ -71,36 +74,44 @@
                 </a>
             </section>
         </div>
+
         
         {{!-- START DOING COLUMN --}}
-        <div id="doing" class="col s12 m6 l3">
+        <div class="col s12 m6 l3">
             <h4 class="center-align">In Progress</h4>
-            {{#each project.doing as |ticket|}}
-                <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                    <li>{{> ticket_card}}</li>
-                </ul>
-            {{/each}}
-            <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
-                {{> new_ticket}}
+            <div id="doing" >
+                {{#each project.doing as |ticket|}}
+                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                {{/each}}
+                <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
+                    {{> new_ticket}}
+                </div>
+                <br/>
             </div>
-            <section class="section center-align worker_hide" style="display: block">
+             <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
                     <i class="material-icons left">add</i>
                     Add Task
                 </a>
             </section>
         </div>
+
         
         {{!-- START REVIEW COLUMN --}}
-        <div id="review" class="col s12 m6 l3">
+        <div class="col s12 m6 l3">
             <h4 class="center-align">In Review</h4>
-            {{#each project.review as |ticket|}}
-                <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                    <li>{{> ticket_card}}</li>
-                </ul>
-            {{/each}}
-            <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
-                {{> new_ticket}}
+            <div id="review" >
+                {{#each project.review as |ticket|}}
+                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                {{/each}}
+                <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
+                    {{> new_ticket}}
+                </div>
+                <br/>
             </div>
             <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
@@ -109,25 +120,31 @@
                 </a>
             </section>
         </div>
+
         
         {{!-- START DONE COLUMN --}}
-        <div id="done" class="col s12 m6 l3">
+        <div class="col s12 m6 l3">
             <h4 class="center-align">Done</h4>
-            {{#each project.done as |ticket|}}
-                <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                    <li>{{> ticket_card}}</li>
-                </ul>
-            {{/each}}
-            <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
-                {{> new_ticket}}
+            <div id="done" >
+                
+                {{#each project.done as |ticket|}}
+                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
+                        <li>{{> ticket_card}}</li>
+                    </ul>
+                {{/each}}
+                <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
+                    {{> new_ticket}}
+                </div>
+                <br/>
             </div>
             <section class="section center-align worker_hide" style="display: block">
-                <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
-                    <i class="material-icons left">add</i>
-                    Add Task
-                </a>
+                    <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
+                        <i class="material-icons left">add</i>
+                        Add Task
+                    </a>
             </section>
         </div>
+        
 
     </div>
 {{/each}}
