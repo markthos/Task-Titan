@@ -101,7 +101,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
   try {
     const projectData = await Project.findAll({
       where: {
-        owner_id: req.params.id,
+        id: req.params.id,
       },
       include: [
         {
