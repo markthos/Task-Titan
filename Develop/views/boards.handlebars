@@ -64,7 +64,7 @@
             <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
                 {{> new_ticket}}
             </div>
-            <section class="section center-align">
+            <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -83,7 +83,7 @@
             <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
                 {{> new_ticket}}
             </div>
-            <section class="section center-align">
+            <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -102,7 +102,7 @@
             <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
                 {{> new_ticket}}
             </div>
-            <section class="section center-align">
+            <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -111,16 +111,17 @@
         </div>
         
         {{!-- START DONE COLUMN --}}
-        <div id="done" class="col s12 m6 l3">
+        <div id="done" class="col s12 m6 l3 done">
             <h4 class="center-align">Done</h4>
             {{#each project.done as |ticket|}}
                 <ul class="dragthing" style="list-style-type: none;" data-id="{{ticket.id}}">
                     <li>{{> ticket_card}}</li>
+                </ul>
             {{/each}}
             <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
                 {{> new_ticket}}
             </div>
-            <section class="section center-align">
+            <section class="section center-align worker_hide" style="display: block">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
                     <i class="material-icons left">add</i>
                     Add Task
