@@ -17,54 +17,53 @@
                     {{/if}}
                 </div>
                 <div class="hide_all_contents" style="display:block;"> <!-- hiding all content for simple viewing-->
-                        <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
-                        <p>{{ text }}</p>
-                    
+                    <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
+                    <p>{{ text }}</p>
+            {{else}}
+                <input type="text" size="100%" id="new_ticket_title" value={{title}} />
+                <textarea style="height:200px; width: 100%" rows="10" cols="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
+            {{/unless}}
+                    <div>
+                    <button class="comment-button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+                </div>
+                {{#if isOwner}}
+                <div class="card-action center-align">
+                    {{#unless is_editing}}
+                    <a class="waves-effect btn-small-flat blue-text edit_button" data-action="edit" data-id="{{id}}">
+                        <i class="material-icons left">edit</i>
+                        Edit
+                    </a>
+                    <a class="waves-effect btn-small-flat blue-text delete_button" data-id="{{id}}">
+                        <i class="material-icons left">delete</i>
+                        Delete
+                    </a>
+                    <a class="waves-effect btn-small-flat blue-text">
+                        <i class="material-icons left">reorder</i>
+                        Move
+                    </a>
                     {{else}}
-                    <input type="text" size="100" id="new_ticket_title" value={{title}} />
-                    <textarea style="height:auto;" rows="10" type="textarea" id="new_ticket_content">{{ text }}</textarea>
+                    <a class="waves-effect btn-small-flat blue-text save_button" data-action="save" data-id="{{id}}">
+                        <i class="material-icons left">save</i>
+                        Save
+                    </a>
+                    <a class="waves-effect btn-small-flat blue-text cancel_button" data-action="cancel" data-id="{{id}}">
+                        <i class="material-icons left">cancel</i>
+                        Cancel
+                    </a>
                     {{/unless}}
-                     <div>
-                        <button class="comment-button" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+                </div>
+                {{/if}}
+                <div id="comments_section" style="display: none; flex-direction: column">
+                    <ul id="comment_list" style="list-style-type: none;">
+                    </ul>
+                    <div>
+                        <button style="color:black;" id="add_comment">Add Comment +</button>
                     </div>
-                    {{#if isOwner}}
-                    <div class="card-action center-align">
-                        {{#unless is_editing}}
-                        <a class="waves-effect btn-small-flat blue-text edit_button" data-action="edit" data-id="{{id}}">
-                            <i class="material-icons left">edit</i>
-                            Edit
-                        </a>
-                        <a class="waves-effect btn-small-flat blue-text delete_button" data-id="{{id}}">
-                            <i class="material-icons left">delete</i>
-                            Delete
-                        </a>
-                        <a class="waves-effect btn-small-flat blue-text">
-                            <i class="material-icons left">reorder</i>
-                            Move
-                        </a>
-                        {{else}}
-                        <a class="waves-effect btn-small-flat blue-text save_button" data-action="save" data-id="{{id}}">
-                            <i class="material-icons left">save</i>
-                            Save
-                        </a>
-                        <a class="waves-effect btn-small-flat blue-text cancel_button" data-action="cancel" data-id="{{id}}">
-                            <i class="material-icons left">cancel</i>
-                            Cancel
-                        </a>
-                        {{/unless}}
+                    <div id="add_comment_display" style="display: none; flex-direction: column; align-items:center; ">
+                        <textarea style="width:80%; color:black;" rows="10" type="textarea" id="new_comment"></textarea>
+                        <button style="color:black;" id="submit_new_comment" >Submit</button>
                     </div>
-                    {{/if}}
-                    <div id="comments_section" style="display: none; flex-direction: column">
-                        <ul id="comment_list" style="list-style-type: none;">
-                        </ul>
-                        <div>
-                            <button style="color:black;" id="add_comment">Add Comment +</button>
-                        </div>
-                        <div id="add_comment_display" style="display: none; flex-direction: column; align-items:center; ">
-                            <textarea style="width:80%; color:black;" rows="10" type="textarea" id="new_comment"></textarea>
-                            <button style="color:black;" id="submit_new_comment" >Submit</button>
-                        </div>
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
