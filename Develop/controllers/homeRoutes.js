@@ -119,6 +119,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
 
+    let ticketsArray = [];
 
     for (let i = 0; i < projects.length; i++) {
       projects[i].todo = [];
@@ -126,7 +127,8 @@ router.get("/boards/:id", withAuth, async (req, res) => {
       projects[i].review = [];
       projects[i].done = [];
       
-      let ticketsArray = projects[i].tickets.length
+      
+      ticketsArray = projects[i].tickets.length
         ? projects[i].tickets.length
         : 0;
       for (let j = 0; j < ticketsArray; j++) {
@@ -149,6 +151,12 @@ router.get("/boards/:id", withAuth, async (req, res) => {
       }
     }
 
+
+    const progress_data = Math.round((projects[0].done.length / ticketsArray) * 100)
+
+    projects[0].progress_data = progress_data
+
+
     const now = dayjs();
 
     req.session.save(() => {
@@ -159,6 +167,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
 
     res.render("boards", {
       projects,
+      progress_data,
       user_id: req.session.user_id,
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,

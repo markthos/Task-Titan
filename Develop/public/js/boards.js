@@ -48,7 +48,7 @@ document.addEventListener("click", async (event) => {
   const new_ticket = target.closest(".new_task");
 
   if (!ticket) {
-    return; // Click didn't happen within a ticket, exit
+    return; 
   }
 
   console.log("clicked new ticket");
@@ -73,7 +73,7 @@ const findAccessLevel = async (access_level) => {
   console.log(project_id, "userID:" + user_id);
 
   const response = await fetch(`/api/collaborator/validate`, {
-    method: "POST", // Change this to POST
+    method: "POST",
     body: JSON.stringify({ project_id, user_id }),
     headers: {
       "Content-Type": "application/json",
@@ -99,5 +99,6 @@ const findAccessLevel = async (access_level) => {
 document.addEventListener("DOMContentLoaded", findAccessLevel);
 
 
+// Progress Bar
 const progress_stat = document.querySelector('#progress_stat')
-
+progress_stat.style.width = progress_stat.textContent
