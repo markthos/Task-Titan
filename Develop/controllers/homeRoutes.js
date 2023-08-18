@@ -86,6 +86,7 @@ router.get("/boards", async (req, res) => {
 
     res.render("boards", {
       projects,
+      user_id: req.session.user_id,
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,
       last_logged: req.session.last_logged,
@@ -158,6 +159,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
 
     res.render("boards", {
       projects,
+      user_id: req.session.user_id,
       user_name: req.session.user_name,
       logged_in: req.session.logged_in,
       last_logged: req.session.last_logged,
