@@ -106,6 +106,7 @@ const findAccessLevel = async (access_level) => {
     PUTTHESHITHERE.textContent = "client view";
     project_view.style.display = "none"
   }
+
 };
 
 document.addEventListener("DOMContentLoaded", findAccessLevel);
