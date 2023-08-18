@@ -37,11 +37,18 @@ router.get("/", async (req, res) => {
     const tickets = await Ticket.findAll({
       where: { creator_id: req.session.user_id },
     });
+
+    if (tickets.length === 0) {
+      res.status(404).json({ message: "No new tickets found for the user" });
+      return;
+    }
+
     res.status(200).json(tickets);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 
 // Update a ticket by ID
 router.put("/", async (req, res) => {
