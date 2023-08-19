@@ -1,29 +1,46 @@
 <!-- Signup Page -->
 
 
+<div class="taskTitan_banner">
+    <h2>Sign Up</h2>
+</div>
+
 <section class="section container">
-    <h2 class="center-align">Sign Up</h2>
     <div class="row">
-        <div class="col s6 offset-s3">
-            <form action="/signup" method="post">
-                <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" name="first_name" placeholder="Dick" required>
-                <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" name="last_name" placeholder="Grayson" required>
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" placeholder="not_robin@teentitans.io" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="**********" required>
-                <div class="center-align">
-                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Crush It!</button>
+        <form class="col s12 m8 offset-m2 l6 offset-l3" action="/signup" method="post">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
                 </div>
-                <div class="center-align">
-                    <label for="current_user">Already a User?</label><br>
-                    <a href="/login">
-                    <button type="button" class="waves-effect waves-light btn deep-purple" id="current_user">Login Now!</button>
-                    </a>
+                <div class="input-field col s6">
+                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
                 </div>
-            </form>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="**********" id="password" name="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="robin@teentitans.go" id="email" name="password" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Sign Up Now!</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col s12 center-align">
+                <p>Already a Member?</p>
+                <a href="/login" class="waves-effect waves-light btn deep-purple" id="current_user">Login Now!</a>
+            </div>
         </div>
     </div>
 </section>
