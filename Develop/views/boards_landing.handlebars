@@ -1,0 +1,15 @@
+<section>
+    <div class="col center-align s12 m12 l12">
+        <h2>My Boards</h2>
+        
+        <ul>
+            {{#each projects as |project|}}
+                <li>
+                    <a href="/boards/{{project.id}}" class="btn pink lighten-2" style="max-width: 1000px;">{{project.name}}</a>
+                </li>
+            <br/>
+            {{/each}}
+        </ul>
+    </div>
+</section>
+

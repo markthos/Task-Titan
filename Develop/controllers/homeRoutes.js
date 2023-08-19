@@ -70,11 +70,6 @@ router.get("/logout", async (req, res) => {
 
 router.get("/boards", async (req, res) => {
   try {
-    // We know the user id at this time.
-    // generate the tickets from a fetch on the JS attached to the boards page
-    //req.params in this sence is Project ID. That ID will tell what tickets to fetch
-
-    // map all of this user's projects and the tickets associated with the user and their projects and render them to the page
     const projectData = await Project.findAll({
       where: {
         owner_id: req.session.user_id,
@@ -84,7 +79,7 @@ router.get("/boards", async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
     console.log(projects);
 
-    res.render("boards", {
+    res.render("boards_landing", {
       projects,
       user_id: req.session.user_id,
       user_name: req.session.user_name,
