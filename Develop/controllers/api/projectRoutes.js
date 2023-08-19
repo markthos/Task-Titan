@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const { Project } = require("../../models");
 const withAuth = require("../../utils/auth");
+const { Collaborator } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
     const { name, date_started, type } = req.body;
     let newProject;
+    let newCollaborator;
 
     if (req.session.user_id) {
       // If user is logged in, create a project with user_id
@@ -15,7 +17,13 @@ router.post("/", async (req, res) => {
         type,
         owner_id: req.session.user_id,
       });
-      return res.redirect(`/boards/${req.session.user_id}`);
+
+      newCollaborator = await Collaborator.create({
+        user_id: req.session.user_id,
+        project_id: newProject.id,
+        access_level: 'admin',
+      })
+      return res.redirect(`/boards/${newProject.id}`);
     } else {
       // FUNCTIONS WITHOUT A USER ID PURELY FOR TESTING PURPOSES
       newProject = await Project.create({
