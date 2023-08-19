@@ -4,9 +4,24 @@
 <section class="taskTitan_hero">
     <div class="row">
         <div class="col s12 m12 l12 center-align">
+        {{#if logged_in}}
+            <h2>Welcome Back {{user_name}}</h2>
+            <h4>Are you ready to crush your tasks today?</h4>
+            <a href="/boards" class="waves-effect waves-light btn-large deep-purple">Let's Go!</a>
+        {{else}}
             <h2>Welcome to TASK TITAN</h2>
             <h4>LETS CRUSH THIS THING</h4>
-            <a href="/login" class="waves-effect waves-light btn-large deep-purple">Dive In!</a>
+            <div class="row">
+                <div class="col s6 m6 l6">
+                    <p>Already a Member?</p>
+                    <a href="/login" class="waves-effect waves-light btn-large deep-purple">Log In!</a>
+                </div>
+                <div class="col s6 m6 l6">
+                    <p>Not a Member?</p>
+                    <a href="/signup" class="waves-effect waves-light btn-large deep-purple">Sign Up!</a>
+                </div>
+            </div>
+        {{/if}}    
         </div>
     </div>
 </section>
