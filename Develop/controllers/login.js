@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
         req.session.user_name = user.first_name;
         req.session.last_logged = now;
         console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
-        res.redirect(`/boards/${user.id}`); // Redirect to associated page
+        res.redirect(`/boards`); // Redirect to associated page
       });// Store user ID in session
       console.log("user id " + req.session.user_id + " logged in " + req.session.logged_in + " user name " + req.session.user_name);
       
@@ -56,7 +56,7 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       req.session.user_name = userData.first_name;
-      res.redirect(`/boards/${userData.id}`); // Redirect to associated page
+      res.redirect(`/boards`); // Redirect to associated page
     });
 
   } catch (err) {
