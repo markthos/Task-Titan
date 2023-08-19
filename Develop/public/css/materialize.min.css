@@ -33,12 +33,12 @@
 /* CUSTOM STYLES SPECIFIC TO TASK TITAN PROJECT */
 
  main {
-    min-height: 75vh;
+    min-height: 100vh;
  }
 
  .taskTitan_hero {
-   background-image: url('/images/ryan-stone-U3cctUBucn0-unsplash.jpg');
-   min-height: 100vh;
+   background-image: url('/images/bg/ryan-stone-U3cctUBucn0-unsplash.jpg');
+   min-height: 60vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -50,7 +50,7 @@
  }
 
  .taskTitan_banner {
-   background-image: url('/images/efe-kurnaz-RnCPiXixooY-unsplash-rot90.jpg');
+   background-image: url('/images/bg/efe-kurnaz-RnCPiXixooY-unsplash-rot90.jpg');
    min-height: 30vh;
    display: flex;
    flex-direction: column;
