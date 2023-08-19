@@ -92,7 +92,7 @@ router.get("/boards", async (req, res) => {
   }
 });
 
-router.get("/boards/:id", async (req, res) => {
+router.get("/boards/:id", withAuth, async (req, res) => {
   try {
     const projectData = await Project.findAll({
       where: {
@@ -112,6 +112,21 @@ router.get("/boards/:id", async (req, res) => {
     const last_logged = dayjs(req.session.last_logged).unix();
 
     const projects = projectData.map((project) => project.get({ plain: true }));
+
+    // get all collaborators for this project
+    const collaborators = await Collaborator.findAll({
+      where: {
+        project_id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+          attributes: ["first_name", "last_name"],
+        },
+      ],
+    });
+    
+    console.log("collaborators: " + JSON.stringify(collaborators, null, 2));
 
 
     let ticketsArray = [];
@@ -159,6 +174,7 @@ router.get("/boards/:id", async (req, res) => {
     })
 
     console.log("Session user_name: " + req.session.user_name);
+    console.log("Collaborator: ");
 
     res.render("boards", {
       projects,
