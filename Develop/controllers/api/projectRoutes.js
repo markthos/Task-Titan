@@ -1,21 +1,7 @@
 const router = require("express").Router();
 const { Project } = require("../../models");
 const withAuth = require("../../utils/auth");
-/*
-router.post("/", async (req, res) => {
-  try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
-    });
 
-    res.status(200).json(newProject);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-*/
-// ARUN, THIS IS OUR (MARK AND AVERY) POST ROUTE FOR MAKING PROJECTS
 router.post("/", async (req, res) => {
   try {
     const { name, date_started, type } = req.body;
@@ -111,16 +97,29 @@ router.delete("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const projects = await Project.findAll({
+    const projectData = await Project.findAll({
       where: {
-        user_id: req.session.user_id,
+        owner_id: req.session.user_id,
       },
     });
+
 
     if (projects.length === 0) {
       res.status(404).json({ message: "No projects found for this user" });
       return;
     }
+    
+    const projects = projectData.map((project) => project.get({ plain: true }));
+    console.log(projects);
+
+    res.status(200).json({
+      projects,
+      user_id: req.session.user_id,
+      user_name: req.session.user_name,
+      logged_in: req.session.logged_in,
+      last_logged: req.session.last_logged,
+    });
+
 
     res.status(200).json(projects);
   } catch (err) {
