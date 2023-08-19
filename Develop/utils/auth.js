@@ -3,7 +3,7 @@ const { Project } = require("../models");
 // Middleware function to check if user is logged in
 const withAuth = async (req, res, next) => {
 
-  const id = req.params.id;
+  const project_id = req.params.id;
 
   const project = await Project.findAll({
     where: {
@@ -12,7 +12,7 @@ const withAuth = async (req, res, next) => {
     },
   });
 
-  console.log(id)
+  console.log(project_id)
   console.log(req.session.user_id)
 
   console.log("project: " + project)
@@ -21,8 +21,6 @@ const withAuth = async (req, res, next) => {
     res.status(403).send("You do not have permission to view this project.");
     return;
   }
-
-
 
     // If user is not logged in, redirect to login page
     if (!req.session.logged_in) {

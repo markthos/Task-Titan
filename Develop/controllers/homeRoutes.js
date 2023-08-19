@@ -92,7 +92,7 @@ router.get("/boards", async (req, res) => {
   }
 });
 
-router.get("/boards/:id", withAuth, async (req, res) => {
+router.get("/boards/:id", async (req, res) => {
   try {
     const projectData = await Project.findAll({
       where: {
