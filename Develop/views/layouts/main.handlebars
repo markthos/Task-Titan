@@ -16,10 +16,10 @@
                 <nav class="deep-purple lighten-1">
                     <div class="nav-wrapper container">
                         <a href="/" class="brand-logo">Task Titan</a>
-                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             {{#if logged_in}}
-                                <li>Welcome, {{user_name}}</li>
+                                <li>Welcome, {{user_name}} </li>
                                 <li><a href="/boards">My Boards</a></li>
                                 <li><a href="/logout" id="logout-link" >Log Out</a></li>
                                 <li><a href="/about">About</a></li>
@@ -32,16 +32,16 @@
                     </div>
                 </nav>
             </div>
-            <ul class="sidenav" id="mobile-demo">
+            <ul class="sidenav deep-purple lighten-1" id="mobile">
                 {{#if logged_in}}
-                    <li>Welcome, {{user_name}} </li>
-                    <li><a href="/boards">My Boards</a></li>
-                    <li><a href="/logout" id="mobile-logout-link" >Log Out</a></li>
-                    <li><a href="/about">About</a></li>
+                    <li>Welcome, {{user_name}}</li>
+                    <li><a class="white-text" href="/boards">My Boards</a></li>
+                    <li><a class="white-text" href="/logout" id="mobile-logout-link" >Log Out</a></li>
+                    <li><a class="white-text" href="/about">About</a></li>
                 {{else}}
-                    <li><a href="/login">Log In</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                    <li><a href="/about">About</a></li>
+                    <li><a class="white-text" href="/login">Log In</a></li>
+                    <li><a class="white-text" href="/signup">Sign Up</a></li>
+                    <li><a class="white-text" href="/about">About</a></li>
                 {{/if}}
             </ul>
         </header>
@@ -50,7 +50,7 @@
             {{{ body }}}
         </main>
 
-        <footer class="page-footer pink lighten-2">
+        <footer class="page-footer pink">
             <section class="section container">
                 <p class="grey-text text-lighten-4">
                     Made Possible by <a class="purple-text text-lighten-4" href="/about">Team Titan</a>
@@ -71,9 +71,6 @@
         <script src="/js/dragula.min.js"></script>
         <script src="/js/logout.js"></script>
         <script src="/js/boards.js"></script>
-        <script src="/js/boards_btn.js"></script>
         <script src="/js/ticket.js"></script>
-        <script src="/js/new_project.js"></script>
-        <script src="/js/project_select.js"></script>
     </body>
 </html>

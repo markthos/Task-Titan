@@ -1,6 +1,7 @@
 <!-- BOARDS PAGE -->
 
 
+{{!-- DISPLAYS THE USER ID FOR SOME REASON? --}}
 <div id="user_id" data-user-id="{{user_id}}"></div>
 
 {{!-- SECONDARY NAV BAR FOR WORKING ON PROJECT BOARDS --}}
@@ -8,8 +9,14 @@
 
 {{#each projects as |project|}}
 
-    <h3 class="center-align">{{project.name}}</h3>
-    <p class="center-align" id="PUTTHESHITHERE" data-project-id="{{project.id}}"></p>
+    <div class="taskTitan_banner">
+        <h2>{{project.name}}</h2>
+    </div>
+
+    {{!-- DISPLAYS IF YOU ARE IN ADMIN, WORKER, CLIENT VIEW  --}}
+    <p class="flow-text center-align" id="PUTTHESHITHERE" data-project-id="{{project.id}}"></p>
+
+    {{!-- PROGRESS BAR --}}
     <div class="container">
         <div id="modded" class="row">
             <div class="col s12">
@@ -27,6 +34,7 @@
             </div>
         </div>
     </div>
+    
 
     {{!-- ADMIN AND WORKER VIEW ONLY --}}
     <section id="project_view" class="row">

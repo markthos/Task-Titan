@@ -2,7 +2,6 @@
 
 
 {{!-- TODO: Needs to be able to be commented on --}}
-{{!-- !BUG: DISPLAY GETS MESSED UP WHEN IN EDITING STATE --}}
 
 <ul class="collapsible ticket dragthing" data-id="{{id}}">
     <li>
@@ -69,6 +68,24 @@
             </div>
             {{/unless}}
         {{/if}}
+            {{!-- COMMENTS SECTION --}}
+            <div class="center-align">
+                <button class="comment-button btn-small" data-action="comments" data-id="{{id}}" data-state="closed">Comments</button>
+            </div>
+            <div id="comments_section" style="display: none; flex-direction: column">
+                <ul id="comment_list" style="list-style-type: none;">
+                    {{!-- COMMENTS GET INSERTED HERE VIA SCRIPT --}}
+                </ul>
+                <div class="center-align">
+                    <button class="btn-small" id="add_comment">Add Comment +</button>
+                </div>
+                <div id="add_comment_display" style="display: none; flex-direction: column; align-items:center; ">
+                    <textarea style="width:95%; height:50px; resize:none;" rows="20" type="textarea" id="new_comment"></textarea>
+                    <div class="center-align">
+                        <button class="btn-small" id="submit_new_comment" >Submit</button>
+                    </div>  
+                </div>
+            </div>
         </div>
     </li>
 </ul>
