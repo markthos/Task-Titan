@@ -4,6 +4,7 @@ const Ticket = require("./ticket");
 const BoardComment = require("./board_comment");
 const Collaborator = require("./collaborator");
 const TicketComment = require("./ticket_comment");
+const Client = require("./clientmodel"); // Import the Client model
 
 User.hasMany(Project, {
   foreignKey: "user_id",
@@ -84,6 +85,37 @@ TicketComment.belongsTo(User, {
   foreignKey: "creator_id",
 });
 
+
+// Associate Client with Project
+Client.hasMany(Project, {
+  foreignKey: 'client_id',
+});
+
+// Associate Client with Ticket
+Client.hasMany(Ticket, {
+  foreignKey: 'client_id',
+});
+
+// Associate Client with BoardComment
+Client.hasMany(BoardComment, {
+  foreignKey: 'client_id',
+});
+
+// Associate Client with TicketComment
+Client.hasMany(TicketComment, {
+  foreignKey: 'client_id',
+});
+
+// Associate Client with Collaborator
+Client.hasMany(Collaborator, {
+  foreignKey: 'client_id',
+});
+
+// Associate Client with User
+Client.hasMany(User, {
+  foreignKey: 'client_id',
+});
+
 module.exports = {
   User,
   Project,
@@ -91,4 +123,5 @@ module.exports = {
   BoardComment,
   TicketComment,
   Collaborator,
+  Client, // Export the Client model
 };
