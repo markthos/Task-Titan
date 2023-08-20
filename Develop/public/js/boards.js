@@ -91,19 +91,19 @@ const findAccessLevel = async (access_level) => {
   console.log("Access Level: " + access_level);
 
   if (access_level === "admin") {
-    PUTTHESHITHERE.textContent = "admin view";
+    PUTTHESHITHERE.textContent = "Admin View";
     project_view.style.display = "block"
     worker_hide.forEach(e => {
       e.style.display = "block"
     })
   }  else if (access_level === "worker") {
-    PUTTHESHITHERE.textContent = "worker view";
+    PUTTHESHITHERE.textContent = "Worker View";
     project_view.style.display = "block"
     worker_hide.forEach(e => {
       e.style.display = "none"
     })
   } else if (access_level === "client") {
-    PUTTHESHITHERE.textContent = "client view";
+    PUTTHESHITHERE.textContent = "Client View";
     project_view.style.display = "none"
   }
 
