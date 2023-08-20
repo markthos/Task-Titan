@@ -1,46 +1,15 @@
-<!-- Boards Page -->
+<!-- BOARDS PAGE -->
+
+
 <div id="user_id" data-user-id="{{user_id}}"></div>
 
 {{!-- SECONDARY NAV BAR FOR WORKING ON PROJECT BOARDS --}}
-<nav>
-    <div class="nav-wrapper container">
-        <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="left hide-on-med-and-down">
-            <li><a href="#!">Add Client</a></li>
-            <li><a href="#!">Add Worker</a></li>
-            <li><a href="#!" id="myBtn" class="action-button">Select Project</a></li>
-            <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
-            <li><a href="#!">Delete Project</a></li>
-            <li><a href="#" class="sidenav-trigger" style="display: block; margin: 0;" data-target="comment_bar">Message Board</a></li>
-        </ul>
-        
-    </div>
-</nav>
-{{!-- THIS IS FOR SMALL DISPLAYS, SHOWS AS A SLIDE OUT SIDE BAR MENU --}}
-<ul class="sidenav" id="my-board-nav">
-    <li><a href="#!">Add Client</a></li>
-    <li><a href="#!">Add Worker</a></li>
-    <li><a href="#!" id="myBtn" class="action-button">Select Project</a></li>
-    <li><a href="#!" id="myBtn2" class="action-button">New Project</a></li>
-    <li><a href="#!">Delete Project</a></li>
-</ul>
-
-<!-- THIS IS THE MODAL FOR CREATING A NEW PROJECT AND SELECTING A CURRENT PROJECT -->
-{{>new_project_modal}}
-{{>project_select_modal}}
-
-
-{{!-- THIS IS COMMENT BAR THAT SLIDE IN --}}
-<ul id="comment_bar" class="sidenav">
-    <div class="center-align">
-        <h2>Message Board</h2>
-    </div>
-</ul>
+{{>boards_nav}}
 
 {{#each projects as |project|}}
 
     <h3 class="center-align">{{project.name}}</h3>
-    <p class="center-align" id="PUTTHESHITHERE" style="color:black;" data-project-id="{{project.id}}"></p>
+    <p class="center-align" id="PUTTHESHITHERE" data-project-id="{{project.id}}"></p>
     <div class="container">
         <div id="modded" class="row">
             <div class="col s12">
@@ -60,23 +29,23 @@
     </div>
 
     {{!-- ADMIN AND WORKER VIEW ONLY --}}
-    <div id="project_view" class="row" style="display: block;">
+    <section id="project_view" class="row">
 
-        {{!-- START TO DO COLUMN --}}
+        {{!-- TO DO COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">To Do</h4>
             <div id="todo" >
                 {{#each project.todo as |ticket|}}
-                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                            <li>{{> ticket_card}}</li>
-                    </ul>
+                    <div data-id="{{ticket.id}}">
+                            {{> ticket_card}}
+                    </div>
                 {{/each}}
                 <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
                     {{> new_ticket}}
                 </div>
-                <br/>
+                <br>
             </div>
-            <section class="section center-align worker_hide" style="display: block">
+            <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -84,22 +53,21 @@
             </section>
         </div>
 
-        
-        {{!-- START DOING COLUMN --}}
+        {{!-- DOING COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">In Progress</h4>
-            <div id="doing" >
-                {{#each project.doing as |ticket|}}
-                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
+            <div id="doing">
+                {{#each project.doling as |ticket|}}
+                    <div data-id="{{ticket.id}}">
+                            {{> ticket_card}}
+                    </div>
                 {{/each}}
                 <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
-                <br/>
+                <br>
             </div>
-             <section class="section center-align worker_hide" style="display: block">
+             <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -107,22 +75,21 @@
             </section>
         </div>
 
-        
-        {{!-- START REVIEW COLUMN --}}
+        {{!-- REVIEW COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">In Review</h4>
             <div id="review" >
                 {{#each project.review as |ticket|}}
-                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
+                    <div data-id="{{ticket.id}}">
+                            {{> ticket_card}}
+                    </div>
                 {{/each}}
                 <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
-                <br/>
+                <br>
             </div>
-            <section class="section center-align worker_hide" style="display: block">
+            <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
                     <i class="material-icons left">add</i>
                     Add Task
@@ -130,21 +97,19 @@
             </section>
         </div>
 
-        
-        {{!-- START DONE COLUMN --}}
+        {{!-- DONE COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">Done</h4>
-            <div id="done" >
-                
+            <div id="done">
                 {{#each project.done as |ticket|}}
-                    <ul style="list-style-type: none;" data-id="{{ticket.id}}">
-                        <li>{{> ticket_card}}</li>
-                    </ul>
+                    <div data-id="{{ticket.id}}">
+                            {{> ticket_card}}
+                    </div>
                 {{/each}}
-                <div class="new_task" style="display: none" data-status="done" data-id={{project.id}}>
+                <div class="new_task" data-status="done" data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
-                <br/>
+                <br>
             </div>
             <section class="section center-align worker_hide" style="display: block">
                     <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
@@ -153,8 +118,8 @@
                     </a>
             </section>
         </div>
-        
 
-    </div>
+    </section>
+
 {{/each}}
 
