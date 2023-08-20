@@ -6,10 +6,6 @@
 {{!-- SECONDARY NAV BAR FOR WORKING ON PROJECT BOARDS --}}
 {{>boards_nav}}
 
-
-
-
-
 {{#each projects as |project|}}
 
     <h3 class="center-align">{{project.name}}</h3>
@@ -33,9 +29,9 @@
     </div>
 
     {{!-- ADMIN AND WORKER VIEW ONLY --}}
-    <div id="project_view" class="row">
+    <section id="project_view" class="row">
 
-        {{!-- START TO DO COLUMN --}}
+        {{!-- TO DO COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">To Do</h4>
             <div id="todo" >
@@ -47,6 +43,7 @@
                 <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
                     {{> new_ticket}}
                 </div>
+                <br>
             </div>
             <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
@@ -56,8 +53,7 @@
             </section>
         </div>
 
-        
-        {{!-- START DOING COLUMN --}}
+        {{!-- DOING COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">In Progress</h4>
             <div id="doing">
@@ -69,6 +65,7 @@
                 <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
+                <br>
             </div>
              <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
@@ -78,8 +75,7 @@
             </section>
         </div>
 
-        
-        {{!-- START REVIEW COLUMN --}}
+        {{!-- REVIEW COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">In Review</h4>
             <div id="review" >
@@ -91,6 +87,7 @@
                 <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
+                <br>
             </div>
             <section class="section center-align worker_hide">
                 <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
@@ -100,8 +97,7 @@
             </section>
         </div>
 
-        
-        {{!-- START DONE COLUMN --}}
+        {{!-- DONE COLUMN --}}
         <div class="col s12 m6 l3">
             <h4 class="center-align">Done</h4>
             <div id="done">
@@ -113,6 +109,7 @@
                 <div class="new_task" data-status="done" data-id={{project.id}}>
                     {{> new_ticket}}
                 </div>
+                <br>
             </div>
             <section class="section center-align worker_hide" style="display: block">
                     <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
@@ -121,6 +118,8 @@
                     </a>
             </section>
         </div>
-    </div>
+
+    </section>
+
 {{/each}}
 
