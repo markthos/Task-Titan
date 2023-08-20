@@ -2,12 +2,13 @@
 
 
 <div class="taskTitan_banner">
-    <h2 class="center-align">My Boards</h2>
+    <h2>My Boards</h2>
 </div>
 
 <section class="section container">
     <div class="row">
         <div class="col s12 m8 offset-m2 l8 offset-l2">
+            <p class="flow-text center-align">Select a Project:</p>
             <div class="collection">
                 {{#each projects as |project|}}
                     <a class="collection-item purple-text text-lighten-5 pink lighten-2" href="/boards/{{project.id}}">
