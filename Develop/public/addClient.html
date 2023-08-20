@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client</title>
+</head>
+<body>
+    <h1>Add a New Client</h1>
+    <form id="clientForm" action="/api/client" method="post">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required>
+
+        <label for="projectId">Project ID:</label>
+        <input type="text" id="projectId" name="project_id" required>
+
+        <label for="name">Client Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <button type="submit">Add Client</button>
+    </form>
+
+    <script>
+        document.getElementById("clientForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const user_id = document.getElementById("user_id").value;
+            const project_id = document.getElementById("projectId").value;
+            const name = document.getElementById("name").value;
+
+            try {
+                const response = await fetch("/api/client", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ user_id, project_id, name })
+                });
+
+                const data = await response.json();
+                console.log(data); // Log the response from the server
+            } catch (error) {
+                console.error("Error adding client:", error);
+            }
+        });
+    </script>
+</body>
+</html> -->
