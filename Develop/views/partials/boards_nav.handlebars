@@ -113,6 +113,47 @@
     </div>
 </div>
 
+
+{{!-- REMOVE WORKER MODAL --}}
+<div id="removeWorkerModal" class="modal">
+    <div class="modal-content">
+        <h4>Remove Worker</h4>
+        <form id="addWorkerForm" action="/api/remove-worker" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Worker Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="type" id="type" required>
+                    <label for="type">Project</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Worker</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+
 {{!-- PROJECT SELECT MODAL --}}
 <div id="selectProjectModal" class="modal">
     <div class="modal-content">
