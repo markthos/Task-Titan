@@ -70,14 +70,24 @@ router.get("/logout", async (req, res) => {
 
 router.get("/boards", async (req, res) => {
   try {
-    const projectData = await Project.findAll({
+    const collaboratorData = await Collaborator.findAll({
       where: {
-        owner_id: req.session.user_id,
+        user_id: req.session.user_id,
       },
+      include: [
+        {
+          model: Project,
+        },
+      ],
     });
 
-    const projects = projectData.map((project) => project.get({ plain: true }));
-    console.log(projects);
+    // Get all projects that the user is a collaborator on
+    const projectData = collaboratorData.map((collaborator) =>
+      collaborator.get({ plain: true })
+    );
+
+    const projects = projectData.map((project) => project.project);
+
 
     res.render("boards_landing", {
       projects,
