@@ -21,14 +21,14 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0,30],
+                len: [0,100],
             },
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0,30],
+                len: [0,100],
             },
         },
         email: {
