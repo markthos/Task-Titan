@@ -55,6 +55,7 @@ document.addEventListener("click", async (event) => {
     return; 
   }
 
+  
 
   if (target.matches(".save_button")) {
     console.log("save");
@@ -80,6 +81,8 @@ const findAccessLevel = async (access_level) => {
 
 
   console.log(project_id, "userID:" + user_id);
+  //set progress bar on page reload
+  getProgress(project_id)
 
   const response = await fetch(`/api/collaborator/validate`, {
     method: "POST",
@@ -132,14 +135,21 @@ const getProgress = async (project_id) => {
   });
 
   const data = await response.json()
+
+  progress_data = data.progress_data
+
+  if (progress_data === null) {
+    data.progress_data = 100
+  } 
   
   const progress_stat = document.querySelector('#progress_stat')
-  progress_stat.style.width = data.progress_data + "%"
+
+  progress_stat.style.width = data.progress_data + "%" 
   progress_stat.textContent = data.progress_data + "%"
 
 }
 
-setInterval(()=> {
-  getProgress(project_id)
-}, 1000)
+// setInterval(()=> {
+//   getProgress(project_id)
+// }, 1000)
 
