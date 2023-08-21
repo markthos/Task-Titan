@@ -124,7 +124,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // get all collaborators for this project
-    const collaborators = await Collaborator.findAll({
+    const collaboratorData = await Collaborator.findAll({
       where: {
         project_id: req.params.id,
       },
@@ -135,6 +135,12 @@ router.get("/boards/:id", withAuth, async (req, res) => {
         },
       ],
     });
+
+    const collaborators = collaboratorData.map((collaborator) => collaborator.get({ plain: true }));
+
+    console.log('____________________________________________')
+    console.log(collaborators)
+    console.log('____________________________________________')
     
     console.log("collaborators: " + JSON.stringify(collaborators, null, 2));
 
@@ -188,6 +194,7 @@ router.get("/boards/:id", withAuth, async (req, res) => {
 
     res.render("boards", {
       projects,
+      collaborators,
       progress_data,
       user_id: req.session.user_id,
       user_name: req.session.user_name,

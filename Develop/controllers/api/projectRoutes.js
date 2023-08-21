@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { Project, Ticket, User, Collaborator } = require("../../models");
+const { Project, User, Collaborator, Ticket, User, Collaborator } = require("../../models");
 const withAuth = require("../../utils/auth");
+const { Op } = require("sequelize");
 const dayjs = require('dayjs')
 
 router.post("/", async (req, res) => {
@@ -155,12 +156,91 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "Project not found" });
       return;
     }
-
     res.status(200).json(project);
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
+router.post("/:id/addCollaborator", async (req, res) => {
+  try {
+    const project = await Project.findOne({
+      where: {
+        id: req.params.id,
+        owner_id: req.session.user_id,
+      },
+    });
+
+    if (!project) {
+      res.status(404).json({ message: "Project not found" });
+      return;
+    }
+
+    const user = await User.findOne({
+      where: {
+        email: req.body.email, 
+      },
+    });
+
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    const collaborator = await Collaborator.create({
+      user_id: user.id,
+      project_id: project.id,
+      access_level: req.body.access_level,
+    });
+
+    res.redirect(`/boards/${req.params.id}`)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Express Route
+// DOES NOT WORK WITH ROUTER.DELETE
+router.post('/:id/removeCollaborator', async (req, res) => {
+  console.log('we tried');
+  try {
+    const project = await Project.findOne({
+      where: {
+        id: req.params.id,
+        owner_id: req.session.user_id,
+      },
+    });
+
+    if (!project) {
+      res.status(404).json({ message: "Project not found" });
+      return;
+    }
+
+    // Assuming you have a Collaborator model and want to remove the collaborator by user_id
+    const collaborator = await Collaborator.findOne({
+      where: {
+        user_id: req.body.collaborator,
+        project_id: project.id,
+      },
+    });
+
+    if (!collaborator) {
+      res.status(404).json({ message: "Collaborator not found" });
+      return;
+    }
+
+    // Now, remove the collaborator
+    await collaborator.destroy();
+
+    res.redirect(`/boards/${req.params.id}`);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 
 router.get("/progress/:id", async (req, res) => {
   try {
