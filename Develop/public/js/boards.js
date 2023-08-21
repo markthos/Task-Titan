@@ -18,7 +18,8 @@ const saveNewTicket = async (ticket, status, project_id) => {
   if (response.ok) {
     console.log("something went wrong");
   }
-
+  
+  localStorage.setItem('toastMessage', 'Task Added');
   ticket.style.display = "none";
   location.reload();
 };
