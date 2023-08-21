@@ -1,5 +1,8 @@
 let access_level;
 
+
+
+
 const saveNewTicket = async (ticket, status, project_id) => {
   const titleData = ticket.querySelector(".new_ticket_title");
   const textData = ticket.querySelector(".new_ticket_content");
