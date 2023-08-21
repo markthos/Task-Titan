@@ -29,30 +29,29 @@
 {{!-- ADD COLLABORATOR MODAL --}}
 <div id="addCollaboratorModal" class="modal">
     <div class="modal-content">
-        <h4>Add Client</h4>
+        <h4>Add A Collaborator</h4>
         {{#each projects as |project|}}
             <form id="addCForm" action="/api/projects/{{project.id}}/addCollaborator" method="POST">
         {{/each}}
                 <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
-                        <label for="email">Client Email</label>
+                        <label for="email">Collaborator's Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <select name="access_level" id="access_level" required>
-                            <option value="" disabled selected>Access Level</option>
                             <option value="client">Client</option>
                             <option value="worker">Worker</option>
                             <option value="admin">Admin</option>
                         </select>
-                        <label for="access_level">Project Type</label>
+                        <label for="access_level">Access Level</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 center-align">
-                        <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
+                        <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Collaborator</button>
                     </div>
                 </div>
             </form>
@@ -61,6 +60,36 @@
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
 </div>
+
+{{!-- REMOVE COLLABORATOR MODAL --}}
+
+<div id="removeClientModal" class="modal">
+    <div class="modal-content">
+    <h4>Remove A Collaborator</h4>
+        {{#each projects as |project|}}
+            <form id="removeCollaboratorForm_{{project.id}}" action="/api/projects/{{project.id}}/removeCollaborator" method="POST">
+        {{/each}}
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="collaborator" id="collaboratorId">
+                        {{#each collaborators as |collaborator|}}
+                            <option value={{collaborator.user_id}}>
+                            {{collaborator.user.first_name}} {{collaborator.user.last_name}}
+                            </option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <label for="collaborator_id">Collaborator</label>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Remove Collaborator</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 {{!-- ADD WORKER MODAL --}}
 <div id="addWorkerModal" class="modal">

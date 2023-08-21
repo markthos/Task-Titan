@@ -196,5 +196,45 @@ router.post("/:id/addCollaborator", async (req, res) => {
   }
 });
 
+// Express Route
+// DOES NOT WORK WITH ROUTER.DELETE
+router.post('/:id/removeCollaborator', async (req, res) => {
+  console.log('we tried');
+  try {
+    const project = await Project.findOne({
+      where: {
+        id: req.params.id,
+        owner_id: req.session.user_id,
+      },
+    });
+
+    if (!project) {
+      res.status(404).json({ message: "Project not found" });
+      return;
+    }
+
+    // Assuming you have a Collaborator model and want to remove the collaborator by user_id
+    const collaborator = await Collaborator.findOne({
+      where: {
+        user_id: req.body.collaborator,
+        project_id: project.id,
+      },
+    });
+
+    if (!collaborator) {
+      res.status(404).json({ message: "Collaborator not found" });
+      return;
+    }
+
+    // Now, remove the collaborator
+    await collaborator.destroy();
+
+    res.redirect(`/boards/${req.params.id}`);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;

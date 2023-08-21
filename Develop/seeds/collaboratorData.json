@@ -4,6 +4,7 @@
         "project_id": "1",
         "access_level": "admin"
     },
+
     {
         "user_id": "1",
         "project_id": "2",
@@ -28,5 +29,10 @@
         "user_id": "4",
         "project_id": "3",
         "access_level": "admin"
+    },
+    {
+        "user_id": "5",
+        "project_id": "1",
+        "access_level": "client"
     }
 ]
