@@ -25,11 +25,6 @@
         "access_level": "client"
     },
     {
-        "user_id": "2",
-        "project_id": "1",
-        "access_level": "admin"
-    },
-    {
         "user_id": "4",
         "project_id": "3",
         "access_level": "admin"

@@ -5,10 +5,10 @@
     <div class="nav-wrapper container">
         <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
-            <li><a class="modal-trigger" href="#addClientModal"><i class="material-icons left">person_add</i>Add Client</a></li>
+            <li><a class="modal-trigger" href="#addCollaboratorModal"><i class="material-icons left">person_add</i>Add Collaborator</a></li>
             <li><a class="modal-trigger" href="#removeClientModal"><i class="material-icons left">person_remove</i>Remove Client</a></li>
-            <li><a class="modal-trigger" href="#addWorkerModal"><i class="material-icons left">group_add</i>Add Worker</a></li>
-            <li><a class="modal-trigger" href="#removeWorkerModal"><i class="material-icons left">group_remove</i>Remove Worker</a></li>
+            {{!-- <li><a class="modal-trigger" href="#addWorkerModal"><i class="material-icons left">group_add</i>Add Worker</a></li>
+            <li><a class="modal-trigger" href="#removeWorkerModal"><i class="material-icons left">group_remove</i>Remove Worker</a></li> --}}
             <li><a href="#" class="sidenav-trigger" style="display: block; margin: 0;" data-target="comment_bar">Message Board</a></li>
         </ul>
         
@@ -34,9 +34,48 @@
 
 {{!-- MODALS! --}}
 
+{{!-- ADD COLLABORATOR MODAL --}}
+<div id="addCollaboratorModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Client</h4>
+        <form id="addCForm" action="/api/projects/1/addCollaborator"  method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Client Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="type" id="type" required>
+                        <option value="" disabled selected>Access Level</option>
+                        <option value="client">Client</option>
+                        <option value="worker">Worker</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <label for="type">Project Type</label>
+                </div>
+            </div>
+            {{!-- <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="type" id="type" required>
+                    <label for="type">Project</label>
+                </div>
+            </div> --}}
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
 
 {{!-- ADD CLIENT MODAL --}}
-<div id="addClientModal" class="modal">
+{{!-- <div id="addClientModal" class="modal">
     <div class="modal-content">
         <h4>Add Client</h4>
         <form id="addClientForm" action="/api/add-client" method="POST">
@@ -72,7 +111,7 @@
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
-</div>
+</div> --}}
 
 {{!-- ADD WORKER MODAL --}}
 <div id="addWorkerModal" class="modal">

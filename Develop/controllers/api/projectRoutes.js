@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { Project } = require("../../models");
+const { Project, User, Collaborator } = require("../../models");
 const withAuth = require("../../utils/auth");
-const { Collaborator } = require("../../models");
+const { Op } = require("sequelize");
 
 router.post("/", async (req, res) => {
   try {
@@ -157,5 +157,47 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+// Create a route to add a collaborator to a project
+router.post("/:id/addCollaborator", async (req, res) => {
+  try {
+    const project = await Project.findOne({
+      where: {
+        id: req.params.id,
+        owner_id: req.session.user_id,
+      },
+    });
+
+    if (!project) {
+      res.status(404).json({ message: "Project not found" });
+      return;
+    }
+
+    // Retrieve the user with the provided email
+    const user = await User.findOne({
+      where: {
+        email: req.body.email, // Assuming you're sending the email in the request body
+      },
+    });
+
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    // Create a new collaborator entry in the Collaborator table
+    const collaborator = await Collaborator.create({
+      user_id: user.id,
+      project_id: project.id,
+      access_level: req.body.access_level,
+    });
+
+    res.status(200).json(collaborator);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
