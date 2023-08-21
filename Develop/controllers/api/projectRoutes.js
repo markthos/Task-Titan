@@ -151,7 +151,6 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "Project not found" });
       return;
     }
-
     res.status(200).json(project);
   } catch (err) {
     res.status(500).json(err);
@@ -159,7 +158,7 @@ router.get("/:id", async (req, res) => {
 });
 
 
-// Create a route to add a collaborator to a project
+
 router.post("/:id/addCollaborator", async (req, res) => {
   try {
     const project = await Project.findOne({
@@ -174,10 +173,9 @@ router.post("/:id/addCollaborator", async (req, res) => {
       return;
     }
 
-    // Retrieve the user with the provided email
     const user = await User.findOne({
       where: {
-        email: req.body.email, // Assuming you're sending the email in the request body
+        email: req.body.email, 
       },
     });
 
@@ -186,14 +184,13 @@ router.post("/:id/addCollaborator", async (req, res) => {
       return;
     }
 
-    // Create a new collaborator entry in the Collaborator table
     const collaborator = await Collaborator.create({
       user_id: user.id,
       project_id: project.id,
       access_level: req.body.access_level,
     });
 
-    res.status(200).json(collaborator);
+    res.redirect(`/boards/${req.params.id}`)
   } catch (err) {
     res.status(500).json(err);
   }

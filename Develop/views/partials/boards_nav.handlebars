@@ -30,80 +30,37 @@
 <div id="addCollaboratorModal" class="modal">
     <div class="modal-content">
         <h4>Add Client</h4>
-        <form id="addCForm" action="/api/projects/1/addCollaborator"  method="POST">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Client Email</label>
+        {{#each projects as |project|}}
+            <form id="addCForm" action="/api/projects/{{project.id}}/addCollaborator" method="POST">
+        {{/each}}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                        <label for="email">Client Email</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <select name="type" id="type" required>
-                        <option value="" disabled selected>Access Level</option>
-                        <option value="client">Client</option>
-                        <option value="worker">Worker</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    <label for="type">Project Type</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select name="access_level" id="access_level" required>
+                            <option value="" disabled selected>Access Level</option>
+                            <option value="client">Client</option>
+                            <option value="worker">Worker</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <label for="access_level">Project Type</label>
+                    </div>
                 </div>
-            </div>
-            {{!-- <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="type" id="type" required>
-                    <label for="type">Project</label>
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
+                    </div>
                 </div>
-            </div> --}}
-            <div class="row">
-                <div class="input-field col s12 center-align">
-                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
-                </div>
-            </div>
-        </form>
+            </form>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer">                                             
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
 </div>
-
-{{!-- ADD CLIENT MODAL --}}
-{{!-- <div id="addClientModal" class="modal">
-    <div class="modal-content">
-        <h4>Add Client</h4>
-        <form id="addClientForm" action="/api/add-client" method="POST">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
-                    <label for="last_name">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Client Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="type" id="type" required>
-                    <label for="type">Project</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 center-align">
-                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-    </div>
-</div> --}}
 
 {{!-- ADD WORKER MODAL --}}
 <div id="addWorkerModal" class="modal">
