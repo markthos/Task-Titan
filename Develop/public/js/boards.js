@@ -68,11 +68,10 @@ document.addEventListener("click", async (event) => {
   }
 });
 
-const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
-const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
 
 const findAccessLevel = async (access_level) => {
-  
+  const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
+  const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
   const user_id_selector = document.querySelector("#user_id");
   
   const user_id = user_id_selector.getAttribute("data-user-id");
@@ -126,7 +125,6 @@ document.addEventListener("DOMContentLoaded", findAccessLevel);
 // Progress Bar
 
 const getProgress = async (project_id) => {
-
   const response = await fetch(`/api/projects/progress/${project_id}`, {
     method: "GET",
     headers: {
