@@ -15,8 +15,6 @@ function init() {
       const itemId = el.getAttribute("data-id"); // assuming you have a unique identifier for each item
       const status = target.id; // you might want to use a unique identifier for each container as well
 
-      console.log("item ID :" + itemId + " status: " + status);
-
       // Prepare the data for the update
       const updateData = {
         id: itemId,
@@ -36,12 +34,9 @@ function init() {
         console.log("Failed to update item");
       }
 
-      console.log("Item updated successfully");
     } catch (error) {
       console.error(error);
     }
-
-    console.log("dragula init ran");
   });
 
   const deleteTicket = async (id, ticket) => {
@@ -61,6 +56,7 @@ function init() {
       return console.log("nothing to delete");
     }
 
+    localStorage.setItem('toastMessage', 'Deleted Task');
     location.reload();
   };
 
@@ -108,7 +104,7 @@ function init() {
         "Content-Type": "application/json",
       },
     });
-
+    localStorage.setItem('toastMessage', 'Canceled Edit');
     location.reload();
   };
 
@@ -178,9 +174,6 @@ function init() {
       return; // Click didn't happen within a ticket, exit
     }
 
-    console.log("click");
-    
-
     const hide_all = ticket.querySelector(".hide_all_contents");
     const card_title = ticket.querySelector(".card-title");
 
@@ -235,7 +228,6 @@ function init() {
         handleUpdateSubmit(ticketId, title, text);
       }
     } else if (target.matches(".cancel_button")) {
-      console.log("here");
       handleCancel(ticketId, ticket);
     }
   });
@@ -244,3 +236,11 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 
+document.addEventListener('DOMContentLoaded', function() {
+  var toastMessage = localStorage.getItem('toastMessage');
+  
+  if (toastMessage) {
+      M.toast({html: toastMessage});
+      localStorage.removeItem('toastMessage');
+  }
+});
