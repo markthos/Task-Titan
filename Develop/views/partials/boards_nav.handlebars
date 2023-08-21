@@ -1,15 +1,15 @@
 {{!-- BOARDS NAVIGATION MENU --}}
 
 
-<nav>
+<nav class="purple darken-4">
     <div class="nav-wrapper container">
-        <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">view_module</i></a>
         <ul class="left hide-on-med-and-down">
             <li><a class="modal-trigger" href="#addClientModal"><i class="material-icons left">person_add</i>Add Client</a></li>
             <li><a class="modal-trigger" href="#removeClientModal"><i class="material-icons left">person_remove</i>Remove Client</a></li>
             <li><a class="modal-trigger" href="#addWorkerModal"><i class="material-icons left">group_add</i>Add Worker</a></li>
             <li><a class="modal-trigger" href="#removeWorkerModal"><i class="material-icons left">group_remove</i>Remove Worker</a></li>
-            <li><a href="#" class="sidenav-trigger" style="display: block; margin: 0;" data-target="comment_bar">Message Board</a></li>
+            <li><a class="modal-trigger" href="#messageBoardModal"><i class="material-icons left">message</i> Message Board</a></li>
         </ul>
         
     </div>
@@ -20,15 +20,7 @@
     <li><a class="modal-trigger" href="#removeClientModal"><i class="material-icons left">person_remove</i>Remove Client</a></li>
     <li><a class="modal-trigger" href="#addWorkerModal"><i class="material-icons left">group_add</i>Add Worker</a></li>
     <li><a class="modal-trigger" href="#removeWorkerModal"><i class="material-icons left">group_remove</i>Remove Worker</a></li>
-    <li><a href="#" class="sidenav-trigger" style="display: block; margin: 0;" data-target="comment_bar">Message Board</a></li>
-</ul>
-
-{{!-- THIS IS COMMENT BAR THAT SLIDE IN --}}
-
-<ul id="comment_bar" class="sidenav">
-    <div class="center-align">
-        <h2>Message Board</h2>
-    </div>
+    <li><a class="modal-trigger" href="#messageBoardModal"><i class="material-icons left">message</i> Message Board</a></li>
 </ul>
 
 
@@ -137,14 +129,6 @@
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
     </div>
-    {{!-- <script>
-        //Redirect to the selected project board
-        function redirectToSelectedProject(selectedProjectID) {
-            if (selectedProjectID) {
-                window.location.href = "/boards/${selectedProjectID}";
-            }
-        }
-    </script> --}}
 </div>
 
 {{!-- NEW PROJECT MODAL --}}
@@ -199,6 +183,32 @@
             <div class="row">
                 <div class="input-field col s12 center-align">
                     <button type="submit" class="waves-effect waves-light btn-large deep-purple">Delete Project</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+{{!-- MESSAGE BOARD  --}}
+<div id="messageBoardModal" class="modal">
+    <div class="modal-content">
+        <h3 class="center-align">Message Board</h3>
+        
+        {{!-- MESSAGES GO HERE SOMEHOW --}}
+
+        <form id="messageBoardForm" action="/api/projects" method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="message" class="materialize-textarea"></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Message</button>
                 </div>
             </div>
         </form>
