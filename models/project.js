@@ -15,7 +15,7 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0,20],
+                len: [0,250],
             },
         },
         date_started: {
@@ -27,7 +27,7 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                len: [0,20],
+                len: [0,250],
             },
         },
         owner_id: {
