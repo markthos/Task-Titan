@@ -13,7 +13,7 @@
     <body>
         <header>
             <div class="navbar-fixed">
-                <nav class="deep-purple lighten-1">
+                <nav class="deep-purple">
                     <div class="nav-wrapper container">
                         <a href="/" class="brand-logo">Task Titan</a>
                         <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -32,9 +32,9 @@
                     </div>
                 </nav>
             </div>
-            <ul class="sidenav deep-purple lighten-1" id="mobile">
+            <ul class="sidenav deep-purple" id="mobile">
                 {{#if logged_in}}
-                    <li>Welcome, {{user_name}}</li>
+                    <li class="white-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome, {{user_name}}</li>
                     <li><a class="white-text" href="/boards">My Boards</a></li>
                     <li><a class="white-text" href="/logout" id="mobile-logout-link" >Log Out</a></li>
                     <li><a class="white-text" href="/about">About</a></li>
