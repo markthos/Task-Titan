@@ -5,7 +5,7 @@
     <div class="nav-wrapper container">
         <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">view_module</i></a>
         <ul class="left hide-on-med-and-down">
-            <li><a class="modal-trigger" href="#addClientModal"><i class="material-icons left">person_add</i>Add Client</a></li>
+            <li><a class="modal-trigger" href="#addCollaboratorModal"><i class="material-icons left">person_add</i>Add Collaborator</a></li>
             <li><a class="modal-trigger" href="#removeClientModal"><i class="material-icons left">person_remove</i>Remove Client</a></li>
             <li><a class="modal-trigger" href="#addWorkerModal"><i class="material-icons left">group_add</i>Add Worker</a></li>
             <li><a class="modal-trigger" href="#removeWorkerModal"><i class="material-icons left">group_remove</i>Remove Worker</a></li>
@@ -26,45 +26,70 @@
 
 {{!-- MODALS! --}}
 
-
-{{!-- ADD CLIENT MODAL --}}
-<div id="addClientModal" class="modal">
+{{!-- ADD COLLABORATOR MODAL --}}
+<div id="addCollaboratorModal" class="modal">
     <div class="modal-content">
-        <h4>Add Client</h4>
-        <form id="addClientForm" action="/api/add-client" method="POST">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
-                    <label for="first_name">First Name</label>
+        <h4>Add A Collaborator</h4>
+        {{#each projects as |project|}}
+            <form id="addCForm" action="/api/projects/{{project.id}}/addCollaborator" method="POST">
+        {{/each}}
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                        <label for="email">Collaborator's Email</label>
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
-                    <label for="last_name">Last Name</label>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select name="access_level" id="access_level" required>
+                            <option value="client">Client</option>
+                            <option value="worker">Worker</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <label for="access_level">Access Level</label>
+                    </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Collaborator</button>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class="modal-footer">                                             
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+{{!-- REMOVE COLLABORATOR MODAL --}}
+
+<div id="removeClientModal" class="modal">
+    <div class="modal-content">
+    <h4>Remove A Collaborator</h4>
+        {{#each projects as |project|}}
+            <form id="removeCollaboratorForm_{{project.id}}" action="/api/projects/{{project.id}}/removeCollaborator" method="POST">
+        {{/each}}
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
-                    <label for="email">Client Email</label>
+                    <select name="collaborator" id="collaboratorId">
+                        {{#each collaborators as |collaborator|}}
+                            <option value={{collaborator.user_id}}>
+                            {{collaborator.user.first_name}} {{collaborator.user.last_name}}
+                            </option>
+                        {{/each}}
+                    </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="type" id="type" required>
-                    <label for="type">Project</label>
-                </div>
-            </div>
+            <label for="collaborator_id">Collaborator</label>
             <div class="row">
                 <div class="input-field col s12 center-align">
-                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Remove Collaborator</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-    </div>
 </div>
+
 
 {{!-- ADD WORKER MODAL --}}
 <div id="addWorkerModal" class="modal">
