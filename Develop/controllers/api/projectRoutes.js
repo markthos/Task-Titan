@@ -41,8 +41,6 @@ router.post("/", async (req, res) => {
 });
 
 
-//! to get all projects NEED A SUPER ADMIN APPROVAL HELPER ** IF WE ADD SUPERADMIN
-
 router.get("/admin", async (req, res) => {
   try {
     const projects = await Project.findAll();
@@ -302,5 +300,30 @@ router.get("/progress/:id", async (req, res) => {
     res.status(500).json({ message: "Fly you fools. Server Error"});
   }
 });
+
+router.post("/:id/projectDelete", async (req, res) => {
+  console.log("Delete route hit for project:", req.body.selectedProject);
+
+  try {
+    const projectData = await Project.destroy({
+      where: {
+        id: req.body.selectedProject,
+      },
+    });
+
+    console.log("Project deletion result:", projectData);
+    if (!projectData) {
+      console.log("No project found with this id!");
+      res.status(404).json({ message: "No project found with this id!" });
+      return;
+    }
+    res.status(200).redirect("/boards")
+  } catch (err) {
+    console.error("Error encountered:", err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;
