@@ -51,7 +51,6 @@ document.addEventListener("click", async (event) => {
     return; 
   }
 
-  console.log("clicked new ticket");
 
   if (target.matches(".save_button")) {
     console.log("save");

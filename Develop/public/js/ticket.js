@@ -179,6 +179,7 @@ function init() {
     }
 
     console.log("click");
+    
 
     const hide_all = ticket.querySelector(".hide_all_contents");
     const card_title = ticket.querySelector(".card-title");
