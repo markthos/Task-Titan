@@ -82,27 +82,31 @@ router.put("/:id", async (req, res) => {
 
 // to delete a project
 router.delete("/:id", async (req, res) => {
+  console.log("Delete route hit for project:", req.params.id);
   try {
+    console.log("Attempting to delete project for user:", req.session.user_id);
     const projectData = await Project.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        owner_id: req.session.user_id,
       },
     });
-
+    console.log("Project deletion result:", projectData);
     if (!projectData) {
+      console.log("No project found with this id!");
       res.status(404).json({ message: "No project found with this id!" });
       return;
     }
-
     res.status(200).json(projectData);
   } catch (err) {
+    console.error("Error encountered:", err);
     res.status(500).json(err);
   }
 });
 
-// to get all projects for a user
 
+
+// to get all projects for a user
 router.get("/", async (req, res) => {
   try {
     const projectData = await Project.findAll({

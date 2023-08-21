@@ -176,10 +176,12 @@
     </div>
 </div>
 
+
+
 {{!-- DELETE PROJECT MODAL --}}
 <div id="deleteProjectModal" class="modal">
     <div class="modal-content">
-        <form id="selectProjectForm" action="/api/projects" method="DELETE">
+        <form id="selectProjectForm" action="/api/projects" method="POST">
             <div class="row">
                 <div class="input-field col s12">
                     <select name="selectedProject" id="selectedProject" required>
@@ -187,7 +189,7 @@
                         <option value="{{project.id}}">{{project.name}}</option>
                     {{/each}}
                     </select>
-                    <label for="selectedProject">Select a Project</label>
+                    <label for="selectedProject">Select a Project to Delete</label>
                 </div>
             </div>
             <div class="row">
