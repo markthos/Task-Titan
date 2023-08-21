@@ -39,93 +39,105 @@
     {{!-- ADMIN AND WORKER VIEW ONLY --}}
     <section id="project_view" class="row">
 
-        {{!-- TO DO COLUMN --}}
-        <div class="col s12 m6 l3">
-            <h4 class="center-align">To Do</h4>
-            <div id="todo" >
-                {{#each project.todo as |ticket|}}
-                    <div data-id="{{ticket.id}}">
-                            {{> ticket_card}}
+        {{!-- SCROLLABLE SECTION --}}
+        <div class="scroll_body">
+                {{!-- TO DO COLUMN --}}
+            <div class="col s12 m3 l3 section_column">
+                <section class="list_box grey lighten-4">
+                    <h4 class="center-align">To Do</h4>
+                    <div id="todo" >
+                        {{#each project.todo as |ticket|}}
+                            <div data-id="{{ticket.id}}">
+                                    {{> ticket_card}}
+                            </div>
+                        {{/each}}
+                        <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
+                            {{> new_ticket}}
+                        </div>
+                        <br>
                     </div>
-                {{/each}}
-                <div class="new_task" style="display: none" data-status="todo" data-id="{{project.id}}">
-                    {{> new_ticket}}
-                </div>
-                <br>
+                    <section class="section center-align worker_hide">
+                        <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
+                            <i class="material-icons left">add</i>
+                            Add Task
+                        </a>
+                    </section>
+                </section>
             </div>
-            <section class="section center-align worker_hide">
-                <a class="waves-effect waves-light btn-large deep-purple add_task"  data-target="new_task" data-id="add_todo_task" data-status="todo">
-                    <i class="material-icons left">add</i>
-                    Add Task
-                </a>
-            </section>
-        </div>
 
-        {{!-- DOING COLUMN --}}
-        <div class="col s12 m6 l3">
-            <h4 class="center-align">In Progress</h4>
-            <div id="doing">
-                {{#each project.doing as |ticket|}}
-                    <div data-id="{{ticket.id}}">
-                            {{> ticket_card}}
+            {{!-- DOING COLUMN --}}
+            <div class="col s12 m3 l3 section_column">
+                <section class="list_box grey lighten-4">
+                    <h4 class="center-align">In Progress</h4>
+                    <div id="doing">
+                        {{#each project.doing as |ticket|}}
+                            <div data-id="{{ticket.id}}">
+                                    {{> ticket_card}}
+                            </div>
+                        {{/each}}
+                        <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
+                            {{> new_ticket}}
+                        </div>
+                        <br>
                     </div>
-                {{/each}}
-                <div class="new_task" style="display: none" data-status="doing"  data-id={{project.id}}>
-                    {{> new_ticket}}
-                </div>
-                <br>
+                    <section class="section center-align worker_hide">
+                        <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
+                            <i class="material-icons left">add</i>
+                            Add Task
+                        </a>
+                    </section>
+                </section>
             </div>
-             <section class="section center-align worker_hide">
-                <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_doing_task" data-status="doing">
-                    <i class="material-icons left">add</i>
-                    Add Task
-                </a>
-            </section>
-        </div>
 
-        {{!-- REVIEW COLUMN --}}
-        <div class="col s12 m6 l3">
-            <h4 class="center-align">In Review</h4>
-            <div id="review" >
-                {{#each project.review as |ticket|}}
-                    <div data-id="{{ticket.id}}">
-                            {{> ticket_card}}
+            {{!-- REVIEW COLUMN --}}
+            <div class="col s12 m3 l3 section_column">
+                <section class="list_box grey lighten-4">
+                    <h4 class="center-align">In Review</h4>
+                    <div id="review" >
+                        {{#each project.review as |ticket|}}
+                            <div data-id="{{ticket.id}}">
+                                    {{> ticket_card}}
+                            </div>
+                        {{/each}}
+                        <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
+                            {{> new_ticket}}
+                        </div>
+                        <br>
                     </div>
-                {{/each}}
-                <div class="new_task" style="display: none" data-status="review"  data-id={{project.id}}>
-                    {{> new_ticket}}
-                </div>
-                <br>
+                    <section class="section center-align worker_hide">
+                        <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
+                            <i class="material-icons left">add</i>
+                            Add Task
+                        </a>
+                    </section>
+                </section>
             </div>
-            <section class="section center-align worker_hide">
-                <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_review_task" data-status="review">
-                    <i class="material-icons left">add</i>
-                    Add Task
-                </a>
-            </section>
-        </div>
 
-        {{!-- DONE COLUMN --}}
-        <div class="col s12 m6 l3">
-            <h4 class="center-align">Done</h4>
-            <div id="done">
-                {{#each project.done as |ticket|}}
-                    <div data-id="{{ticket.id}}">
-                            {{> ticket_card}}
+            {{!-- DONE COLUMN --}}
+            <div class="col s12 m3 l3 section_column">
+                <section class="list_box grey lighten-4">
+                    <h4 class="center-align">Done</h4>
+                    <div id="done">
+                        {{#each project.done as |ticket|}}
+                            <div data-id="{{ticket.id}}">
+                                    {{> ticket_card}}
+                            </div>
+                        {{/each}}
+                        <div class="new_task" style="display: none"  data-status="done" data-id={{project.id}}>
+                            {{> new_ticket}}
+                        </div>
+                        <br>
                     </div>
-                {{/each}}
-                <div class="new_task" data-status="done" data-id={{project.id}}>
-                    {{> new_ticket}}
-                </div>
-                <br>
+                    <section class="section center-align worker_hide">
+                            <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
+                                <i class="material-icons left">add</i>
+                                Add Task
+                            </a>
+                    </section>
+                </section>
             </div>
-            <section class="section center-align worker_hide" style="display: block">
-                    <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
-                        <i class="material-icons left">add</i>
-                        Add Task
-                    </a>
-            </section>
         </div>
+        
 
     </section>
 
