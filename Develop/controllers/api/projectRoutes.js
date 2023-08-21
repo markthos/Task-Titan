@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Project, User, Collaborator, Ticket, User, Collaborator } = require("../../models");
+const { Project, User, Collaborator, Ticket } = require("../../models");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
 const dayjs = require('dayjs')
@@ -234,7 +234,7 @@ router.post('/:id/removeCollaborator', async (req, res) => {
     // Now, remove the collaborator
     await collaborator.destroy();
 
-    res.redirect(`/boards/${req.params.id}`);
+    res.status(200).redirect(`/boards/${req.params.id}`);
   } catch (err) {
     res.status(500).json(err);
   }
