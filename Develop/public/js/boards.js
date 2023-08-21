@@ -64,10 +64,13 @@ document.addEventListener("click", async (event) => {
   }
 });
 
+const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
+const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
+
 const findAccessLevel = async (access_level) => {
-  const PUTTHESHITHERE = document.querySelector("#PUTTHESHITHERE");
+  
   const user_id_selector = document.querySelector("#user_id");
-  const project_id = PUTTHESHITHERE.getAttribute("data-project-id");
+  
   const user_id = user_id_selector.getAttribute("data-user-id");
   const project_view = document.querySelector("#project_view")
   const worker_hide = document.querySelectorAll(".worker_hide")
@@ -112,6 +115,28 @@ const findAccessLevel = async (access_level) => {
 document.addEventListener("DOMContentLoaded", findAccessLevel);
 
 
+
+
 // Progress Bar
-const progress_stat = document.querySelector('#progress_stat')
-progress_stat.style.width = progress_stat.textContent
+
+const getProgress = async (project_id) => {
+
+  const response = await fetch(`/api/projects/progress/${project_id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json()
+  
+  const progress_stat = document.querySelector('#progress_stat')
+  progress_stat.style.width = data.progress_data + "%"
+  progress_stat.textContent = data.progress_data + "%"
+
+}
+
+setInterval(()=> {
+  getProgress(project_id)
+}, 1000)
+
