@@ -181,12 +181,14 @@
 {{!-- DELETE PROJECT MODAL --}}
 <div id="deleteProjectModal" class="modal">
     <div class="modal-content">
-        <form id="deleteProjectForm">
+        {{#each projects as |project|}}
+        <form id="deleteProjectForm" action="/api/projects/{{project.id}}/projectDelete" method="POST">
+        {{/each}}
             <div class="row">
                 <div class="input-field col s12">
                     <select name="selectedProject" id="selectedProject" required>
                         {{#each projects as |project|}}
-                            <option value="{{project.id}}">{{project.name}}</option>
+                            <option value={{project.id}}>{{project.name}}</option>
                         {{/each}}
                     </select>
                     <label for="selectedProject">Select a Project to Delete</label>

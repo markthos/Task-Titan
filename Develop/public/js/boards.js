@@ -1,12 +1,6 @@
 let access_level;
 
-const deleteProjectForm = document.querySelector("#deleteProjectForm");
-deleteProjectForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    var selectedProject = document.querySelector("#selectedProject");
-    var projectId = selectedProject.value;
-    console.log(projectId);
-});
+
 
 
 const saveNewTicket = async (ticket, status, project_id) => {
