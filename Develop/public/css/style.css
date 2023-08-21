@@ -13,7 +13,6 @@
 
 
 
-
 .notification {
     position: relative;
     top: 0px;
@@ -86,11 +85,21 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    #project_view {
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+
     .scroll_body {
-        scroll-snap-type: x mandatory;
+        /* scroll-snap-type: x mandatory;
+        display: flex; */
         display: flex;
         overflow-x: scroll;
-    
+        overflow: auto;
     }
     
     .section_column {
@@ -98,8 +107,9 @@
         padding: 1rem;
         min-width: 100vw;
         height: 100vh;
-        scroll-snap-align: start;
+        /* scroll-snap-align: start; */
         text-align: center;
+        overflow: auto;
     }
     
 }

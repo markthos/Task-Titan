@@ -151,3 +151,40 @@ const getProgress = async (project_id) => {
 //   getProgress(project_id)
 // }, 1000)
 
+
+const projectViewContainer = document.querySelector('#project_view');
+let isDragging = false;
+
+projectViewContainer.addEventListener('mousedown', handleMouseDown);
+document.addEventListener('mousemove', handleMouseMove);
+document.addEventListener('mouseup', handleMouseUp);
+
+function handleMouseDown(event) {
+  isDragging = true;
+}
+
+function handleMouseMove(event) {
+  if (isDragging) {
+    const mouseX = event.clientX;
+    const screenWidth = window.innerWidth;
+    const edgeThreshold = 30;
+
+    if (mouseX <= edgeThreshold) {
+      // Scroll left
+      projectViewContainer.scrollLeft -= 10;
+    }
+
+    if (mouseX >= screenWidth - edgeThreshold) {
+      // Scroll right
+      projectViewContainer.scrollLeft += 10;
+    }
+  }
+}
+
+function handleMouseUp(event) {
+  isDragging = false;
+}
+
+
+
+
