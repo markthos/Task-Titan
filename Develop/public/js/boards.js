@@ -139,3 +139,4 @@ const getProgress = async (project_id) => {
 setInterval(()=> {
   getProgress(project_id)
 }, 1000)
+
