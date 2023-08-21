@@ -123,12 +123,12 @@
                                     {{> ticket_card}}
                             </div>
                         {{/each}}
-                        <div class="new_task" data-status="done" data-id={{project.id}}>
+                        <div class="new_task" style="display: none"  data-status="done" data-id={{project.id}}>
                             {{> new_ticket}}
                         </div>
                         <br>
                     </div>
-                    <section class="section center-align worker_hide" style="display: block">
+                    <section class="section center-align worker_hide">
                             <a class="waves-effect waves-light btn-large deep-purple add_task" data-target="new_task" data-id="add_done_task" data-status="done">
                                 <i class="material-icons left">add</i>
                                 Add Task
