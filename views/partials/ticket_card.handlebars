@@ -18,9 +18,24 @@
         </div>
         {{!-- TICKET CONTENT --}}
         <div class="collapsible-body">
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Status</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                
+                <li><a id="todo" data-id="{{id}}">To Do</a></li>
+                <li><a id="doing" data-id="{{id}}">In Progress</a></li>
+                <li><a id="review" data-id="{{id}}">Review</a></li>
+                <li><a id="done" data-id="{{id}}">Done</a></li>
+            </ul>
+
             <p>Posted by {{user.first_name}} on {{format_date createdAt}}</p>
             <p>Task Notes:</p>
             <p>{{ text }}</p>
+             <!-- Dropdown Trigger -->
+            
+
+
         {{else}}
             {{!-- EDIT TICKET --}}
             <div class="row">

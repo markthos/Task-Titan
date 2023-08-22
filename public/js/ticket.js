@@ -3,7 +3,7 @@ function init() {
     document.querySelector("#todo"),
     document.querySelector("#doing"),
     document.querySelector("#review"),
-    document.querySelector("#done")
+    document.querySelector("#done"),
   ];
 
   const drake = dragula(containers, {
@@ -33,7 +33,6 @@ function init() {
       if (!response.ok) {
         console.log("Failed to update item");
       }
-
     } catch (error) {
       console.error(error);
     }
@@ -56,7 +55,7 @@ function init() {
       return console.log("nothing to delete");
     }
 
-    localStorage.setItem('toastMessage', 'Deleted Task');
+    localStorage.setItem("toastMessage", "Deleted Task");
     location.reload();
   };
 
@@ -104,7 +103,7 @@ function init() {
         "Content-Type": "application/json",
       },
     });
-    localStorage.setItem('toastMessage', 'Canceled Edit');
+    localStorage.setItem("toastMessage", "Canceled Edit");
     location.reload();
   };
 
@@ -223,7 +222,7 @@ function init() {
       const title = ticket.querySelector("#new_ticket_title").value.trim();
       const text = ticket.querySelector("#new_ticket_content").value.trim();
       if (text == "" || title == "") {
-        alert("no text")
+        alert("no text");
       } else {
         handleUpdateSubmit(ticketId, title, text);
       }
@@ -233,14 +232,57 @@ function init() {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", init);
 
-document.addEventListener('DOMContentLoaded', function() {
-  var toastMessage = localStorage.getItem('toastMessage');
-  
+document.addEventListener("DOMContentLoaded", function () {
+  var toastMessage = localStorage.getItem("toastMessage");
+
   if (toastMessage) {
-      M.toast({html: toastMessage});
-      localStorage.removeItem('toastMessage');
+    M.toast({ html: toastMessage });
+    localStorage.removeItem("toastMessage");
   }
+
+  var elems = document.querySelectorAll(".dropdown-trigger");
+  var options = {}; // Add any necessary options for Dropdown initialization
+  var instances = M.Dropdown.init(elems, options);
+  console.log;
+
+  // Add a click event listener to each dropdown item
+  var dropdownItems = document.querySelectorAll(".dropdown-content li a");
+  dropdownItems.forEach(function (item) {
+    item.addEventListener("click", async () => {
+      // Action to perform when a dropdown item is clicked
+      // You can replace this with your desired action
+      try {
+        console.log("Dropdown item clicked:", item.textContent);
+
+        const itemId = item.getAttribute("id"); // assuming you have a unique identifier for each item
+        const status = item.getAttribute("data-id"); // you might want to use a unique identifier for each container as well
+
+        console.log(itemId + " " + status);
+
+        const updateData = {
+          id: itemId,
+          status: status,
+        };
+
+        // Send a PUT request to your server to update the database
+        const response = await fetch("/api/tickets", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateData),
+        });
+
+        if (!response.ok) {
+          console.log("Failed to update item");
+        }
+
+        //location.reload()
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  });
 });
