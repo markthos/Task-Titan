@@ -234,6 +234,8 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   var toastMessage = localStorage.getItem("toastMessage");
 
@@ -247,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var instances = M.Dropdown.init(elems, options);
   console.log;
 
-  // Add a click event listener to each dropdown item
+  // Add a click event listener to each dropdown item // ticket status elector not done
   var dropdownItems = document.querySelectorAll(".dropdown-content li a");
   dropdownItems.forEach(function (item) {
     item.addEventListener("click", async () => {
@@ -286,3 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+

@@ -81,7 +81,6 @@ const findAccessLevel = async (access_level) => {
 
   console.log(project_id, "userID:" + user_id);
   //set progress bar on page reload
-  getProgress(project_id)
 
   const response = await fetch(`/api/collaborator/validate`, {
     method: "POST",
@@ -122,32 +121,20 @@ document.addEventListener("DOMContentLoaded", findAccessLevel);
 
 
 
-// Progress Bar
 
-const getProgress = async (project_id) => {
-  const response = await fetch(`/api/projects/progress/${project_id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const data = await response.json()
-
-  progress_data = data.progress_data
+// Listen for the "progressUpdate" event
+socket.on("progressUpdate", (data) => {
+  const progressData = data.progress_data;
 
   if (progress_data === null) {
     data.progress_data = 100
   } 
+
+  console.log("updating progress: " + progressData)
   
-  const progress_stat = document.querySelector('#progress_stat')
 
-  progress_stat.style.width = data.progress_data + "%" 
-  progress_stat.textContent = data.progress_data + "%"
-
-}
-
-// setInterval(()=> {
-//   getProgress(project_id)
-// }, 1000)
-
+  // Update progress on the client side based on the received data
+  const progressStat = document.querySelector('#progress_stat');
+  progressStat.textContent = progressData + "%";
+  progressStat.style.width = progressData + "%";
+});

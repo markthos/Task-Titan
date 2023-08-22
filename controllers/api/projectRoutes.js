@@ -290,6 +290,8 @@ router.get("/progress/:id", async (req, res) => {
 
     projects[0].progress_data = progress_data
 
+    req.io.emit("progressUpdate", { progress_data });
+
     console.log(progress_data)
 
     res.status(200).json({

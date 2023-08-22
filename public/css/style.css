@@ -12,7 +12,9 @@
 }
 
 
-
+#progress_stat {
+    width: 0; /* Initial width */
+  }
 
 .notification {
     position: relative;

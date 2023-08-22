@@ -54,8 +54,11 @@ const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server);
 
+
+
 io.on("connection", (socket) => {
   console.log("a user connected");
+
   
   socket.on("disconnect", () => {
     console.log("user disconnected");
@@ -64,6 +67,18 @@ io.on("connection", (socket) => {
   socket.on("error", (error) => {
     console.error("Socket error:", error);
   });
+});
+
+io.on("connection", (socket)=>{
+    socket.on('chat', (msg) => {
+    console.log(msg)
+  })
+})
+
+
+app.use((req, res, next) => {
+  req.io = io; // Attach the io instance to the req object
+  next();
 });
 
 // Use the login-related middleware
