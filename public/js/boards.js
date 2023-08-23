@@ -81,7 +81,7 @@ const findAccessLevel = async (access_level) => {
 
   console.log(project_id, "userID:" + user_id);
   //set progress bar on page reload
-  getProgress(project_id)
+  // getProgress(project_id)
 
   const response = await fetch(`/api/collaborator/validate`, {
     method: "POST",
@@ -124,30 +124,67 @@ document.addEventListener("DOMContentLoaded", findAccessLevel);
 
 // Progress Bar
 
-const getProgress = async (project_id) => {
-  const response = await fetch(`/api/projects/progress/${project_id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+// const getProgress = async (project_id) => {
+//   const response = await fetch(`/api/projects/progress/${project_id}`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
 
-  const data = await response.json()
+//   const data = await response.json()
 
-  progress_data = data.progress_data
+//   progress_data = data.progress_data
 
-  if (progress_data === null) {
-    data.progress_data = 100
-  } 
+//   if (progress_data === null) {
+//     data.progress_data = 100
+//   } 
   
-  const progress_stat = document.querySelector('#progress_stat')
+//   const progress_stat = document.querySelector('#progress_stat')
 
-  progress_stat.style.width = data.progress_data + "%" 
-  progress_stat.textContent = data.progress_data + "%"
+//   progress_stat.style.width = data.progress_data + "%" 
+//   progress_stat.textContent = data.progress_data + "%"
 
-}
+// }
 
 // setInterval(()=> {
 //   getProgress(project_id)
 // }, 1000)
+
+
+const projectViewContainer = document.querySelector('#project_view');
+let isDragging = false;
+
+projectViewContainer.addEventListener('mousedown', handleMouseDown);
+document.addEventListener('mousemove', handleMouseMove);
+document.addEventListener('mouseup', handleMouseUp);
+
+function handleMouseDown(event) {
+  isDragging = true;
+}
+
+function handleMouseMove(event) {
+  if (isDragging) {
+    const mouseX = event.clientX;
+    const screenWidth = window.innerWidth;
+    const edgeThreshold = 30;
+
+    if (mouseX <= edgeThreshold) {
+      // Scroll left
+      projectViewContainer.scrollLeft -= 10;
+    }
+
+    if (mouseX >= screenWidth - edgeThreshold) {
+      // Scroll right
+      projectViewContainer.scrollLeft += 10;
+    }
+  }
+}
+
+function handleMouseUp(event) {
+  isDragging = false;
+}
+
+
+
 
