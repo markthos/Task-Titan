@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dheereshagrwal/colored-icons@1.6.1/ci.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="/css/materialize.min.css">
+        <link rel="stylesheet" href="/css/dragula.min.css">
+        <link rel="stylesheet" href="/css/style.css">
+    <title>🦹🏻‍♂️ Crush your tasks with ease | TASK TITAN </title>
+    </head>
+    <body>
+        <header>
+            <div class="navbar-fixed">
+                <nav class="deep-purple">
+                    <div class="nav-wrapper container">
+                        <a href="/" class="brand-logo">Task Titan</a>
+                        <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            {{#if logged_in}}
+                                <li>Welcome, {{user_name}} </li>
+                                <li><a href="/boards">My Boards</a></li>
+                                <li><a href="/logout" id="logout-link" >Log Out</a></li>
+                                <li><a href="/about">About</a></li>
+                            {{else}}
+                                <li><a href="/login">Log In</a></li>
+                                <li><a href="/signup">Sign Up</a></li>
+                                <li><a href="/about">About</a></li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav deep-purple" id="mobile">
+                {{#if logged_in}}
+                    <li class="white-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome, {{user_name}}</li>
+                    <li><a class="white-text" href="/boards">My Boards</a></li>
+                    <li><a class="white-text" href="/logout" id="mobile-logout-link" >Log Out</a></li>
+                    <li><a class="white-text" href="/about">About</a></li>
+                {{else}}
+                    <li><a class="white-text" href="/login">Log In</a></li>
+                    <li><a class="white-text" href="/signup">Sign Up</a></li>
+                    <li><a class="white-text" href="/about">About</a></li>
+                {{/if}}
+            </ul>
+        </header>
+
+        <main id="main">
+            {{{ body }}}
+        </main>
+
+        <footer class="page-footer pink">
+            <section class="section container">
+                <p class="grey-text text-lighten-4">
+                    Made Possible by <a class="purple-text text-lighten-4" href="/about">Team Titan</a>
+                </p>
+                <p class="grey-text text-lighten-4">
+                    Created August 2023 for the UC Berkley Full Stack Web Development Bootcamp
+                </p>
+            </section>
+            <section class="footer-copyright">
+                <div class="container">
+                © 2023 Task Titan
+                <a class="purple-text text-lighten-4 right" href="#" target="_top">Top</a>
+                </div>
+            </section>
+      </footer>
+        
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io();
+            console.log("hey")
+        </script>
+        <script src="/js/materialize.min.js"></script>
+        <script src="/js/dragula.min.js"></script>
+        <script src="/js/logout.js"></script>
+        <script src="/js/boards.js"></script>
+        <script src="/js/ticket.js"></script>
+
+    </body>
+</html>

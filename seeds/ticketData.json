@@ -1,0 +1,177 @@
+[
+  {
+      "title": "Learn new move",
+      "text": "In this task, I will be focusing on learning a new move for our dance routine. This move will add a fresh and exciting element to our performance. I'll be practicing the steps and working on perfecting the timing and coordination.",
+      "date_created": "2023-08-01",
+      "project_id": 1,
+      "creator_id": 1,
+      "status": "doing"
+  },
+  {
+      "title": "Design Landing Page",
+      "text": "The goal of this task is to design an engaging and user-friendly landing page for our website. The landing page will serve as the first impression for visitors and potential customers. I'll be incorporating eye-catching visuals and clear call-to-action buttons.",
+      "date_created": "2023-08-05",
+      "project_id": 2,
+      "creator_id": 2,
+      "status": "doing"
+  },
+  {
+      "title": "Test Seeding",
+      "text": "In order to ensure the accuracy of our seeding process, I will be conducting thorough testing. This will involve validating the data, checking for any inconsistencies, and making adjustments as needed. The goal is to have a reliable and effective seeding mechanism.",
+      "date_created": "2023-08-05",
+      "project_id": 2,
+      "creator_id": 2,
+      "status": "review"
+  },
+  {
+      "title": "Update User Profile",
+      "text": "This task involves updating and enhancing the user profile section of our application. I will be adding new fields for users to provide additional information and preferences. The improved user profiles will enhance the overall user experience.",
+      "date_created": "2023-08-10",
+      "project_id": 3,
+      "creator_id": 3,
+      "status": "doing"
+  },
+  {
+      "title": "Fix Login Bug",
+      "text": "I will be investigating and resolving a bug that has been affecting the login process for some users. The issue seems to be related to incorrect error handling during authentication. The goal is to improve the stability and reliability of the login functionality.",
+      "date_created": "2023-08-12",
+      "project_id": 4,
+      "creator_id": 4
+  }, 
+  {
+    "title": "Create API Documentation",
+    "text": "Creating comprehensive API documentation is the focus of this task. I'll be documenting all the endpoints, request parameters, and responses for our application's API. Well-documented APIs make it easier for developers to integrate our services into their applications.",
+    "date_created": "2023-08-15",
+    "project_id": 5,
+    "creator_id": 5,
+    "status": "doing"
+  },
+  {
+      "title": "Review Bug Fixes",
+      "text": "As part of the quality assurance process, I will be reviewing recent bug fixes that were implemented. I'll go through each fix, testing them thoroughly to ensure they indeed resolve the reported issues. Verified fixes will then be marked as ready for deployment.",
+      "date_created": "2023-08-15",
+      "project_id": 6,
+      "creator_id": 6,
+      "status": "review"
+  },
+  {
+    "title": "Optimize Database Queries",
+    "text": "In this task, I will be optimizing the database queries used in our application. I'll be analyzing slow-performing queries, identifying bottlenecks, and applying optimization techniques such as indexing and query rewriting. This will lead to improved application performance and responsiveness.",
+    "date_created": "2023-08-06",
+    "project_id": 2,
+    "creator_id": 2,
+    "status": "review"
+  },
+  {
+      "title": "Implement Payment Gateway",
+      "text": "This task involves integrating a new payment gateway into our e-commerce platform. I'll be working on the backend logic to handle payment processing and ensuring a secure and seamless payment experience for our customers. A reliable payment gateway is essential for our business operations.",
+      "date_created": "2023-08-08",
+      "project_id": 3,
+      "creator_id": 3,
+      "status": "review"
+  },
+  {
+      "title": "Create Mobile App Wireframes",
+      "text": "I will be designing wireframes for our upcoming mobile application. Wireframes serve as the blueprint for the app's layout and functionality. This task will help us visualize the app's user interface, plan navigation flows, and gather early feedback before moving to full-fledged design and development.",
+      "date_created": "2023-08-11",
+      "project_id": 4,
+      "creator_id": 4,
+      "status": "doing"
+  },
+  {
+      "title": "Conduct Usability Testing",
+      "text": "Usability testing is the focus of this task. I will be organizing user testing sessions to gather feedback on our application's user experience. Participants will perform tasks and provide insights on areas for improvement. This valuable feedback will guide us in enhancing the usability of the application.",
+      "date_created": "2023-08-13",
+      "project_id": 5,
+      "creator_id": 5,
+      "status": "doing"
+  },
+  {
+      "title": "Plan Marketing Campaign",
+      "text": "Planning a marketing campaign is the objective of this task. I'll be identifying target audiences, setting campaign goals, selecting marketing channels, and crafting compelling messaging. A well-executed campaign can drive brand awareness and attract new customers to our products and services.",
+      "date_created": "2023-08-16",
+      "project_id": 6,
+      "creator_id": 6,
+      "status": "done"
+  },
+  {
+      "title": "Research Competitive Landscape",
+      "text": "In this task, I will be researching the competitive landscape in our industry. I'll analyze our competitors' products, pricing strategies, marketing approaches, and customer feedback. This information will help us identify opportunities to differentiate our offerings and enhance our market positioning.",
+      "date_created": "2023-08-18",
+      "project_id": 1,
+      "creator_id": 1,
+      "status": "done"
+  },
+  {
+      "title": "Enhance Data Security",
+      "text": "Data security enhancement is the primary focus of this task. I will be reviewing our application's security measures, identifying potential vulnerabilities, and implementing necessary security patches. Ensuring the confidentiality and integrity of user data is crucial for maintaining trust.",
+      "date_created": "2023-08-20",
+      "project_id": 2,
+      "creator_id": 2,
+      "status": "done"
+  },
+  {
+      "title": "Develop New Feature",
+      "text": "This task involves developing a new feature for our application. I'll be working on the implementation, testing, and integration of the feature. The new functionality will add value to our users and contribute to the overall enhancement of the application's capabilities.",
+      "date_created": "2023-08-22",
+      "project_id": 3,
+      "creator_id": 3,
+      "status": "done"
+  },
+  {
+      "title": "Design Logo Concepts",
+      "text": "Designing logo concepts is the focus of this task. I'll be brainstorming and creating different logo ideas that represent our brand identity. Each concept will reflect our values and messaging. A visually appealing and meaningful logo is essential for building brand recognition.",
+      "date_created": "2023-08-25",
+      "project_id": 4,
+      "creator_id": 4,
+      "status": "done"
+  },
+  {
+      "title": "Generate Monthly Report",
+      "text": "I will be generating the monthly report summarizing key performance metrics and accomplishments. This report will provide insights into our progress, highlighting achievements and identifying areas that require attention. Regular reporting helps us track our goals and make informed decisions.",
+      "date_created": "2023-08-27",
+      "project_id": 5,
+      "creator_id": 5,
+      "status": "done"
+  },
+  {
+    "title": "Solve Cross-Browser Compatibility",
+    "text": "In this task, I will be addressing cross-browser compatibility issues in our web application. I'll be testing the application on various browsers to identify inconsistencies and applying fixes to ensure consistent performance and appearance across different browser environments.",
+    "date_created": "2023-08-29",
+    "project_id": 6,
+    "creator_id": 6,
+    "status": "todo"
+  },
+  {
+      "title": "Review Code Quality",
+      "text": "Code quality review is the primary objective of this task. I will be conducting a thorough review of recent code changes, checking for adherence to coding standards, readability, and maintainability. This process ensures that our codebase remains robust and free from potential issues.",
+      "date_created": "2023-09-01",
+      "project_id": 1,
+      "creator_id": 1,
+      "status": "todo"
+  },
+  {
+      "title": "Optimize Server Performance",
+      "text": "The focus of this task is to optimize the performance of our application's server. I'll be analyzing server response times, identifying resource-intensive processes, and implementing optimizations such as caching and load balancing. Improved server performance leads to a smoother user experience.",
+      "date_created": "2023-09-03",
+      "project_id": 2,
+      "creator_id": 2,
+      "status": "todo"
+  },
+  {
+      "title": "Create Video Tutorials",
+      "text": "Creating informative video tutorials is the goal of this task. I'll be recording and editing tutorials that provide step-by-step guidance on using our application's features. Video tutorials are a valuable resource for users to learn and maximize the benefits of our platform.",
+      "date_created": "2023-09-06",
+      "project_id": 3,
+      "creator_id": 3,
+      "status": "todo"
+  },
+  {
+      "title": "Plan Team Building Event",
+      "text": "In this task, I will be planning a team-building event for our project team. The event will foster collaboration, boost morale, and provide an opportunity for team members to relax and bond outside of work. Team-building activities contribute to a positive work environment.",
+      "date_created": "2023-09-08",
+      "project_id": 4,
+      "creator_id": 4,
+      "status": "todo"
+  }
+]

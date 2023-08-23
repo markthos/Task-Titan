@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Bulbasaur Help",
+        "date_started": "2016-01-01",
+        "type": "Training",
+        "owner_id": 1
+    },
+    {
+      "name": "Testing Help",
+      "date_started": "2016-01-01",
+      "type": "Training",
+      "owner_id": 1
+    },
+    {
+        "name": "Task Titan",
+        "type": "Web Development",
+        "owner_id": 2
+    },
+    {
+        "name": "Marketing Makeover",
+        "date_started": "2022-03-15",
+        "type": "Marketing",
+        "owner_id": 3
+      },
+      {
+        "name": "Product Launch",
+        "date_started": "2022-05-10",
+        "type": "Product Development",
+        "owner_id": 4
+      },
+      {
+        "name": "Research Expedition",
+        "date_started": "2023-02-28",
+        "type": "Research",
+        "owner_id": 5
+      },
+      {
+        "name": "Avengers Initiative",
+        "date_started": "2023-02-23",
+        "type": "Research",
+        "owner_id": 6
+      }
+]

@@ -1,0 +1,208 @@
+{{!-- BOARDS NAVIGATION MENU --}}
+
+
+<nav class="purple darken-4">
+    <div class="nav-wrapper container">
+        <a href="#" data-target="my-board-nav" class="sidenav-trigger"><i class="material-icons">view_module</i></a>
+        <ul class="center hide-on-med-and-down">
+            <li><a class="modal-trigger" href="#newProjectModal"><i class="material-icons left">create_new_folder</i>New Project</a></li>
+            <li><a class="modal-trigger" href="#deleteProjectModal"><i class="material-icons left">delete_forever</i>Delete Project</a></li>
+        </ul>
+        
+    </div>
+</nav>
+{{!-- SIDE BAR MENU FOR SMALL DISPLAYS --}}
+<ul class="sidenav" id="my-board-nav">
+    <li><a class="modal-trigger" href="#newProjectModal"><i class="material-icons left">create_new_folder</i>New Project</a></li>
+    <li><a class="modal-trigger" href="#deleteProjectModal"><i class="material-icons left">delete_forever</i>Delete Project</a></li>
+</ul>
+
+{{!-- THIS IS COMMENT BAR THAT SLIDE IN --}}
+
+<ul id="comment_bar" class="sidenav">
+    <div class="center-align">
+        <h2>Message Board</h2>
+    </div>
+</ul>
+
+
+{{!-- MODALS! --}}
+
+
+{{!-- ADD CLIENT MODAL --}}
+<div id="addClientModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Client</h4>
+        <form id="addClientForm" action="/api/add-client" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Client Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="type" id="type" required>
+                    <label for="type">Project</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Client</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+
+{{!-- ADD WORKER MODAL --}}
+<div id="addWorkerModal" class="modal">
+    <div class="modal-content">
+        <h4>Add Worker</h4>
+        <form id="addWorkerForm" action="/api/add-worker" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Dick" id="first_name" name="first_name" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Grayson" id="last_name" name="last_name" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="robin@teentitans.go" id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Worker Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="type" id="type" required>
+                    <label for="type">Project</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Add Worker</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+{{!-- PROJECT SELECT MODAL --}}
+<div id="selectProjectModal" class="modal">
+    <div class="modal-content">
+        <form id="selectProjectForm" action="/api/select-projects" method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="selectedProject" id="selectedProject" required>
+                    {{#each projects as |project|}}
+                        <option value="{{project.id}}">{{project.name}}</option>
+                    {{/each}}
+                    </select>
+                    <label for="selectedProject">Select a Project</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">View Project</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+    {{!-- <script>
+        //Redirect to the selected project board
+        function redirectToSelectedProject(selectedProjectID) {
+            if (selectedProjectID) {
+                window.location.href = "/boards/${selectedProjectID}";
+            }
+        }
+    </script> --}}
+</div>
+
+{{!-- NEW PROJECT MODAL --}}
+<div id="newProjectModal" class="modal">
+    <div class="modal-content">
+        <h4>New Project</h4>
+        <form id="newProjectForm" action="/api/projects" method="POST">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="name" id="name" required>
+                    <label for="name">Project Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="type" id="type" required>
+                    <label for="type">Project Type</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input class="datepicker" type="text" name="date_started" id="date_started" required>
+                    <label for="date_started">Date Started</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button type="submit" class="waves-effect waves-light btn-large deep-purple">Create Project</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+
+
+{{!-- DELETE PROJECT MODAL --}}
+<div id="deleteProjectModal" class="modal">
+    <div class="modal-content">
+        {{#each projects as |project|}}
+        <form id="deleteProjectForm" action="/api/projects/{{project.id}}/projectDelete" method="POST">
+        {{/each}}
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="selectedProject" id="selectedProject" required>
+                        {{#each projects as |project|}}
+                            <option value={{project.id}}>{{project.name}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="selectedProject">Select a Project to Delete</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 center-align">
+                    <button id="deleteProjectButton" type="submit" class="waves-effect waves-light btn-large deep-purple">Delete Project</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>

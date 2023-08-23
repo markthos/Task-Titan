@@ -1,0 +1,46 @@
+{
+  "name": "task-titan",
+  "version": "1.0.0",
+  "description": "How to murder tasks",
+  "main": "server.js",
+  "scripts": {
+    "seeds": "node seeds/seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markthos/Task-Titan.git"
+  },
+  "keywords": [
+    "task",
+    "titan"
+  ],
+  "author": "Task Titans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markthos/Task-Titan/issues"
+  },
+  "homepage": "https://github.com/markthos/Task-Titan#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.7",
+    "dayjs": "^1.11.9",
+    "dotenv": "^16.3.1",
+    "dragula": "^3.7.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.8",
+    "mysql2": "^3.6.0",
+    "sequelize": "^6.32.1",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
