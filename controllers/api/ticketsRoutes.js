@@ -1,6 +1,6 @@
 // ticketRoutes.js
 const router = require("express").Router();
-const { Ticket, TicketComment, User } = require("../../models");
+const { Ticket, TicketComment, User, Project } = require("../../models");
 const withAuth = require("../../utils/auth");
 const dayjs = require("dayjs");
 
@@ -53,7 +53,7 @@ router.get("/", async (req, res) => {
 // Update a ticket by ID
 router.put("/", async (req, res) => {
   try {
-    console.log("updating from drag");
+    console.log("updating from drag")
 
     const now = dayjs();
 

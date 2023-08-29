@@ -242,6 +242,9 @@ router.post('/:id/removeCollaborator', async (req, res) => {
 
 router.get("/progress/:id", async (req, res) => {
   try {
+
+    console.log("you made it here")
+
     const projectData = await Project.findAll({
       where: {
         id: req.params.id,
@@ -249,16 +252,11 @@ router.get("/progress/:id", async (req, res) => {
       include: [
         {
           model: Ticket,
-          include: {
-            model: User, // Include the User model for creator_id
-            attributes: ["first_name", "last_name"],
-          },
         },
       ],
     });
   
     const projects = projectData.map((project) => project.get({ plain: true }));
-
 
     let ticketsArray = [];
 
@@ -285,12 +283,15 @@ router.get("/progress/:id", async (req, res) => {
       }
     }
 
-
     const progress_data = Math.round((projects[0].done.length / ticketsArray) * 100)
 
     projects[0].progress_data = progress_data
 
+    const data = progress_data
+
     console.log(progress_data)
+
+    req.io.emit("message", data)
 
     res.status(200).json({
       progress_data

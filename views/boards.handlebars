@@ -25,7 +25,7 @@
                         <div class="collapsible-header">
                             <div class="progress pink lighten-4">
                                 <span>Progress<i class="material-icons">info_outline</i></span>
-                                <div id="progress_stat" class="determinate pink" style="width: 50%; animation: grow 2s;">{{progress_data}}%</div>
+                                <div id="progress_stat" class="determinate pink" style="width: 50%; animation: grow 2s;"></div>
                             </div>
                         </div>
                         <div class="collapsible-body">THE PROJECT IS GOING WELL!</div>
@@ -143,3 +143,6 @@
 
 {{/each}}
 
+<script src="/js/boards.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/ticket.js"></script>

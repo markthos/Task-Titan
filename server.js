@@ -66,6 +66,11 @@ io.on("connection", (socket) => {
   });
 });
 
+app.use((req, res, next) => {
+  req.io = io; // Attach the io instance to the req object
+  next();
+});
+
 // Use the login-related middleware
 app.use(require("./controllers/login"));
 
