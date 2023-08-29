@@ -51,6 +51,8 @@ async function init() {
 }
 const progress_stat = document.querySelector("#progress_stat")
 
+const socket = io();
+
 socket.on("message", (stat) => {
   
   stat = stat + "%"
